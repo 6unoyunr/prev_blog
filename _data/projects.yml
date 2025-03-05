@@ -1,0 +1,36 @@
+projects:
+  - title: "AI Services"
+    place: "SBS"
+    time: "Dec 2024 - Present"
+    tech_stack: ["C++", "Python", "Docker", "SQL", "VectorDB"]
+    tasks:
+      - "Developing a Deep Learning AI Software as a Service."
+      - "Includes multimodal retrieval, V2T generation, thumbnail selection/generation, and NMT with LLMs."
+
+  - title: "Source Free Domain Adaptation"
+    place: "LIG Nex1"
+    time: "Jan 2022 - Aug 2024"
+    tech_stack: ["Python", "Docker", "PyTorch"]
+    tasks:
+      - "Researched light-weight domain adaptation using source free approaches."
+      - "Submitted a paper on the SFDA algorithm to ECCV 2024."
+    youtube: "https://www.youtube.com/watch?v=Mn1YU1Uji-g"
+
+  - title: "Test Time Adaptation"
+    place: "LIG Nex1"
+    time: "Jan 2022 - Aug 2024"
+    tech_stack: ["Python", "Docker", "PyTorch"]
+    tasks:
+      - "Explored test-time domain adaptation techniques."
+      - "Submitted a paper on the TTA algorithm to WACV 2024."
+    youtube: "https://www.youtube.com/watch?v=x3ri6DUKyAY"
+
+  - title: "Blur Face Detection"
+    place: "Alchera"
+    time: "Sep 2022 - Sep 2022"
+    tech_stack: ["Python", "Docker", "Cloud AI Services"]
+    tasks:
+      - "Developed algorithms for detecting blurred facial images."
+      - "Solved the data degradation issue in facial recognition framework algorithms."
+      - "Optimized modeling for real-time inference and improved on metrics."
+    code: "https://github.com/minsu1206/BlurFaceDetection"

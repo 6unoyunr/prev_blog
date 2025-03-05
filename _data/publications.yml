@@ -1,0 +1,13 @@
+papers:
+  - title: "Enhancing Source-Free Domain Adaptive Object Detection with Low-confidence Pseudo Label Distillation"
+    authors: "Ilhoon Yoon, Hyeongjun Kwon, Jin Kim, <u><b>Junyoung Park</b></u>, Kwanghoon Sohn"
+    paper_pdf: "https://arxiv.org/abs/2407.13524"
+    venue: "ECCV 2024 Poster presentation"
+    selected: y
+    image: "https://github.com/user-attachments/assets/0b18f570-7aed-4a05-a205-722fb052b80a"
+  - title: "Layer-wise Auto-Weighting for Non-Stationary Test-Time Adaptation"
+    authors: "<u><b>Junyoung Park</b></u>, Jin Kim, Hyeongjun Kwon, Ilhoon Yoon, Kwanghoon Sohn"
+    paper_pdf: "https://arxiv.org/pdf/2311.05858.pdf"
+    venue: "WACV 2024 Poster presentation"
+    selected: y
+    image: "https://github.com/junia3/LayerwiseTTA/assets/79881119/9c8d30ed-3e46-47d2-ae90-9720ac97eb3d"
