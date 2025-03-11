@@ -319,7 +319,7 @@ Transformer는 단연코 neural network 중 최근에 가장 활발히 연구된
 <p align="center">
     <img src="https://user-images.githubusercontent.com/79881119/209152469-4fde8fda-f626-4d1c-999a-6d4d75435c68.png" width="400"/>
 </p>
-DeiT는 ViT와 동일한 transformer 구조에 대한 학습을 진행하되, JFT와 같은 대용량 데이터셋에 대한 pre-training을 하지 않고도 ImageNet dataset에 대해서만 학습하는 방향을 제시했다. 이전에 작성했던 글들 중에서 Knowledge distillation에 대해 간단하게 소개했던 글이 있는데([참고](https://junia3.github.io/blog/transfer)), 바로 distillation을 통해서 transformer가 지지부진할 때 도움을 많이 줄 수 있는 <U>teacher</U> 역할을 <U>convolutional neural network</U>가 해줄 수 있다는 것이다. Convolutional neural network 구조에 의존하지 않더라도, 단순히 distillation loss를 줄 수 있는 token 하나만 추가하면 된다.
+DeiT는 ViT와 동일한 transformer 구조에 대한 학습을 진행하되, JFT와 같은 대용량 데이터셋에 대한 pre-training을 하지 않고도 ImageNet dataset에 대해서만 학습하는 방향을 제시했다. 이전에 작성했던 글들 중에서 Knowledge distillation에 대해 간단하게 소개했던 글이 있는데([참고](https://6unoyunr.github.io/blog/transfer)), 바로 distillation을 통해서 transformer가 지지부진할 때 도움을 많이 줄 수 있는 <U>teacher</U> 역할을 <U>convolutional neural network</U>가 해줄 수 있다는 것이다. Convolutional neural network 구조에 의존하지 않더라도, 단순히 distillation loss를 줄 수 있는 token 하나만 추가하면 된다.
 <p align="center">
     <img src="https://user-images.githubusercontent.com/79881119/209152470-4bcf4a9a-85f6-4145-a535-20449cd5d23e.png" width="400"/>
 </p>

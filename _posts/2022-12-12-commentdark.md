@@ -25,7 +25,7 @@ tags:
 ```html
 <div class="utterance-light" id="comment_light">
     <script src="https://utteranc.es/client.js"
-        repo="junia3/comments"
+        repo="6unoyunr/comments"
         issue-term="pathname"
         theme="github-light"
         crossorigin="anonymous"
@@ -35,7 +35,7 @@ tags:
 
 <div class="utterance-dark" id="comment_dark">
     <script src="https://utteranc.es/client.js"
-        repo="junia3/comments"
+        repo="6unoyunr/comments"
         issue-term="pathname"
         theme="github-dark"
         crossorigin="anonymous"
@@ -76,10 +76,5 @@ style.scss가 먼저 적용이된 뒤에 style_dark.scss가 적용이 된다.
 }
 ```
 
-위와 같이 작성해주면 되는데, 여기서 !important를 빼먹으면 안되는 이유는 아까도 말했듯이 default로 style.scss의 스타일이 먼저 적용되게끔 해놨기 때문에 변환 시에 스타일 적용을 해줘야한다는 의미로 넣어준다. 이렇게 되면 결과는 다음과 같이 잘 나온다.
-
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/79881119/209127892-c1de94cb-6290-4a8f-bfb5-caa041b94812.gif" width="700"/>
-</p>
-
+위와 같이 작성해주면 되는데, 여기서 !important를 빼먹으면 안되는 이유는 아까도 말했듯이 default로 style.scss의 스타일이 먼저 적용되게끔 해놨기 때문에 변환 시에 스타일 적용을 해줘야한다는 의미로 넣어준다.
 처음엔 다크모드 토글에 적용했던 것처럼 스크립트 제어를 통해 테마만 attribute로 넣어줄라했는데 그런 방법들은 잘 안돼서 포기하고 오히려 이 방법이 더 깔끔하고 코드도 몇줄 안바꿔서 좋은 것 같다.

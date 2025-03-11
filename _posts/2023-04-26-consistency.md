@@ -15,7 +15,7 @@ tags:
 
 # 들어가며…
 
-**Yang Song**씨의 논문은 항상 읽다보면 **피가 말린다**. 안그래도 수식이 방대한 딥러닝 세상에서 더욱 수식을 멋지게 활용(?)하여 **Appendix를 화려하게 채워주기 때문이다**. 바로 이전에 리뷰했던 논문인 score based diffusion의 기초 논문들 중 하나인 [‘Score-based generative modeling through stochastic differential equations’](https://junia3.github.io/blog/scoresde) 또한 Appendix가 굉장했던 기억이 있다. 아무튼 diffusion을 공부하는 사람이라면 대체 어디서부터 읽어야할지 막막하기도 하고, 가장 베이스라인이라고 여겨질 수 있는 DDPM이나 NCSN 등등을 읽다보면 대체 무슨 근본으로 이러한 수식을 전개하는거지 싶은 순간들이 온다. 본인은 diffusion을 공부하기 시작한 이후로 수없이 많은 기초 논문들, 블로그 및 유튜브와 Bishop의 pattern recognition 서적의 이런저런 수식들을 참고했었다. 다만 많은 시간동안 느꼈던 점은 제대로 이해하지 못하고 대충 넘어간 애들은 결국 내 것이 되지 못한 채 이후 논문들을 이해하는 과정에서 발목을 잡는다는 사실이었다. 또한 공부하면서 느꼈던 점은 생성 모델로서 무언갈 구현했다기 보다는 수학적 모델을 통해 생성 모델을 도출한다는 흐름이 논문의 수식 이해에 보다 도움이 되었다는 것이다. 
+**Yang Song**씨의 논문은 항상 읽다보면 **피가 말린다**. 안그래도 수식이 방대한 딥러닝 세상에서 더욱 수식을 멋지게 활용(?)하여 **Appendix를 화려하게 채워주기 때문이다**. 바로 이전에 리뷰했던 논문인 score based diffusion의 기초 논문들 중 하나인 [‘Score-based generative modeling through stochastic differential equations’](https://6unoyunr.github.io/blog/scoresde) 또한 Appendix가 굉장했던 기억이 있다. 아무튼 diffusion을 공부하는 사람이라면 대체 어디서부터 읽어야할지 막막하기도 하고, 가장 베이스라인이라고 여겨질 수 있는 DDPM이나 NCSN 등등을 읽다보면 대체 무슨 근본으로 이러한 수식을 전개하는거지 싶은 순간들이 온다. 본인은 diffusion을 공부하기 시작한 이후로 수없이 많은 기초 논문들, 블로그 및 유튜브와 Bishop의 pattern recognition 서적의 이런저런 수식들을 참고했었다. 다만 많은 시간동안 느꼈던 점은 제대로 이해하지 못하고 대충 넘어간 애들은 결국 내 것이 되지 못한 채 이후 논문들을 이해하는 과정에서 발목을 잡는다는 사실이었다. 또한 공부하면서 느꼈던 점은 생성 모델로서 무언갈 구현했다기 보다는 수학적 모델을 통해 생성 모델을 도출한다는 흐름이 논문의 수식 이해에 보다 도움이 되었다는 것이다. 
 
 따라서 무작정 수식 전개를 이해하기보다는 근본적으로 diffusion이 대체 왜 생성 모델로 사용될 수 있는지, 그리고 그 <U>한계점과 해결책이 무엇인지</U> 이해하는 것이 가장 중요하다고 생각된다.
 

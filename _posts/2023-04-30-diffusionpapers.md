@@ -25,7 +25,7 @@ DDPM이 <U>새로운 생성 모델의 학습법</U> 및 <U>샘플링 모델</U>�
 
 이 논문에서는 크게 두 가지 방법을 통해 샘플링 퀄리티를 높인다. 첫번째는 hybrid objective로, 기존 DDPM에서는 Variational lower bound(VLB)를 수정한 simplified loss를 사용했으나, 이 논문에서는 여기에 추가로 VLB loss를 사용하여 최적화를 하였다.
 
-두번째는 고정된 variance가 아난 학습된 variance를 사용하였고, 이를 통해 DDPM이 수백의 forward process를 통해 좋은 퀄리티의 샘플들을 만들었던 점과 비교하여 더 적은 forward pass($50$)로도 이를 달성할 수 있었다. DDIM([블로그 글 참고](https://junia3.github.io/blog/ddim))에서는 non-Markovian process에 기반한 새로운 샘플링 방법을 고안했었는데, 이와는 다르게 DDPM의 Markovian process 자체는 유지하는 방향으로 연구를 진행한 것이다.
+두번째는 고정된 variance가 아난 학습된 variance를 사용하였고, 이를 통해 DDPM이 수백의 forward process를 통해 좋은 퀄리티의 샘플들을 만들었던 점과 비교하여 더 적은 forward pass($50$)로도 이를 달성할 수 있었다. DDIM([블로그 글 참고](https://6unoyunr.github.io/blog/ddim))에서는 non-Markovian process에 기반한 새로운 샘플링 방법을 고안했었는데, 이와는 다르게 DDPM의 Markovian process 자체는 유지하는 방향으로 연구를 진행한 것이다.
 
 ### 기존 DDPM
 
@@ -54,7 +54,7 @@ p_\theta(x_{t-1} \vert x_t) := \mathcal{N}(x\_{t-1}; \mu_\theta (x_t, t), \Sigma
 \le D_{KL}(q(x_T \vert x_0) \vert\vert p_\theta(x_T)) -\sum_{t > 1} D_{KL} (q(x_{t-1} \vert x_t, x_0) \vert\vert p_\theta(x_{t-1} \vert x_t)) -\mathbb{E}\_q\left(\log p_{\theta}(x_0 \vert x_1) \right)
 \]
 
-맨 앞부분은 충분한 시간 $T$에 대해 임의의 데이터셋 $x_0$를 perturbation하게 되면 자연스럽게 만족하는 식이므로 $0$에 가깝다고 생각할 수 있다. 따라서 최적화에 필요한 식이 아니게 된다. 중간의 식은 역과정을 예측하는 네트워크가 forward process의 posterior를 잘 따라갈 수 있게끔 설정한 KL divergence 식이 된다. 마지막으로 $x_1$에서 $x_0$를 생성하는 과정은 $256$의 RGB 데이터로 구성되는 이미지의 확률을 projection하기 위해 설정된 식이다. 디테일한 증명 및 loss 각 term에 대한 설명은 DDPM 게시글에서 확인하면 된다([참고 링크](https://junia3.github.io/blog/DDPMproof)).  아무튼 이 식을 단순화하여 나타낸 것이 곧 다음과 같은 simplified loss이다.
+맨 앞부분은 충분한 시간 $T$에 대해 임의의 데이터셋 $x_0$를 perturbation하게 되면 자연스럽게 만족하는 식이므로 $0$에 가깝다고 생각할 수 있다. 따라서 최적화에 필요한 식이 아니게 된다. 중간의 식은 역과정을 예측하는 네트워크가 forward process의 posterior를 잘 따라갈 수 있게끔 설정한 KL divergence 식이 된다. 마지막으로 $x_1$에서 $x_0$를 생성하는 과정은 $256$의 RGB 데이터로 구성되는 이미지의 확률을 projection하기 위해 설정된 식이다. 디테일한 증명 및 loss 각 term에 대한 설명은 DDPM 게시글에서 확인하면 된다([참고 링크](https://6unoyunr.github.io/blog/DDPMproof)).  아무튼 이 식을 단순화하여 나타낸 것이 곧 다음과 같은 simplified loss이다.
 
 \[
 \begin{aligned}
@@ -178,7 +178,7 @@ Hybrid loss를 사용한 이유는 다음과 같다. 사실 대놓고 log likeli
 
 ### Background
 
-이 논문에서 background로 사용된 기본 프레임워크는 DDPM인데, 이에 추가로 위에서 설명한 improved DDPM(trainable variance) 그리고 빠른 샘플링을 위해 제시된 DDIM(Denoising  diffusion implicit models)를 메인으로 한다. 앞에서도 언급했지만 Improved DDPM 논문에서도 적은 time step을 통한 높은 샘플링을 획득할 수 있었지만 이를 해결하는 방식이 ‘학습 과정을 바꿨다는 점’이고, DDIM은 이와는 다르게 동일한 marginal distribution을 가지는 non-Markovian process를 기반으로  ‘샘플링 과정을 바꿨다는 점’에서 서로 다른 연구라고 할 수 있다. [DDIM에 대한 글](https://junia3.github.io/blog/ddim)은 본인 포스팅에도 있기 때문에 미리 읽고 오는 것을 추천한다.
+이 논문에서 background로 사용된 기본 프레임워크는 DDPM인데, 이에 추가로 위에서 설명한 improved DDPM(trainable variance) 그리고 빠른 샘플링을 위해 제시된 DDIM(Denoising  diffusion implicit models)를 메인으로 한다. 앞에서도 언급했지만 Improved DDPM 논문에서도 적은 time step을 통한 높은 샘플링을 획득할 수 있었지만 이를 해결하는 방식이 ‘학습 과정을 바꿨다는 점’이고, DDIM은 이와는 다르게 동일한 marginal distribution을 가지는 non-Markovian process를 기반으로  ‘샘플링 과정을 바꿨다는 점’에서 서로 다른 연구라고 할 수 있다. [DDIM에 대한 글](https://6unoyunr.github.io/blog/ddim)은 본인 포스팅에도 있기 때문에 미리 읽고 오는 것을 추천한다.
 
 결론부터 말하자면 학습 방법은 Improved DDPM의 hybrid loss를, 샘플링의 경우 50 step보다 작은 sequence를 통해 생성할 경우에는 DDIM을 적용하게 된다. 사실 이 내용은 위에서 미처 설명하지 못한 <U>Improved DDPM에서의 실험</U>과 관련이 있다(아래 그래프 참고).
 
@@ -331,7 +331,7 @@ p_{\theta,\phi}(x_t \vert x_{t+1} , y) = Zp_\theta (x_t \vert x_{t+1}) p_\phi(y 
 x_{t-1} = \sqrt{\bar{\alpha}\_{t-1}}\underset{\text{predicted }x\_0}{\left( \frac{x\_t - \sqrt{1-\bar{\alpha}\_t}\epsilon_\theta^{(t)}(x\_t)}{\sqrt{\bar{\alpha}\_t}} \right)} + \underset{\text{direction pointing to }x\_t}{\sqrt{1-\bar{\alpha}\_{t-1} - \sigma\_t^2} \cdot \epsilon\_\theta^{(t)}(x\_t)} + \underset{\text{random noise}}{\sigma\_t z},~z \sim \mathcal{N}(0, I)
 \]
 
-위의 식을 보면 알 수 있듯이 deterministic DDIM은 $x_0$로부터 $x_t$를 예측하는 형태로 샘플링이 진행되다보니 $x_t$에 대한 classifier gradient를 적용할 수가 없게 되는 것이다. 여기서 바로 이전에 살펴봤던 논문인 SDE와 diffusion model을 연결했던 논문이 힘을 발휘한다. 해당 내용도 포스팅되어있다([참고 링크](https://junia3.github.io/blog/scoresde)). 해당 논문에서 VP-SDE라고 명시된 확률 미분 방정식에 대해 보면 다음과 같다. 예컨데 원래의 DDPM은 다음과 같은 process를 통해 샘플링을 진행한다.
+위의 식을 보면 알 수 있듯이 deterministic DDIM은 $x_0$로부터 $x_t$를 예측하는 형태로 샘플링이 진행되다보니 $x_t$에 대한 classifier gradient를 적용할 수가 없게 되는 것이다. 여기서 바로 이전에 살펴봤던 논문인 SDE와 diffusion model을 연결했던 논문이 힘을 발휘한다. 해당 내용도 포스팅되어있다([참고 링크](https://6unoyunr.github.io/blog/scoresde)). 해당 논문에서 VP-SDE라고 명시된 확률 미분 방정식에 대해 보면 다음과 같다. 예컨데 원래의 DDPM은 다음과 같은 process를 통해 샘플링을 진행한다.
 
 \[
 x_{t-1} = \frac{1}{\sqrt{\alpha_t}}\left( x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}}\_t} \epsilon\_\theta(x\_t, t)\right)+\sigma_tz

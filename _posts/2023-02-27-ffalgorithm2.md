@@ -13,7 +13,7 @@ tags:
 - Restricted Boltzmann Machine
 ---
 # 들어가며...
-이번 포스트는 바로 이전에 작성된 글인 <U>FF(Forward-forward algorithm)</U> 소개글([참고 링크](https://junia3.github.io/blog/ffalgorithm))에 이어 Hinton이라는 저자가 FF 알고리즘의 학습을 contrastive learning과 연관지어 설명한 부분을 자세히 다뤄보고자 작성하게 되었다.
+이번 포스트는 바로 이전에 작성된 글인 <U>FF(Forward-forward algorithm)</U> 소개글([참고 링크](https://6unoyunr.github.io/blog/ffalgorithm))에 이어 Hinton이라는 저자가 FF 알고리즘의 학습을 contrastive learning과 연관지어 설명한 부분을 자세히 다뤄보고자 작성하게 되었다.
 
 # Hinton의 RBM(Restricted Boltzmann Machine)에 대하여
 머신러닝을 공부했던 사람이라면 모를 수 없는 Andrew Ng이라는 사람이 Hinton과 [인터뷰](https://www.youtube.com/watch?v=-eyhCTvrEtE&list=PLfsVAYSMwsksjfpy8P2t_I52mugGeA5gR&ab_channel=PreserveKnowledge)하면서 인생에 있어 가장 큰 업적을 고르라했을 때, Hinton은 [restricted boltzmann machine](https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine)을 손꼽았다.
@@ -269,7 +269,7 @@ $\tilde{v}$는 RBM에 의해 생성되어 visible unit에 정의된 state vector
     <img src="https://user-images.githubusercontent.com/79881119/209150790-bc14237d-2686-43e9-8059-8220bb554dd1.gif" width="600"/>
 </p>
 
-자세한 내용은 본인이 작성한 글들 중에서 [여러 딥러닝 학습법](https://junia3.github.io/blog/transfer) 게시글을 참고하면 좋을 것 같다. 아무튼 이렇게 positive/negative pair에 대한 similarity를 구하는 것을 <U>agreement</U>라는 용어로 통칭하도록 하겠다. <U>Image crop</U>에 대한 agreement을 생각했을때, 만약 두 crops가 완전히 일치한다면 agreement를 학습하는 의미가 없게 된다.
+자세한 내용은 본인이 작성한 글들 중에서 [여러 딥러닝 학습법](https://6unoyunr.github.io/blog/transfer) 게시글을 참고하면 좋을 것 같다. 아무튼 이렇게 positive/negative pair에 대한 similarity를 구하는 것을 <U>agreement</U>라는 용어로 통칭하도록 하겠다. <U>Image crop</U>에 대한 agreement을 생각했을때, 만약 두 crops가 완전히 일치한다면 agreement를 학습하는 의미가 없게 된다.
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/79881119/222297983-d7833018-c2db-4764-877f-404550e840ff.png" width="600"/>

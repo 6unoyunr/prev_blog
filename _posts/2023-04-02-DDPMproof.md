@@ -14,7 +14,7 @@ tags:
 
 # 들어가며...
 
-정말 수식 증명만 조지는 내용이라 DDPM 자체에 대한 내용은 이전 글을 참고하면 좋다([참고 링크](https://junia3.github.io/blog/DDPM)). 근데 지금보니까 저 글을 쓸때도 완벽하게 이해하고 쓴 건 아닌 것 같다는 생각.. DDPM 논문 링크는 [여기](https://arxiv.org/abs/2006.11239). 이 어려운 벌써 논문이 3년이나 됐나 싶다.
+정말 수식 증명만 조지는 내용이라 DDPM 자체에 대한 내용은 이전 글을 참고하면 좋다([참고 링크](https://6unoyunr.github.io/blog/DDPM)). 근데 지금보니까 저 글을 쓸때도 완벽하게 이해하고 쓴 건 아닌 것 같다는 생각.. DDPM 논문 링크는 [여기](https://arxiv.org/abs/2006.11239). 이 어려운 벌써 논문이 3년이나 됐나 싶다.
 
 # Forward and Reverse process
 

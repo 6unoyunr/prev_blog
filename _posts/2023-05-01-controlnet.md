@@ -28,7 +28,7 @@ Input condition을 diffusion model에 주는 방식은 사실 이미 존재했�
 
 예컨데 이미지를 <U>유의미한 semantic 정보만 유지</U>하고 이미지 생성에 크게 필요하지 않은 high frequency feature를 거르는 vector quantized encoder/decoder를 학습한 상태로 생각하자(즉, 이미지 $x$를 작은 크기의 resolution을 가지는 latent image로 축소한다고 생각하면 된다). 이렇게 축소된 latent를 diffusion process를 통해 복구하는 과정을 학습하는 것이 우리가 일반적으로 이해하고 있는 **DDPM** 혹은 **DDIM**의 학습 및 샘플링 프로세스이다.
 
-우리가 기존에 살펴본 내용 중에서 attention pooling에 시간 정보와 class label 정보를 projection embedding으로 넣어주는 방법론이 있었다([diffusion process conditioning 논문 리뷰글](https://junia3.github.io/blog/diffusionpapers)). 이를 확장시켜 생각하면, 만약 특정 목적을 가지고 condition을 임베딩으로 사영시킬 수 있는 task specific encoder $\tau_\theta$만 있다면, 각 디퓨전 모델 학습 시에 $\tau_\theta$를 통해 추출된 condition vector를 attention layer를 통해 조건화해줄 수 있다. 예컨데 만약 다음과 같은 이미지와 텍스트 description 쌍이 있다고 생각하면(출처 : BLIP 논문),
+우리가 기존에 살펴본 내용 중에서 attention pooling에 시간 정보와 class label 정보를 projection embedding으로 넣어주는 방법론이 있었다([diffusion process conditioning 논문 리뷰글](https://6unoyunr.github.io/blog/diffusionpapers)). 이를 확장시켜 생각하면, 만약 특정 목적을 가지고 condition을 임베딩으로 사영시킬 수 있는 task specific encoder $\tau_\theta$만 있다면, 각 디퓨전 모델 학습 시에 $\tau_\theta$를 통해 추출된 condition vector를 attention layer를 통해 조건화해줄 수 있다. 예컨데 만약 다음과 같은 이미지와 텍스트 description 쌍이 있다고 생각하면(출처 : BLIP 논문),
 
 > Description : The car is driving past a small old building
 > 

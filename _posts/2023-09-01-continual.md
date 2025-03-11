@@ -3,7 +3,7 @@ title: Continual learning/Lifelong learning의 개념과 방법론 총정리
 layout: post
 description: Continual learning/Lifelong learning
 use_math: true
-post-image: https://github.com/junia3/junia3.github.io/assets/79881119/8d6e9d28-e19a-464d-9c0a-291cc17729f5
+post-image: https://github.com/user-attachments/assets/5b746dea-64fb-4ead-a987-8615bde81855
 category: paper review
 tags:
 - Continual learning
@@ -21,13 +21,13 @@ tags:
 인공지능의 주체가 되는 ‘모델’을 중심으로 돌아가는 지성 체계인 intelligent system에서 **학습**은 **주어지는 데이터 환경의 기본**이 된다. 외부의 자극이 달라지게 되면 사람을 포함한 다양한 유기체들은 지속적으로 이를 통해 정보를 수집하고, 기존 knowledge를 수정하는 형태로 업데이트하거나 축적해가는 과정을 거친다. 일반적인 오프라인 학습이 전제된 Static한 모델의 경우 학습 프레임워크과 인퍼런스 프레임워크가 분리되어있는 것을 알 수 있는데,  이는 결국 학습을 위해 일반화가 가능할 정도의 big data를 train domain으로서 정의한다는 점에서 명확한 한계를 가질 수 밖에 없다. 예컨데 단순히 categorize(혹은 classification) 문제만 하더라도, data augmentation이나 여러 모델 일반화를 위한 방법론을 적용하더라고 어찌되었든 ‘정해진 카테고리 내에서의 분류’라는 점과, ‘model representation에 open-world(실생활)의 모든 데이터를 내포할 수 없음’라는 점이 한계라고 볼 수 있다.
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/bf6b9ce3-23b8-46e3-a048-23a152d3a4ab" width="800">
+    <img src="https://github.com/user-attachments/assets/7c075df7-4b81-4079-baa7-34356761be9e" width="800">
 </p>
 
 물론 categorize 문제에서만 드러나는 문제점은 아니고, computer vision의 대표적인 task인 detection이나 segmentation에 대해서도 마찬가지이다. 물론 최근 연구에 따라 closed set을 사전 정의하지 않고 다양한 semantic information에 무관하게 작용할 수 있는 [SAM(Segment-Anything Model)](https://segment-anything.com/)와 같은 연구 방향도 제시되었지만, 결국 근본적으로 학습 데이터의 pool(범위)를 증가시켰을 뿐이지 사람이나 일반적인 유기체들이 하는 것처럼 학습 프레임워크과 인퍼런스 프레임워크가 통합된 구조는 아니라는 것을 알 수 있다.
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/0e458cd3-3c1b-4cfb-9997-354aa8dab631" width="800">
+    <img src="https://github.com/user-attachments/assets/9fb0c7e6-243c-4ec3-bf1b-70ebf6c9a61c" width="800">
 </p>
 
 ### Continual learning가 시사하는 문제점 그리고 딜레마
@@ -54,7 +54,7 @@ A라는 사람은 새로운 환경에 빠르게 적응할 수 있다는 점이 �
 ### Continual learning의 방법론들
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/11bdd195-cf99-4e0b-bc7a-06a3cf99aa89" width="700">
+    <img src="https://github.com/user-attachments/assets/4fae18b7-61c7-4066-8716-eb0305e4ec81" width="700">
 </p>
 
 단순히 plasticity 혹은 memory stability 사이에 균형을 맞춘다는 점만 고려하면, 모든 task 및 domain을 내포하는 continous한 상황 변화에 대해 일반화가 가능한 학습법을 추구하는 것이다. 가장 단순한 approach를 한다고 생각하면 기존 training sample에 새로운 task의 데이터셋을 추가하여 모두 학습하는 방법을 생각해볼 수 있지만, 연산 효율성이나 학습 데이터셋 자체가 가지는 라이선스 및 사생활 문제를 극복할 수는 없다. 만약 정말 continual한 환경에서 내 데이터가 모두 기록된다고 생각하면 마냥 마음 편하게 AI 서비스를 사용할 수 있는 사람이 많지는 않을 것이다. 사실 continual learning은 이러한 단순한 접근법을 사용하지 않고, **사용할 수 있는 자원(Usable Resource)을 최대로 활용하는 선**에서 소개된다. 따라서 continual learning이 추구하는 이상에 있는 방법은 오직 새로운 training sample만 가지고 학습하는 방법이라고 볼 수 있다. 위의 그림 중 **C**에서 볼 수 있듯이 continual learning은 딥러닝 학습 프레임워크에서 어느 부분에서 솔루션을 찾냐에 따라 방법론을 크게 분류할 수 있다. 각각의 방법을 다시 소개하겠지만 대충 한 문장으로 요약해보면 다음과 같다.
@@ -82,7 +82,7 @@ A라는 사람은 새로운 환경에 빠르게 적응할 수 있다는 점이 �
 모든 학습 sample은 같은 task에 속하며, 배치 단위로 들어온다. 즉 학습 단계에서 단일 task의 sample이 배치 단위로 들어오는 상황이며, $\{\{\mathcal{D}\_{t, b}, t\}\_{b \in \mathcal{B}\_t}\}\_{t = j}$  인퍼런스 단계에서도 동일한 task를 가정한다($\\{p(\mathcal{X}\_t)\\}_{t = j}$). 이는 곧 일반적인 딥러닝 학습 알고리즘에서의 셋팅과 동일한 상황에서 input dataset만 continual하게 들어오는 상황을 가정하며, 단일 task를 가정하기 때문에 task specific identification($t$)이 요구되지 않는다 (Not required).
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/d9445b77-fad1-4694-830d-520579bcb104" width="700">
+    <img src="https://github.com/user-attachments/assets/4fae18b7-61c7-4066-8716-eb0305e4ec81" width="700">
 </p>
 
 ### **Domain-Incremental Learning (DIL)**
@@ -96,7 +96,7 @@ IIL과는 다르게 단일 task가 아닌 여러 tasks가 존재하는 상황을
 그리고 단일 task가 아님에도 불구하고 인퍼런스 단계에서 IIL과 마찬가지로 task specific identification($t$)이 요구되지 않는다($\\{p(\mathcal{X}\_t)\\}\_{t \in \mathcal{T}}$) (Not required).
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/0e70317d-9883-4ed4-9bbd-11b04906429c" width="700">
+    <img src="https://github.com/user-attachments/assets/c98e7258-8d7c-4775-8c50-c56d73f2aaff" width="700">
 </p>
 
 ### **Task-Incremental Learning (TIL)**
@@ -110,7 +110,7 @@ IIL과는 다르게 단일 task가 아닌 여러 tasks가 존재하는 상황을
 위와 같으며 인퍼런스 단계($\\{p(\mathcal{X}\_t)\\}\_{t \in \mathcal{T}}$)에서 이번에는 $t$를 사용할 수 있게 된다 (Available).
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/a11a5315-6b7a-44f0-ac4a-a06529a69d5e" width="700">
+    <img src="https://github.com/user-attachments/assets/fffcb6fc-4148-403c-b7e7-fc2042d94788" width="700">
 </p>
 
 ### **Class-Incremental Learning (CIL)**
@@ -124,7 +124,7 @@ IIL과는 다르게 단일 task가 아닌 여러 tasks가 존재하는 상황을
 따라서 기본 학습 단계에서는 위의 식을 그대로 따르며, 인퍼런스 단계($\\{p(\mathcal{X}\_t)\\}\_{t \in \mathcal{T}}$)에서는 $t$를 제한하게 된다 (Unavailable).
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/02e85bd5-8d2b-4e78-b044-61b292a22869" width="700">
+    <img src="https://github.com/user-attachments/assets/b05ba0f7-6fe5-4acc-b034-965f729aa46c" width="700">
 </p>
 
 ### **Task-Free Continual Learning (TFCL)**
@@ -138,7 +138,7 @@ IIL과는 다르게 단일 task가 아닌 여러 tasks가 존재하는 상황을
 따라서 기본 학습 단계에서는 기존 식과는 다르게 task 구분이 없이 배치 단위로 input을 구분하게 되며, 인퍼런스 단계($\\{p(\mathcal{X}\_t)\\}\_{t \in \mathcal{T}}$)에서는 $t$를 일부 상황에서 제한하게 된다 (Optionally available).
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/3cd3dfa3-ae34-4359-9e67-d98d47901353" width="700">
+    <img src="https://github.com/user-attachments/assets/7c9f7877-26e2-4a8b-9cbd-529647c7f838" width="700">
 </p>
 
 ### **Online Continual Learning (OCL)**
@@ -152,7 +152,7 @@ IIL과는 다르게 단일 task가 아닌 여러 tasks가 존재하는 상황을
 따라서 굳이 task를 구분하지 않더라도 모든 배치는 single-stream framework를 따르기 때문에 task에 무관한 학습이 된다.  그리고 인퍼런스 단계($\\{p(\mathcal{X}\_t)\\}\_{t \in \mathcal{T}}$)에서는 $t$를 일부 상황에서 제한하게 된다 (Optionally available).
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/0f93ad65-9aab-420e-8428-e096dabeed8a" width="700">
+    <img src="https://github.com/user-attachments/assets/58d37cbd-362f-4192-8604-57113dfcf30c" width="700">
 </p>
 
 ### **Blurred Boundary Continual Learning (BBCL)**
@@ -166,7 +166,7 @@ Task의 경계선이 애매한(blurry) 상황을 가정하고, disjoint(교집�
 즉 data label space가 일부 겹쳐야한다는 점만 제외하면 class-incremental learning과  모두 동일하다. 따라서 인퍼런스 단계($\\{p(\mathcal{X}\_t)\\}\_{t \in \mathcal{T}}$)에서는 $t$를 사용할 수 없다(Available).
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/3047ed20-006d-4ec4-a632-e3378c8d4df0" width="700">
+    <img src="https://github.com/user-attachments/assets/7a2516f1-128c-4dd7-985d-7410582eb953" width="700">
 </p>
 
 ### **Continual Pre-training (CPT)**
@@ -180,7 +180,7 @@ Task의 경계선이 애매한(blurry) 상황을 가정하고, disjoint(교집�
 이번에는 pre-train 단계를 continual한 상황으로 가정했기 때문에 testing 단계에서는 단일 downstream task($t = j$)를 기준으로 삼게 된다. 따라서 downstream task의 task label인 $\\{p(\mathcal{X}\_t)\\}\_{t = j}$는 굳이 요구되지 않는다 (Not required).
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/be27724c-8ce4-4094-8db6-eb37f2e83bac" width="700">
+    <img src="https://github.com/user-attachments/assets/1c81f81f-b4ed-449e-bc3b-b87efe9ab7ae" width="700">
 </p>
 
 ---
@@ -188,7 +188,7 @@ Task의 경계선이 애매한(blurry) 상황을 가정하고, disjoint(교집�
 # Continual Learning에서의 Evaluation metric
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/4642ae0e-1f36-4414-92d6-8934f3b6ad92" width="600">
+    <img src="https://github.com/user-attachments/assets/dd6bfb8b-286c-44bc-9bd4-622202d6137a" width="600">
 </p>
 
 특정 방법이 다른 방법보다 **‘유리하다’.** 혹은 contribution이 충분하다고 증명할 수 있는 방법은 performance가 우수한 것을 보이는 것이다. 이처럼 deep learning에서 성능 평가를 내릴 수 있는 각 상황별 evaluation metric이 굉장히 중요하게 작용하는데, continual learning과 같이 여러 상황이 동시에 주어지는 환경에서는 evaluation을 어떤 방식으로 진행할까? 앞서 continual learning을 소개할 때 간단하게 언급했던 딜레마인 “**Learning plasticity and Memory stability**”을 떠올려보자. Continual learning이 가지는 목적은 결국 **‘이전 representation을 얼마나 잘 유지하면서 현재 task의 성능을 잘 올릴 수 있는가?’**로 정리할 수 있다.  따라서 continual learning에서의 metric은 세가지 측면으로 정리될 수 있다:
@@ -253,7 +253,7 @@ $\tilde{a}\_j$는 기존이 되는 모델을 $j$번째 task 데이터셋 $\mathc
 # Continual learning Methods
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/13409791-10cf-42c5-80ae-21b1fdfc27a8" width="1100">
+    <img src="https://github.com/user-attachments/assets/4e322b7f-4c95-4c91-8368-19f0a1b0949f" width="1100">
 </p>
 
 결국 continual learning의 성능을 재는 방식은 $k$번째 task 자체에 대한 performance와, performance 변화 그리고 실제로 continual learning 방식의 효과성에 대한 입증으로 구성된다. 이를 위해 다양한 방향의 연구가 진행되었으며, 각각에 대해 윗부분에서 한 문장으로만 요약하고 넘어왔었다. 이를 도식화한 것이 바로 위에 보이게 되는 tree 구조가 되는데, 각 부분의 연구는 개별적으로 활발히 진행되었고, 모델 학습에서 타겟되는 부분에 따라 구분할 수 있었다. 모든 논문들을 이 글에서 다루기는 무리가 있을 것 같고, 간단한 논문 몇 개만 정리하는 것을 목표로 하는 중이다.
@@ -263,7 +263,7 @@ $\tilde{a}\_j$는 기존이 되는 모델을 $j$번째 task 데이터셋 $\mathc
 일반적으로 생각해볼 수 있는 방법은 바로 old task와 new task 간의 균형을 위해 explicit한 regularization term을 더해주는 것이다 (아래 그림 참고).
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/d37cfd44-a611-4a62-8f30-042e14f399c5" width="750">
+    <img src="https://github.com/user-attachments/assets/834fecf5-2f9a-4c51-8250-b176152e2c94" width="750">
 </p>
 
 그림을 보면 알 수 있겠지만 정규화가 consistency하게 보고자 하는 위치에 따라 크게 두 방향으로 구분되는데, 어찌되었든 정규화를 위해서 공통적으로 old task에 대해 학습된 frozen model을 reference로 가지고 있어야한다는 점은 변하지 않는다.
@@ -285,13 +285,13 @@ Denominator(분모) term에 존재하는 $\Delta_k^\nu$는 task index $\nu$를 �
 이러한 penalty term을 사용하지 않고 [factorized rotation을 기반](https://arxiv.org/abs/1802.02950)으로 parameter space를 FIM에diagonalize하는 방법이나, 
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/9f54fcc4-e315-4b12-a482-7d03a1cea77f" width="700">
+    <img src="https://github.com/user-attachments/assets/cb5897fa-7f43-4923-9982-9721f7377df2" width="700">
 </p>
 
 Batch normalization이 포함된 구조에 유리한 [Kronecker-Factored Approximate Curvature](https://openaccess.thecvf.com/content_CVPR_2020/papers/Lee_Continual_Learning_With_Extended_Kronecker-Factored_Approximate_Curvature_CVPR_2020_paper.pdf)이 제안되기도 하였다. 하지만 이런 기존 방법들은 모두 “이전에 학습된 old task parameter”를 기준으로 한다는 점에서 parameter 변화를 막는다는 공통적인 constraint를 가지고, 이는 곧 새로운 task에 adaptation이 적용되는 과정에서 보수적인 효과를 불러온다. 이러한 문제점을 해결하고자 expansion 및 renormalization 방법이 제안되기도 하였고, 이는 new task solution을 독립적으로 obtain한 뒤에, 이를 old model에 재배치하는 형태로 구현이 된다. [IMM(Incremental Moment Matching)](https://arxiv.org/pdf/1703.08475.pdf)이 초기 approach에 있는 논문인데, 논문 제목이랑 아래 figure에서도 볼 수 있듯이 old task와 new task 간의 moment matching을 통해 점진적으로 새로운 task의 representation을 추가해가는 전략을 취한다.
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/cfbf3e66-9cbc-4d08-9391-dc5949f42568" width="700">
+    <img src="https://github.com/user-attachments/assets/212a1f79-600a-4ae0-8e42-25531486baee" width="700">
 </p>
 
 이후 논문으로는 [ResCL](https://arxiv.org/abs/2002.06774)(IMM에 추가로 combination coefficient를 학습 가능하게 바꾼 것), Online EWC로도 유명한 [P&C](https://arxiv.org/pdf/1805.06370.pdf)을 볼 수 있다. P&C에서 주가 되는 메소드는 추가 network에 학습된 task를 기존 network에 distillation하는 과정인데, 이때 weight consolidation을 formulation하는 과정에서 online EWC를 사용한다. [AFEC(Active Forgetting)](https://arxiv.org/abs/2110.12187) 논문의 경우에는 forgetting rate(시냅스가 새로운 task를 받아들일 때 이전 정보와 conflict되는 정도를 active하게 설정)를 제안하였다. 이는 새로운 knowledge가 transfer되는 과정에서 잠재적으로 기존 representation과 공존했을 때 발생하는 negative transfer 문제를 다루고자 하였다. ResCL이랑 비슷한 approach라고 생각할 수도 있는데, plasticity 및 stability 간의 trade-off(old task와 new task loss 사이의 trade-off) 간의 균형을 위해 low-error path간에 [linear connector를 구성한 방법](https://arxiv.org/abs/2110.07905)도 제안되었다. 물론 parameter의 변화 자체를 규정하기보다는 learning rate를 줄이는 [NPC](https://arxiv.org/pdf/1907.13322.pdf)와 같은 논문들도 제시되었다. Penalty를 통해 간접적으로 weight update를 막는 방법 대신 important neuron의 학습을 막음으로써(freeze) hard regularization을 채택한 방법들도 존재한다.
@@ -301,7 +301,7 @@ Batch normalization이 포함된 구조에 유리한 [Kronecker-Factored Approxi
 ### Replay based approach
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/99a86858-0814-492c-a79a-adffb32bb660" width="700">
+    <img src="https://github.com/user-attachments/assets/a6d603d7-09fb-4b6f-8f5f-643c975fa9f9" width="700">
 </p>
 
 새로운 task를 학습할 때 old data distribution을 recover하고 approximate하는 방법들도 생각해볼 수 있는데, 각각 replay하는 주체에 따라 세부적으로는 3가지로 구분한다.
@@ -321,7 +321,7 @@ Batch normalization이 포함된 구조에 유리한 [Kronecker-Factored Approxi
 앞서 소개했던 regularization 방법이나 replay는 결국 기존에 학습된 데이터를 implicit하게 혹은 explicit하게 활용할 수 있는 방법이었다. 이러한 “기존” 이라는 키워드에서 벗어나 explicit하게 최적화 구조를 바꾸거나 조정하는 방법이 소개되었으며, 이를 곧 optimization based approach라는 큰 틀로 묶을 수 있다.
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/18ddd51f-0828-45f8-91b8-ffe0ce6df738" width="700">
+    <img src="https://github.com/user-attachments/assets/8549f8d4-0398-4055-bef9-fdae46caf9ec" width="700">
 </p>
 
 가장 흔한 아이디어는 gradient projection(그래디언트 사영)에 해당된다. 몇몇의 replay-based approach는 experience replay의 업데이트 방향에 따라 parameter update를 align하는 방식을 채택하였는데, 이를 통해 새로운 task에 대한 parameter 업데이트가 이루어질 때 기존 input이 구성하는 implicit한 공간 및 gradient 공간을 유지하는 효과를 가지고 올 수 있었다. 이러한 컨셉에서 replay라는 관점을 제거하여, [OWM](https://arxiv.org/abs/1810.01256)이나 [AOP](https://ojs.aaai.org/index.php/AAAI/article/view/20634)에서는 parameter update를 previous input space를 기준으로 orthogonal한 방향(input space를 유지하는 방향)으로 업데이트하는 전략을 취했다.  두 방법은 input space에 대한 orthogonality를 전략으로 취한 반면, [OGD](https://arxiv.org/abs/1910.07104)는 기존 학습 시의 parameter update를 보존한 뒤, 이후 task의 gradient optimization 방향을 이에 orthogonal한 방향으로 조정하는 전략을 통해 input space 대신 gradient space를 사용하게 된다. 이전에 소개했던 regularization based method인 Bayesian weight regularization과 gradient projection을 통합시킨 논문도 소개되었다.
@@ -331,7 +331,7 @@ Batch normalization이 포함된 구조에 유리한 [Kronecker-Factored Approxi
 다른 방법론으로 고려해볼 수 있는 것은 generalization(일반화) 관점인데, 바로 loss landscape를 안정적으로 만드는 것이다. Task 및 Domain 관점에서 loss landscape가 안정적인 형태(curvature가 낮은, flat한 local minima)를 가질수록 adaptation에 도움이 된다는 관점에서 출발하게 된다(아래 그림 참고).
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/273e5cf2-917a-4252-affb-32468983fda3" width="700">
+    <img src="https://github.com/user-attachments/assets/edf15a22-0b2c-452c-9ba9-61ab316f58db" width="700">
 </p>
 
 이러한 loss landscape를 고려하는 방법들은 대부분 optimizer에 관한 연구로 구성되며 [SGD](https://arxiv.org/abs/2006.06958)나 [Adam optimizer](https://arxiv.org/abs/2103.07113)에 솔루션을 제공한다.
@@ -341,7 +341,7 @@ Batch normalization이 포함된 구조에 유리한 [Kronecker-Factored Approxi
 사실 일반화 관점이라면 한번 더 고려해볼 수 있는 것이 robust representation이다. Domain generalization에서 얻고자 하는 효과에 가까운 솔루션이라고 볼 수 있다. 각 task에 specific한 representation이 아닌 일반화에 가까운 representation을 얻는 과정을 sparse(넓은 범위의 확률 분포를 커버하는) representation이라고 부른다.
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/a35ebc82-ddef-46a7-ab2c-3e525a34bd5a" width="700">
+    <img src="https://github.com/user-attachments/assets/5de8927a-6c35-4de7-b254-c82517711513" width="700">
 </p>
 
 최근 meta-training이나 self-supervised learning(SSL)이 보여주는 promising한 결과들을 기반으로 많은 연구가 추가로 진행되었다. 최근 들어 transformer 기반 모델이 발전하기 시작하면서 large-scale pre-training의 효과 또한 입증되기 시작하였고, 결국 adaptation 관점보다는 generalization 관점에서 보다 넓은 범위의 representation을 커버하자는 의도의 approach 또한 continual learning에 제안되기 시작하였다. SSL이나 large-scale pre-training은 사실상 서로 같은 목적 및 학습 형태를 공유하는 점이 많고, 이는 large scale dataset이 라벨링이 힘들다는 점을 들 수 있다. 차이점이라고 한다면 SSL task는 주로 downstream task로 approch의 당위성을 증명한다.
@@ -357,7 +357,7 @@ Pre-training을 도입한 방법들은 주로 continual learning 과정에서 �
 위에서 언급한 방법들은 대부분 공유된 parameter(단일 model을 하나의 파라미터 단위로 생각했을 때)를 여러 task에서 잘 활용하는 방법에 대한 해결책이었다. 그러나 이렇게 단일 파라미터를 여러 task에서 employ할 경우 근본적으로 interference 문제를 해결하기 어렵다는 단점이 있다.
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/0fb6fabe-2b75-4d73-85ec-86e7e63779c2" width="700">
+    <img src="https://github.com/user-attachments/assets/e920912e-253f-406c-a179-33dbaaad4134" width="700">
 </p>
 
 이런 기존 방법들과는 다르게 task-specific parameter를 공유되는 파라미터와 독립적으로 학습함으로써 간섭 문제를 해결하고자 한 방법이 바로 architecture로 접근한 논문들이다. Approach는 네트워크 구조가 고정되었느냐 아니냐에 따라 parameter-isolation 방법과 dynamic architecture 방법으로 구분된다. 그러나 최근에는 이런 식으로 분류하지 않고 parameter allocation, model decomposition 그리고 modular network 이렇게 세 가지로 분류해서 보는 듯하다.
@@ -367,13 +367,13 @@ Pre-training을 도입한 방법들은 주로 continual learning 과정에서 �
 **Model decomposition**은 model을 task-sharing(task 변화에도 무관한 파라미터)와 task-specific(task에 특성화된 파라미터) 성분으로 구분하는 approach다. 보통 task-specific component는 앞선 연구의 흐름에 따라 확장 가능한 network를 가정하는 것이 일반적이다. Task specific components를 구성하는 구조로는 parallel branches인 [ACL](https://arxiv.org/abs/2003.09553)과 같은 방법이라던지 adaptive layer인 [GVCL](https://arxiv.org/abs/2011.12328)이 주로 알려져있으며, 중간 feature map에 대한 [mask를 생성하는 generator를 고안](https://proceedings.neurips.cc/paper/2020/hash/b3b43aeeacb258365cc69cdaf42a68af-Abstract.html)하는 방법도 제안되었다. Feature mask를 model decomposition에 사용하는 것은 parameter spcae에서 동작하거나 앞서 parameter allocation에서 간단하게 언급했던 binary mask의 형태는 아니기 때문에 parameter allocation과는 좀 다르다고 할 수 있다.
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/aba52a4e-881a-4cac-80f1-1b578904327e" width="700">
+    <img src="https://github.com/user-attachments/assets/be0e152a-e4ab-4073-9d55-c4a8c4a6f7fa" width="700">
 </p>
 
 **Modular network**는 parallel한 sub-network나 sub-module을 기존 네트워크 구조 상에 제안한 형태이다. Progressive Network 논문에서는 각 task마다 동일한 sub-network를 제안하고 adaptor connection으로부터 서로 다른 sub-network 끼리의 knowledge transfer를 수행하는 방법을 제안하였다. 다른 approach에서는 여러 parallel branch를 통해 candidate path(task 학습에 따른 경로를 의미함)을 설계하는 방식을 취한 뒤 가장 최적의 경로를 선택하는 접근도 포함한다. 후보군을 모집한다는 개념에서 [여러 sub-네트워크간의 앙상블](https://arxiv.org/abs/2207.06543)을 사용하기도 한다.
 
 <p align="center">
-    <img src="https://github.com/junia3/junia3.github.io/assets/79881119/3f54ff8e-d63c-4351-9800-d3cddd414c7a" width="700">
+    <img src="https://github.com/user-attachments/assets/291d6635-22b8-4ce7-8280-7de5d1bc2971" width="700">
 </p>
 
 ---

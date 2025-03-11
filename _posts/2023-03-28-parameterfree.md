@@ -80,7 +80,7 @@ UDA에는 여러 방법론이 사용되었지만 대표적으로 가장 많이 �
 
 기존의 DA보다는 <U>real-world setting</U>에 가깝다는 측면에서 위의 방법들이 가지는 장점이 있지만, **ad-hoc**(adaptation 과정에만 특화된) 학습 구조를 가진다는 점에서 한계점이 명확해진다. 예컨데 GAN, domain discriminator, auxiliary task 등등 결국 사전 학습된 네트워크의 가장 기본적인 supervised learning이 아니라 최적화 방법론이 추가되기 때문에 여러 네트워크 구조에 대해 적용 가능하거나 응용이 가능하지 않다는 것이다.
 
-그런 측면에서 이 논문은 TENT paper에서 세팅한 <U>fully test-time adaptation scenario</U>에 가장 가깝다고 할 수 있다. TENT paper의 세팅은 이전에 작성한 글([참고 링크](https://junia3.github.io/blog/tent))에도 나와있듯이, model training 과정을 바꾸지 않은 채로 target domain에 대한 adaptation 성능을 높이고자 하였다. 이때 사용한 방법이 entropy minimization loss이고 모델의 파라미터 전체를 최적화하는 것이 아니라 일부(BatchNorm의 scale, bias($\gamma,~\beta$))를 최적화하는 방법을 사용했다. 이후 AdaBN 방법을 사용하는 연구나, mutual information objective를 최적화하는 SHOT과 같은 논문들도 제안되었다. 
+그런 측면에서 이 논문은 TENT paper에서 세팅한 <U>fully test-time adaptation scenario</U>에 가장 가깝다고 할 수 있다. TENT paper의 세팅은 이전에 작성한 글([참고 링크](https://6unoyunr.github.io/blog/tent))에도 나와있듯이, model training 과정을 바꾸지 않은 채로 target domain에 대한 adaptation 성능을 높이고자 하였다. 이때 사용한 방법이 entropy minimization loss이고 모델의 파라미터 전체를 최적화하는 것이 아니라 일부(BatchNorm의 scale, bias($\gamma,~\beta$))를 최적화하는 방법을 사용했다. 이후 AdaBN 방법을 사용하는 연구나, mutual information objective를 최적화하는 SHOT과 같은 논문들도 제안되었다. 
 
 <U>Parameter-free 논문</U>은 TENT와 SHOT의 motivation인 fully-test time adaptation이라는 점에서는 동일하지만, 직접 네트워크의 파라미터를 조정하는 방법이 아니라는 점과 다양한 test time distribution(online 환경), 특히 non-i.i.d. 시나리오까지 가정했다는 점에서 다른 연구라고 할 수 있다.
 

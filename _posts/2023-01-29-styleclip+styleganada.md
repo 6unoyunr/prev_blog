@@ -21,7 +21,7 @@ tags:
 # Image manipulation
 
 아무톤 styleGAN의 디테일한 방법론에 대해서 논하고자 하는 것은 아니고, styleGAN이 가져온 이후 연구들의 동향에 대해서 살펴볼 수 있다. 무작위로 뽑아낸 latent vector $z$ 혹은 $w$로부터 '<U>style 정보</U>'를 얻어낼 수 있다는 것은 반대로 생각해서 특정 이미지를 주었을 때, 해당 이미지를 만들어낼 수 있는 latent vector $z$ 혹은 $w$를 추출할 수 있다는 말과 동일하다.   
-이러한 GAN inversion 개념은 image manipulation에 큰 동향을 불러왔으며, 특히나 styleGAN의 경우 high-resolution image synthesis가 가능케 한 논문이었기 때문에 <U>고퀄리티의 이미지 조작이 가능하다는 점</U>이 main contribution이 되었다. 이에 여러 이미지 조작 논문들이 나왔으며, 해당 내용에 대해 궁금한 사람들은 본인이 작성한 [image manipulation 포스트](https://junia3.github.io/blog/imagemanipulate)를 참고하면 좀 더 좋을 것 같다.   
+이러한 GAN inversion 개념은 image manipulation에 큰 동향을 불러왔으며, 특히나 styleGAN의 경우 high-resolution image synthesis가 가능케 한 논문이었기 때문에 <U>고퀄리티의 이미지 조작이 가능하다는 점</U>이 main contribution이 되었다. 이에 여러 이미지 조작 논문들이 나왔으며, 해당 내용에 대해 궁금한 사람들은 본인이 작성한 [image manipulation 포스트](https://6unoyunr.github.io/blog/imagemanipulate)를 참고하면 좀 더 좋을 것 같다.   
 StyleCLIP도 결론부터 말하자면 사전 학습된 StyleGAN을 활용한 Image manipulation이라는 task에 대해서 다룬 내용이고, 이 논문에서는 기존 방식과는 다르게 VL contrastive 논문인 CLIP을 활용한 <U>text guidance</U>가 보다 image manipulation에 조작 편의성을 가져다줄 수 있다는 점에 집중하였다.
 
 ---
@@ -227,7 +227,7 @@ StyleCLIP과 접근법은 비슷하지만, latent manipulation으로 접근했�
 
 그리고 무엇보다 text-guided synthesis와 관련되어 찾아볼 task는 한정된 데이터를 기반으로 generator를 학습시키는 연구들이다.  일종의 few-shot learning을 generator에 적용하고자 했던 연구들은 적은 수의 데이터가 generator를 overfitting시키거나 mode-collapse(샘플의 다양성이 떨어지는 현상)를 일으킬 수 있는 문제가 있었기 때문에 augmentation 방법을 사용하거나 auxiliary task를 사용하여 representation을 보다 풍부하게 학습하고자 하였다. Style-NADA에서는 이러한 데이터의 부족함 때문에 생기는 overfitting이나 mode-collapse를 걱정할 필요 없이, 어떠한 데이터도 사용하지 않고 단순히 CLIP based text prompt만 guidance로 사용하게 된다.
 
-추가로 이 논문을 이해하기 위해 StyleGAN, StyleCLIP에 대한 이해가 필요하지만 이 부분은 이미 작성한 내용이므로 넘어가도록 하겠다. StyleCLIP 관련 내용은 위에서 확인해볼 수 있고, StyleGAN 관련 내용은 게시글로 포스팅하였다([참고 링크](https://junia3.github.io/blog/gan2)).
+추가로 이 논문을 이해하기 위해 StyleGAN, StyleCLIP에 대한 이해가 필요하지만 이 부분은 이미 작성한 내용이므로 넘어가도록 하겠다. StyleCLIP 관련 내용은 위에서 확인해볼 수 있고, StyleGAN 관련 내용은 게시글로 포스팅하였다([참고 링크](https://6unoyunr.github.io/blog/gan2)).
 
 ---
 
@@ -292,7 +292,7 @@ Domain shift가 texture를 바꾸는 방식(예를 들어, 실제 사진을 그�
 
 이를 설명하기 위해서 저자들은 **본인들이 아이디어를 빌드업한 과정**을 차례대로 설명해준다. StyleGAN을 읽어봤다면 알겠지만 각 위치에 들어가는 style code가 서로 다른 semantic attribute에 영향을 끼친다. 예를 들어 위의 그림에서 $w_1$, $w_2$는 상대적으로 coarse feature를 담당하는 latent code가 될 것이고, 그와 반대로 $w_l$에 가까워질수록 fine feature를 담당하는 latent code가 될 것이다. Image manipulation 논문에서 좋은 효과를 보였던 $\mathcal{W}+$도 어찌보면 각 layer 층에서 style에 영향을 미치는 style code를 서로 다르게 사용하였기 때문이라고 할 수 있다. 이처럼 특정 스타일의 이미지 혹은 도메인의 이미지를 만들기 위해서는 여러 개의 $w_i \in \mathcal{W}$ 중 가장 도메인 변화에 큰 영향을 끼치는 layer를 위주로 fine-tuning하는 것이 효과적이고, high quality 이미지를 만들 수 있는 방법이다.
 
-우선 $k$개의 layer를 골라야하기 때문에 랜덤한 갯수 $N$개의 latent code를 $M(z) = w$의 형태로 추출해내고, 이를 $\mathcal{W}+$로 각 레이어에 대한 style code로서 replicate하게 된다. 이 내용은 본인 게시글 중 image manipulation 관련 글을 보면 보다 이해가 쉬울 것이다([참고 링크](https://junia3.github.io/blog/imagemanipulate)). 그런 뒤 $i$번의 iteration을 통해 StlyeCLIP의 latent-code optimization을 진행하고(여기서는 학습되는 parameter가 generator가 아니라 latent code라고 보면 된다), 각 latent code의 변화를 측정한다. 그렇게 가장 많이 변화한 $w$ code를 기준으로 $k$개의 layer를 고르고, 이를 학습에 사용한다.
+우선 $k$개의 layer를 골라야하기 때문에 랜덤한 갯수 $N$개의 latent code를 $M(z) = w$의 형태로 추출해내고, 이를 $\mathcal{W}+$로 각 레이어에 대한 style code로서 replicate하게 된다. 이 내용은 본인 게시글 중 image manipulation 관련 글을 보면 보다 이해가 쉬울 것이다([참고 링크](https://6unoyunr.github.io/blog/imagemanipulate)). 그런 뒤 $i$번의 iteration을 통해 StlyeCLIP의 latent-code optimization을 진행하고(여기서는 학습되는 parameter가 generator가 아니라 latent code라고 보면 된다), 각 latent code의 변화를 측정한다. 그렇게 가장 많이 변화한 $w$ code를 기준으로 $k$개의 layer를 고르고, 이를 학습에 사용한다.
 
 ---
 
