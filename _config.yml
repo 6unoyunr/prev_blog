@@ -18,7 +18,7 @@ title: Welcome to my blog
 # Description of the Site
 description: Personal Tech Blog
 # URL of Image of the Site
-site-image: https://avatars.githubusercontent.com/u/7988xx1119?v=4
+site-image: https://github.com/user-attachments/assets/18241365-3094-4094-9ed3-c1ce3e30dcf0
 # Keywords of the Site
 site-keywords: AI, Developer, Research engineer
 # URL for the Image of custom Favicon
@@ -27,8 +27,8 @@ favicon-url:
 darkmode_switch: true
 
 # URL of the Image of Custom Hero Image (i.e., the image in the background of the very first section of the Homepage)
-heroimage: 
-heroimage_dark: 
+heroimage: https://github.com/user-attachments/assets/6da8cc81-5599-44ff-aab5-9c1097ab34ed
+heroimage_dark: https://github.com/user-attachments/assets/6da8cc81-5599-44ff-aab5-9c1097ab34ed
 
 # Social Media and Contact
 # If you don't want to use any icon, you can leave them blank.
