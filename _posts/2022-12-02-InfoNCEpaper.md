@@ -3,7 +3,7 @@ title: Simple explanation of NCE(Noise Contrastive Estimation) and InfoNCE
 layout: post
 description: paper review
 use_math: true
-post-image: https://user-images.githubusercontent.com/79881119/220251868-6804a167-f742-41f7-ae6e-03fbb25d9dac.gif
+post-image: https://github.com/user-attachments/assets/57050021-90e8-4b3b-9775-63cb4abba123
 category: paper review
 tags:
 - Contrastive learning
