@@ -18,12 +18,19 @@
     /* 카드 컨테이너: 3D 공간 확보를 위해 perspective 설정 */
     .business-card {
       position: relative;       /* 아이콘을 절대배치하기 위해 position: relative */
-      width: 60vw;
+      width: 60vw;             /* 가로가 세로보다 클 때 기본값 */
       aspect-ratio: 5 / 3;
       perspective: 1000px;
       cursor: pointer;
       margin-bottom: 50px;
       transition: box-shadow 0.3s ease;
+    }
+
+    /* 세로가 더 긴 기기(= portrait)에서는 width를 80vw로 재설정 */
+    @media screen and (orientation: portrait) {
+      .business-card {
+        width: 80vw;
+      }
     }
 
     .business-card:hover {
@@ -66,24 +73,26 @@
     }
 
     /* 소셜 링크 아이콘 컨테이너 
-       - 여기를 card-inner에 둬야 카드가 함께 회전 */
+       - 항상 카드의 우측 하단에 위치하게끔, card-inner에 속해 있으므로 상대배치 */
     .social-links {
       position: absolute;
-      bottom: 1vw; /* 카드 크기가 줄어들면 상대적으로 아이콘도 위치 조절 */
-      right: 1.5vw;
+      /* 카드가 세로/가로 모드로 변해도 
+         카드 내부 우하단을 일정 비율로 유지하도록 % 단위 사용 */
+      bottom: 2%;
+      right: 3%;
       display: flex;
-      gap: 1vw;    /* 아이콘 간 간격 */
-      z-index: 10; 
+      gap: 1vw;
+      z-index: 10;
     }
 
     /* 반응형 아이콘 크기 */
     .social-links img {
-      width: clamp(16px, 4vw, 40px); /* 뷰포트 크기에 맞춰 자동 조절 */
+      width: clamp(16px, 4vw, 40px);
       height: auto;
       transition: transform 0.3s ease;
     }
     .social-links img:hover {
-      transform: scale(1.2); /* 호버 시 확대 */
+      transform: scale(1.2);
     }
 
     /* 예시 버튼 스타일 */
