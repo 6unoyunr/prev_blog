@@ -25,7 +25,7 @@
       aspect-ratio: 5 / 3;   
       perspective: 1000px; 
       cursor: pointer;
-      margin-bottom: 30px;
+      margin-bottom: 50px;
       transition: box-shadow 0.3s ease; /* 호버 시 네온효과 트랜지션 */
     }
 
@@ -72,12 +72,17 @@
       transform: rotateY(180deg);
     }
 
-    /* 버튼 스타일 */
+    /* 버튼 스타일: 반응형 크기 적용 */
     .link-btn {
+      display: block;
+      width: 20vw;              /* 너비를 뷰포트 단위로 지정 */
+      max-width: 300px;         /* 너무 커지지 않도록 최대 너비 제한 */
+      padding: 1vw 2vw;         /* 패딩도 뷰포트 단위로 */
+      margin: 0 auto;           /* 가운데 정렬 */
       border: 2px solid #fff;
       background: transparent;
       color: #fff;
-      padding: 0.5rem 1rem;
+      text-align: center;
       text-decoration: none;
       transition: all 0.3s ease;
     }
@@ -98,7 +103,7 @@
       <!-- 앞면 -->
       <div class="card-face card-front">
         <!-- 실제 이미지 경로로 교체하세요 -->
-        <img src="https://github.com/user-attachments/assets/19df61b0-70e7-4ec7-a126-59dd3db79130" alt="fron" alt="front"/>
+        <img src="https://github.com/user-attachments/assets/19df61b0-70e7-4ec7-a126-59dd3db79130" alt="front"/>
       </div>
       <!-- 뒷면 -->
       <div class="card-face card-back">
@@ -109,7 +114,7 @@
   </div>
 
   <!-- 예시용 버튼 -->
-  <a href="https://6unoyunr.github.io/" class="link-btn">Web Page</a>
+  <a href="https://6unoyunr.github.io/" class="link-btn">Welcome to My Web Page 🤗</a>
 
   <!-- 스크립트는 body 끝에서 로드 -->
   <script>
