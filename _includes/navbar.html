@@ -56,7 +56,6 @@
 
 <script>
     function changeGiscusTheme () {
-        const gitcus_theme = localStorage.theme === 'dark' ? 'dark' : 'light';
         function sendMessage(message) {
         const iframe = document.querySelector('iframe.giscus-frame');
         if (!iframe) return;
@@ -64,7 +63,7 @@
         }
         sendMessage({
             setConfig: {
-                theme: gitcus_theme
+                theme: localStorage.theme
             }
         });
     }
@@ -78,7 +77,6 @@
 
     /* 기존 상태에 따라 스위치 체크해주기 */
     mode.checked = current === 'dark';
-    changeGiscusTheme();
 
     /* 체크된 거에 따라서 스타일 지정해주기 */
     darkTheme.disabled = mode.checked !== true;

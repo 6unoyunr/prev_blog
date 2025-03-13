@@ -63,7 +63,7 @@ layout: compress
     </div>
   </section>
   {% include post_categorize.html %}
-  {% include comment.html %}
+  <div id="gitcus_container" class="gitcus"></div>
   {% include footer.html %}
 </body>
 </html>
@@ -74,3 +74,27 @@ layout: compress
             $(".bar").css({"width" : scrollY + "%"});
     });
 </script>	
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const currentTheme = localStorage.theme === 'dark' ? 'dark' : 'light';
+
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-repo', '6unoyunr/comments');
+    script.setAttribute('data-repo-id', 'R_kgDOODmwzQ');
+    script.setAttribute('data-category', 'General');
+    script.setAttribute('data-category-id', 'DIC_kwDOODmwzc4Cn5wD');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'bottom');
+    script.setAttribute('data-theme', currentTheme);
+    script.setAttribute('data-lang', 'ko');
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+
+    document.getElementById('gitcus_container').appendChild(script);
+  });
+</script>
