@@ -17,8 +17,8 @@
 
     /* 카드 컨테이너: 3D 공간 확보를 위해 perspective 설정 */
     .business-card {
-      position: relative;       /* 아이콘을 절대배치하기 위해 position: relative */
-      width: 60vw;             /* 가로가 세로보다 클 때 기본값 */
+      position: relative;     /* 소셜 링크 아이콘 절대 배치를 위해 필요 */
+      width: 60vw;           /* 가로가 세로보다 클 때 기본값 */
       aspect-ratio: 5 / 3;
       perspective: 1000px;
       cursor: pointer;
@@ -59,12 +59,10 @@
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
-
-    /* 카드 이미지 자체 클릭 막기 -> 카드 전체로 이벤트 전달 */
     .card-face img {
       width: 100%; height: 100%;
       object-fit: cover;
-      pointer-events: none;
+      pointer-events: none; /* 이미지 자체 클릭 방지 */
     }
 
     /* 뒤집힌 뒷면은 Y축 180도 회전 */
@@ -72,25 +70,45 @@
       transform: rotateY(180deg);
     }
 
-    /* 소셜 링크 아이콘 컨테이너 
-       - 항상 카드의 우측 하단에 위치하게끔, card-inner에 속해 있으므로 상대배치 */
+    /* 소셜 링크 아이콘 컨테이너
+       - .business-card에 절대 배치하여, 카드가 뒤집혀도 항상 같은 자리(좌측 하단)에 위치 */
     .social-links {
       position: absolute;
-      /* 카드가 세로/가로 모드로 변해도 
-         카드 내부 우하단을 일정 비율로 유지하도록 % 단위 사용 */
-      bottom: 2%;
-      right: 3%;
+      bottom: 2%;   /* 카드 하단에서 2% */
+      left: 3%;     /* 카드 왼쪽에서 3% */
       display: flex;
       gap: 1vw;
       z-index: 10;
+
+      /* 보이는 상태에서 (기본) */
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: auto;
     }
 
-    /* 반응형 아이콘 크기 */
+    /* 페이드 아웃 + 아래로 내려간 상태 */
+    .invisible {
+      opacity: 0;
+      transform: translateY(20px); /* 살짝 아래로 이동시켜 올라오는 느낌 */
+      pointer-events: none;        /* 클릭 불가 처리 */
+    }
+
+    /* 반응형 아이콘 크기 (기본) */
     .social-links img {
       width: clamp(16px, 4vw, 40px);
       height: auto;
       transition: transform 0.3s ease;
     }
+
+    /* 세로 모드(portrait)에서는 좀 더 크게 */
+    @media screen and (orientation: portrait) {
+      .social-links img {
+        width: clamp(20px, 6vw, 50px);
+      }
+    }
+
+    /* 아이콘 Hover */
     .social-links img:hover {
       transform: scale(1.2);
     }
@@ -114,6 +132,7 @@
 <body>
   <!-- 뒤집힐 카드 -->
   <div class="business-card" id="card">
+    <!-- 회전될 영역 -->
     <div class="card-inner">
       <!-- 앞면 -->
       <div class="card-face card-front">
@@ -123,31 +142,47 @@
       <div class="card-face card-back">
         <img src="https://github.com/user-attachments/assets/1099b35b-a646-448b-81b1-080f53f535e8" alt="back"/>
       </div>
+    </div>
 
-      <!-- 항상 카드의 우측 하단에 뜨도록 -->
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/junyoung-park-490597344" target="_blank">
-          <img src="https://github.com/user-attachments/assets/c73f9ab4-6138-45b9-b872-05c62eb2daf8" alt="LinkedIn" />
-        </a>
-        <a href="mailto:junia3@naver.com">
-          <img src="https://github.com/user-attachments/assets/00b1e8a0-6d87-41ae-a33f-d6038cac60ae" alt="Email" />
-        </a>
-        <a href="https://github.com/6unoyunr" target="_blank">
-          <img src="https://github.com/user-attachments/assets/51f153cf-f78c-4c21-afbd-1460089fb395" alt="GitHub" />
-        </a>
-      </div>
+    <!-- 소셜 링크 아이콘 (카드 내부가 아니라 .business-card 바로 아래 배치) -->
+    <div class="social-links" id="socialLinks">
+      <a href="https://www.linkedin.com/in/junyoung-park-490597344" target="_blank">
+        <img src="https://github.com/user-attachments/assets/c73f9ab4-6138-45b9-b872-05c62eb2daf8" alt="LinkedIn" />
+      </a>
+      <a href="mailto:junia3@naver.com">
+        <img src="https://github.com/user-attachments/assets/00b1e8a0-6d87-41ae-a33f-d6038cac60ae" alt="Email" />
+      </a>
+      <a href="https://github.com/6unoyunr" target="_blank">
+        <img src="https://github.com/user-attachments/assets/51f153cf-f78c-4c21-afbd-1460089fb395" alt="GitHub" />
+      </a>
     </div>
   </div>
 
   <!-- 예시용 버튼 -->
   <a href="https://6unoyunr.github.io/" class="link-btn">Welcome to My Web Page 🤗</a>
 
-  <!-- flip 이벤트 -->
+  <!-- flip 이벤트 + Fade In/Out 이벤트 -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const card = document.getElementById("card");
+      const cardInner = card.querySelector(".card-inner");
+      const socialLinks = document.getElementById("socialLinks");
+
+      // 카드 클릭 시
       card.addEventListener("click", function () {
+        // 1) 회전이 시작되면 아이콘을 안 보이게(invisible)
+        socialLinks.classList.add("invisible");
+
+        // 2) 카드 flip 상태 토글
         card.classList.toggle("flipped");
+      });
+
+      // 카드의 회전(transition)이 끝났을 때 (transform이 끝난 시점)
+      cardInner.addEventListener("transitionend", function (event) {
+        if (event.propertyName === "transform") {
+          // 3) 아이콘 다시 fade-in (아래서 올라오는 효과)
+          socialLinks.classList.remove("invisible");
+        }
       });
     });
   </script>
