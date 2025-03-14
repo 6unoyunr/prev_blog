@@ -11,7 +11,7 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       height: 100vh; 
-      background-color: #1a1a1a;
+      background-color: #242424;
       font-family: sans-serif;
     }
 
@@ -113,25 +113,53 @@
       transform: scale(1.2);
     }
 
-    /* 예시 버튼 스타일 */
     .link-btn {
-      display: block; width: 30vw; max-width: 300px;
-      padding: 1vw 2vw; margin: 0 auto;
-      border: 2px solid #fff; background: transparent; color: #fff;
-      text-align: center; text-decoration: none;
+      /* Let the button “grow” to fit content, but still align text centrally */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0.7em 1.5em;              /* Bigger padding for a more “fancy” feel */
+      text-decoration: none;        /* Remove underline */
+      font-weight: 400;             /* Thicker text */
+      border-radius: 30px;          /* More rounded edges for a “pill” look */
+      border: none;                 /* Remove border (you can restore if you want) */
+
+      /* Example gradient background */
+      background: linear-gradient(45deg,#A4A9AD 0%, #D1D3D3 20%, #FFFFFF 100%);
+      color: #000000;
+
+      /* Shadow effect */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+      /* Smooth transitions */
       transition: all 0.3s ease;
     }
+
+    /* Hover effect */
     .link-btn:hover {
-      background: white; color: #242424;
-      border: 2px solid transparent;
-      border-image: linear-gradient(45deg, #0085CD, #F6AB00, #005192) 1;
-      border-image-slice: 1; border-image-width: 1;
+      box-shadow: 0 0 2px #0085CD, 0 0 4px #F6AB00, 0 0 6px #005192;
+      cursor: pointer;
     }
+
+    /* ======================================= */
+    /* 추가: 페이드 인을 위한 초기 상태와 전환 */
+    .fade-in-element {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    .fade-in-element.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* ======================================= */
   </style>
 </head>
 <body>
   <!-- 뒤집힐 카드 -->
-  <div class="business-card" id="card">
+  <!-- fade-in-element 클래스를 추가하여 초기에는 숨겨진 상태로 -->
+  <div class="business-card fade-in-element" id="card">
     <!-- 회전될 영역 -->
     <div class="card-inner">
       <!-- 앞면 -->
@@ -159,7 +187,8 @@
   </div>
 
   <!-- 예시용 버튼 -->
-  <a href="https://6unoyunr.github.io/" class="link-btn">Welcome to My Web Page 🤗</a>
+  <!-- fade-in-element 클래스를 추가하여 초기에는 숨겨진 상태로 -->
+  <a href="https://6unoyunr.github.io/cv" class="link-btn fade-in-element">More detail 🤗</a>
 
   <!-- flip 이벤트 + Fade In/Out 이벤트 -->
   <script>
@@ -167,6 +196,17 @@
       const card = document.getElementById("card");
       const cardInner = card.querySelector(".card-inner");
       const socialLinks = document.getElementById("socialLinks");
+      
+      // 페이드 인 대상들
+      const fadeElements = document.querySelectorAll('.fade-in-element');
+
+      // 페이지가 로딩되면 .show 클래스를 추가하여 천천히 페이드 인되게 함
+      fadeElements.forEach(element => {
+        // requestAnimationFrame을 써주는 이유: 브라우저 렌더링 후 클래스를 추가함으로써 transition이 매끄럽게 적용되도록
+        requestAnimationFrame(() => {
+          element.classList.add('show');
+        });
+      });
 
       // 카드 클릭 시
       card.addEventListener("click", function () {
