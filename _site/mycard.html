@@ -1,8 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
   <style>
+    .button,
+    button {
+      font: inherit;
+      display: inline-block;
+      height: 38px;
+      padding-left: 15px;
+      padding-right: 15px;  
+      color: #FFF;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 38px;
+      letter-spacing: .1rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      background-color: transparent;
+      border-radius: 4px;
+      border: 1px solid #bbb;
+      cursor: pointer;
+      box-sizing: border-box; }
+    .button:hover, .button:focus {
+      color: #FFF;
+      border-color: #888;
+      outline: 0; }
     /* 공통 초기화 */
     * {
       margin: 0; padding: 0; box-sizing: border-box;
@@ -22,6 +46,7 @@
       aspect-ratio: 5 / 3;
       perspective: 1000px;
       cursor: pointer;
+      margin-top : 50px;
       margin-bottom: 50px;
       transition: box-shadow 0.3s ease;
     }
@@ -113,35 +138,6 @@
       transform: scale(1.2);
     }
 
-    .link-btn {
-      /* Let the button “grow” to fit content, but still align text centrally */
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 0.7em 1.5em;              /* Bigger padding for a more “fancy” feel */
-      text-decoration: none;        /* Remove underline */
-      font-weight: 400;             /* Thicker text */
-      border-radius: 30px;          /* More rounded edges for a “pill” look */
-      border: none;                 /* Remove border (you can restore if you want) */
-
-      /* Example gradient background */
-      background: linear-gradient(45deg,#A4A9AD 0%, #D1D3D3 20%, #FFFFFF 100%);
-      color: #000000;
-
-      /* Shadow effect */
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-
-      /* Smooth transitions */
-      transition: all 0.3s ease;
-    }
-
-    /* Hover effect */
-    .link-btn:hover {
-      box-shadow: 0 0 2px #0085CD, 0 0 4px #F6AB00, 0 0 6px #005192;
-      cursor: pointer;
-    }
-
     /* ======================================= */
     /* 추가: 페이드 인을 위한 초기 상태와 전환 */
     .fade-in-element {
@@ -188,7 +184,7 @@
 
   <!-- 예시용 버튼 -->
   <!-- fade-in-element 클래스를 추가하여 초기에는 숨겨진 상태로 -->
-  <a href="https://6unoyunr.github.io/cv" class="link-btn fade-in-element">More detail 🤗</a>
+  <a href="https://6unoyunr.github.io/cv" class="button">More detail 🤗</a>
 
   <!-- flip 이벤트 + Fade In/Out 이벤트 -->
   <script>
