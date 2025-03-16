@@ -5,9 +5,11 @@ papers:
     venue: "ECCV 2024 Poster presentation"
     selected: y
     image: "https://github.com/user-attachments/assets/2036185c-403e-408d-86e6-3aba346dc4b0"
+    code: "https://github.com/junia3/LayerwiseTTA"
   - title: "Layer-wise Auto-Weighting for Non-Stationary Test-Time Adaptation"
     authors: "<u><b>Junyoung Park</b></u>, Jin Kim, Hyeongjun Kwon, Ilhoon Yoon, Kwanghoon Sohn"
     paper_pdf: "https://arxiv.org/pdf/2311.05858.pdf"
     venue: "WACV 2024 Poster presentation"
     selected: y
     image: "https://github.com/user-attachments/assets/83c24bbe-8e50-4647-8f63-e5ac04ad3fb7"
+    code: "https://github.com/junia3/LPLD"
