@@ -3,6 +3,14 @@
 
 @import "main_dark.scss";
   
+#comment_light{
+    display: none !important;
+  }
+  
+  #comment_dark{
+    display: block !important;
+  }
+
 .gitcus {
 max-width: 85%;
 margin: auto;

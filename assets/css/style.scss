@@ -5,6 +5,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
 
+#comment_light{
+  display: block;
+}
+
+#comment_dark{
+  display: none;
+}
+
 .gitcus {
   max-width: 85%;
   margin: auto;
