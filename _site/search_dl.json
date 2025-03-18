@@ -1,0 +1,134 @@
+[
+    
+    
+        {
+            "title": "ChatGPT(챗지피티)가 사람같이 자연스럽게 말할 수 있는 이유는!? RLHF 학습법에 대하여",
+            "tags": "AI, Deep learning, Reinforcement learning, Human forcing",
+            "url": "http://localhost:4000/blog/RLHF",
+            "date": "March 25, 2023",
+            "description": "ChatGPT, Chatbot",
+            "image": "https://user-images.githubusercontent.com/79881119/227689828-9e58a288-ae75-4736-8041-9fa89e72227c.png",
+            "readtime": "17"
+        },
+    
+        {
+            "title": "Pytorch 2.0에서 어떤 점이 변했을까??",
+            "tags": "AI, Deep learning, Module, Pytorch",
+            "url": "http://localhost:4000/blog/pytorch2",
+            "date": "January 05, 2023",
+            "description": "New version of pytorch",
+            "image": "https://user-images.githubusercontent.com/79881119/210711363-d6266222-45cb-4fe0-98d3-91e089f5dfc7.png",
+            "readtime": "16"
+        },
+    
+        {
+            "title": "cs231n 내용 요약 (10) - Visualizing, Transfer learning",
+            "tags": "AI, Deep learning, cs231n",
+            "url": "http://localhost:4000/blog/cs231n10",
+            "date": "November 11, 2022",
+            "description": "Lecture summary",
+            "image": "https://github.com/user-attachments/assets/cdb8f444-3819-448c-868e-03e4fabb4dcc",
+            "readtime": "27"
+        },
+    
+        {
+            "title": "cs231n 내용 요약 (9) - CNN(Convolutional neural network)",
+            "tags": "AI, Deep learning, cs231n",
+            "url": "http://localhost:4000/blog/cs231n09",
+            "date": "November 10, 2022",
+            "description": "Lecture summary",
+            "image": "https://github.com/user-attachments/assets/cdb8f444-3819-448c-868e-03e4fabb4dcc",
+            "readtime": "19"
+        },
+    
+        {
+            "title": "cs231n 내용 요약 (8) - Learning and evaluation",
+            "tags": "AI, Deep learning, cs231n",
+            "url": "http://localhost:4000/blog/cs231n08",
+            "date": "November 09, 2022",
+            "description": "Lecture summary",
+            "image": "https://github.com/user-attachments/assets/cdb8f444-3819-448c-868e-03e4fabb4dcc",
+            "readtime": "30"
+        },
+    
+        {
+            "title": "cs231n 내용 요약 (7) - Regularization, Loss function",
+            "tags": "AI, Deep learning, cs231n",
+            "url": "http://localhost:4000/blog/cs231n07",
+            "date": "November 08, 2022",
+            "description": "Lecture summary",
+            "image": "https://github.com/user-attachments/assets/cdb8f444-3819-448c-868e-03e4fabb4dcc",
+            "readtime": "13"
+        },
+    
+        {
+            "title": "cs231n 내용 요약 (6) - Data preprocessing, Weight initialization, Batch Normalization",
+            "tags": "AI, Deep learning, cs231n",
+            "url": "http://localhost:4000/blog/cs231n06",
+            "date": "November 07, 2022",
+            "description": "Lecture summary",
+            "image": "https://github.com/user-attachments/assets/cdb8f444-3819-448c-868e-03e4fabb4dcc",
+            "readtime": "26"
+        },
+    
+        {
+            "title": "cs231n 내용 요약 (5) - Neural Network",
+            "tags": "AI, Deep learning, cs231n",
+            "url": "http://localhost:4000/blog/cs231n05",
+            "date": "November 06, 2022",
+            "description": "Lecture summary",
+            "image": "https://github.com/user-attachments/assets/cdb8f444-3819-448c-868e-03e4fabb4dcc",
+            "readtime": "17"
+        },
+    
+        {
+            "title": "cs231n 내용 요약 (4) - Backpropagation",
+            "tags": "AI, Deep learning, cs231n",
+            "url": "http://localhost:4000/blog/cs231n04",
+            "date": "November 05, 2022",
+            "description": "Lecture summary",
+            "image": "https://github.com/user-attachments/assets/cdb8f444-3819-448c-868e-03e4fabb4dcc",
+            "readtime": "16"
+        },
+    
+        {
+            "title": "cs231n 내용 요약 (3) - Optimization(최적화)",
+            "tags": "AI, Deep learning, cs231n",
+            "url": "http://localhost:4000/blog/cs231n03",
+            "date": "November 04, 2022",
+            "description": "Lecture summary",
+            "image": "https://github.com/user-attachments/assets/cdb8f444-3819-448c-868e-03e4fabb4dcc",
+            "readtime": "11"
+        },
+    
+        {
+            "title": "cs231n 내용 요약 (2) - Linear classification",
+            "tags": "AI, Deep learning, cs231n",
+            "url": "http://localhost:4000/blog/cs231n02",
+            "date": "November 03, 2022",
+            "description": "Lecture summary",
+            "image": "https://github.com/user-attachments/assets/cdb8f444-3819-448c-868e-03e4fabb4dcc",
+            "readtime": "19"
+        },
+    
+        {
+            "title": "cs231n 내용 요약 (1) - Image classification",
+            "tags": "AI, Deep learning, cs231n",
+            "url": "http://localhost:4000/blog/cs231n01",
+            "date": "November 02, 2022",
+            "description": "Lecture summary",
+            "image": "https://github.com/user-attachments/assets/cdb8f444-3819-448c-868e-03e4fabb4dcc",
+            "readtime": "11"
+        },
+    
+        {
+            "title": "cs231n 내용 요약 (0) - What is deep learning?",
+            "tags": "AI, Deep learning, cs231n",
+            "url": "http://localhost:4000/blog/cs231n00",
+            "date": "November 01, 2022",
+            "description": "Lecture summary",
+            "image": "https://github.com/user-attachments/assets/cdb8f444-3819-448c-868e-03e4fabb4dcc",
+            "readtime": "4"
+        }
+    
+]

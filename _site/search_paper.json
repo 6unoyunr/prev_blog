@@ -1,0 +1,434 @@
+[
+    
+    
+        {
+            "title": "딥시크(Deepseek)-R1에 대한 고찰. Thinking about Deepseek-R1 with Reinforcement Learning(RL).",
+            "tags": "Deepseek, Reinforcement Learning, LLM",
+            "url": "http://localhost:4000/blog/deepseekr1",
+            "date": "February 02, 2025",
+            "description": "Deepseek LLM",
+            "image": "https://github.com/user-attachments/assets/c6d8358d-db2c-4c0a-8d45-7b881a8f26d7",
+            "readtime": "19"
+        },
+    
+        {
+            "title": "Mamba modeling의 기초 (3) - Linear-Time Sequence Modeling with Selective State Spaces (Mamba)에 대하여",
+            "tags": "Mamba, Selective SSM, H3, Gated MLP",
+            "url": "http://localhost:4000/blog/mamba",
+            "date": "September 20, 2024",
+            "description": "Mamba, Selective SSM",
+            "image": "https://github.com/user-attachments/assets/dfab1904-b168-484d-945e-1b290b232f89",
+            "readtime": "13"
+        },
+    
+        {
+            "title": "Mamba modeling의 기초 (2) - (S4) Efficiently Modeling Long Sequences with Structured State Spaces에 대하여",
+            "tags": "Mamba, HiPPO, LSSL, S4",
+            "url": "http://localhost:4000/blog/s4",
+            "date": "July 22, 2024",
+            "description": "Mamba, Linear State-Space Layer",
+            "image": "https://github.com/user-attachments/assets/2d5f8fa6-13c4-4132-b2d7-6c7661277216",
+            "readtime": "17"
+        },
+    
+        {
+            "title": "Mamba modeling의 기초 (1) - Linear State-Space Layer (LSSL)에 대하여",
+            "tags": "Mamba, LSSL, HiPPO",
+            "url": "http://localhost:4000/blog/lssl",
+            "date": "February 01, 2024",
+            "description": "Mamba, Linear State-Space Layer",
+            "image": "https://github.com/user-attachments/assets/0b8e20dc-51ff-4183-aa83-4e85f721e82c",
+            "readtime": "21"
+        },
+    
+        {
+            "title": "DINOv2(Learning Robust Visual Features without Supervision) 논문 리뷰",
+            "tags": "SSL, ViT, DINOv2",
+            "url": "http://localhost:4000/blog/dino2",
+            "date": "December 04, 2023",
+            "description": "SSL, Vision Transformer",
+            "image": "https://github.com/user-attachments/assets/2589c893-6551-45d5-9d15-6113ae611fe0",
+            "readtime": "9"
+        },
+    
+        {
+            "title": "DINO(Emerging Properties in Self-Supervised Vision Transformers) 논문 리뷰",
+            "tags": "SSL, ViT, DINO",
+            "url": "http://localhost:4000/blog/dino",
+            "date": "November 12, 2023",
+            "description": "SSL, Vision Transformer",
+            "image": "https://github.com/user-attachments/assets/2589c893-6551-45d5-9d15-6113ae611fe0",
+            "readtime": "12"
+        },
+    
+        {
+            "title": "Continual learning/Lifelong learning의 개념과 방법론 총정리",
+            "tags": "Continual learning, Adaptation, Deep learning",
+            "url": "http://localhost:4000/blog/continual",
+            "date": "September 01, 2023",
+            "description": "Continual learning/Lifelong learning",
+            "image": "https://github.com/user-attachments/assets/5b746dea-64fb-4ead-a987-8615bde81855",
+            "readtime": "27"
+        },
+    
+        {
+            "title": "MERU(Hyperbolic Image-Text Representations) 논문 리뷰",
+            "tags": "VLM, CLIP, Multimodal, Hyperbolic space",
+            "url": "http://localhost:4000/blog/meru",
+            "date": "July 12, 2023",
+            "description": "Vision Language Model, Hyperbolic Embeddings",
+            "image": "https://github.com/user-attachments/assets/8a5c2ea9-2139-4d10-8032-30ef8f1ff824",
+            "readtime": "12"
+        },
+    
+        {
+            "title": "GLIDE(Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models) 논문 및 코드 리뷰",
+            "tags": "Diffusion model, Text to Image, AI, Deep learning",
+            "url": "http://localhost:4000/blog/glide",
+            "date": "May 02, 2023",
+            "description": "Text to Image diffusion models",
+            "image": "https://user-images.githubusercontent.com/79881119/235696115-4385adb1-d0a7-4fed-8f5a-af3e36e7851e.gif",
+            "readtime": "20"
+        },
+    
+        {
+            "title": "ControlNet 논문 이해하기 및 사용해보기",
+            "tags": "Diffusion model, Generative model, Controllable diffusion, AI, Deep learning",
+            "url": "http://localhost:4000/blog/controlnet",
+            "date": "May 01, 2023",
+            "description": "Controllable stable diffusion",
+            "image": "https://user-images.githubusercontent.com/79881119/235468213-09aaeaec-4cd4-4503-8e67-6b279557a6d5.png",
+            "readtime": "10"
+        },
+    
+        {
+            "title": "Improved DDPM + Diffusion beats GAN + Classifier free diffusion guidance 논문 리뷰",
+            "tags": "Score based model, Diffusion model, Generative model, AI, Deep learning",
+            "url": "http://localhost:4000/blog/diffusionpapers",
+            "date": "April 30, 2023",
+            "description": "Improve diffusion models",
+            "image": "https://user-images.githubusercontent.com/79881119/235350592-1e8e47d9-7d84-48bc-b0eb-b8d2a499600b.gif",
+            "readtime": "27"
+        },
+    
+        {
+            "title": "Consistency models 논문 리뷰",
+            "tags": "Score based model, Consistency model, PF ODE, AI, Deep learning",
+            "url": "http://localhost:4000/blog/consistency",
+            "date": "April 26, 2023",
+            "description": "Consistency model",
+            "image": "https://user-images.githubusercontent.com/79881119/234610703-89f369d0-0008-4b8a-8207-d93263dd09a8.gif",
+            "readtime": "18"
+        },
+    
+        {
+            "title": "Score-based generative modeling through stochastic differential equations 이해하기",
+            "tags": "SDE, Score based model, Neural ODE, AI, Deep learning",
+            "url": "http://localhost:4000/blog/scoresde",
+            "date": "April 22, 2023",
+            "description": "Stochastic differential equation",
+            "image": "https://user-images.githubusercontent.com/79881119/233842820-ef7d8900-8b01-4d28-9aad-50851829da2c.gif",
+            "readtime": "17"
+        },
+    
+        {
+            "title": "DDIM(Denoising Diffusion Implicit Models) 이해하기",
+            "tags": "DDIM, DDPM, Generative model, AI, Deep learning",
+            "url": "http://localhost:4000/blog/ddim",
+            "date": "April 20, 2023",
+            "description": "Diffusion implicit modeling",
+            "image": "https://user-images.githubusercontent.com/79881119/233400307-1d80a1f0-e737-40c9-96ee-2844b7473d3a.gif",
+            "readtime": "11"
+        },
+    
+        {
+            "title": "DDPM 수식 증명만 죄다 조져버리기",
+            "tags": "DDPM, Generative model, AI, Deep learning",
+            "url": "http://localhost:4000/blog/DDPMproof",
+            "date": "April 02, 2023",
+            "description": "paper mathematics",
+            "image": "https://user-images.githubusercontent.com/79881119/232323912-84c15e40-ee39-4783-aea4-b3880fcf3dfa.gif",
+            "readtime": "10"
+        },
+    
+        {
+            "title": "Parameter-free Online Test-time adaptation 논문 리뷰",
+            "tags": "AI, Deep learning, TTA, Parameter free",
+            "url": "http://localhost:4000/blog/parameterfree",
+            "date": "March 28, 2023",
+            "description": "Online adaptation",
+            "image": "https://user-images.githubusercontent.com/79881119/228143473-e28161a7-2ec0-4322-bf1b-9f617ab48a6d.gif",
+            "readtime": "23"
+        },
+    
+        {
+            "title": "Contrastive test time adaptation 논문 리뷰",
+            "tags": "Deep learning, DA, Test time adaptation, Contrastive learning",
+            "url": "http://localhost:4000/blog/ContrastiveTTA",
+            "date": "March 24, 2023",
+            "description": "Test time domain adaptation",
+            "image": "https://user-images.githubusercontent.com/79881119/227496551-8a7c2609-6841-4801-810b-da6a9fbfd0a5.gif",
+            "readtime": "12"
+        },
+    
+        {
+            "title": "TENT, Continual test-time adaptation(CoTTA) 논문 리뷰",
+            "tags": "Deep learning, DA, Continual learning, Test time adaptation",
+            "url": "http://localhost:4000/blog/tent",
+            "date": "March 14, 2023",
+            "description": "Test time domain adaptation",
+            "image": "https://user-images.githubusercontent.com/79881119/224949257-fb9f95ca-4f2b-4817-bb10-000b5cb7cecb.gif",
+            "readtime": "19"
+        },
+    
+        {
+            "title": "CoCa - Contrastive Captioners are Image-Text Foundation Models 논문 리뷰",
+            "tags": "Deep learning, VL, Understanding + Generation",
+            "url": "http://localhost:4000/blog/CoCa",
+            "date": "March 01, 2023",
+            "description": "Contrastive and caption generation learning",
+            "image": "https://user-images.githubusercontent.com/79881119/222342311-c0bd6df0-834f-4cde-9cab-e3988aa57c29.gif",
+            "readtime": "9"
+        },
+    
+        {
+            "title": "딥러닝의 체계를 바꾼다! The Forward-Forward Algorithm 논문 리뷰 (2)",
+            "tags": "Deep learning, FF algorithm, Methodology, Generative model, Restricted Boltzmann Machine",
+            "url": "http://localhost:4000/blog/ffalgorithm2",
+            "date": "February 27, 2023",
+            "description": "Forward-forward algorithm",
+            "image": "https://user-images.githubusercontent.com/79881119/222030729-fc5d7460-8d26-4d6a-a1a8-fbc71131c9f1.gif",
+            "readtime": "20"
+        },
+    
+        {
+            "title": "딥러닝의 체계를 바꾼다! The Forward-Forward Algorithm 논문 리뷰 (1)",
+            "tags": "Deep learning, FF algorithm, Methodology",
+            "url": "http://localhost:4000/blog/ffalgorithm",
+            "date": "February 22, 2023",
+            "description": "Forward-forward algorithm",
+            "image": "https://user-images.githubusercontent.com/79881119/221447149-7ed12c39-a466-4f34-82d8-cecd13e304ef.gif",
+            "readtime": "29"
+        },
+    
+        {
+            "title": "Prompt learning in Vision-Language(CoOp, CoCoOp) 논문 리뷰",
+            "tags": "VLP, Prompt learning, Downstream tasks",
+            "url": "http://localhost:4000/blog/CoOp",
+            "date": "February 19, 2023",
+            "description": "prompt learning",
+            "image": "https://user-images.githubusercontent.com/79881119/219937038-7277341b-efd1-4391-8ab3-12fa5cbc9f01.gif",
+            "readtime": "19"
+        },
+    
+        {
+            "title": "Bootstrapping Language-Image Pre-training(BLIP, BLIP2) 논문 리뷰",
+            "tags": "VLP, Bootstrapping, Large language models",
+            "url": "http://localhost:4000/blog/BLIP",
+            "date": "February 14, 2023",
+            "description": "bootstrapping language and image pre-training",
+            "image": "https://user-images.githubusercontent.com/79881119/218607574-b22c5c47-40e7-475a-ace9-4d265c854d6a.gif",
+            "readtime": "20"
+        },
+    
+        {
+            "title": "Zero-shot Text-Guided Object Generation with Dream Fields에 대하여",
+            "tags": "nerf, zero shot, scene generation",
+            "url": "http://localhost:4000/blog/dreamfield",
+            "date": "February 07, 2023",
+            "description": "zero-shot scene generation with clip",
+            "image": "https://user-images.githubusercontent.com/79881119/217227526-9d8ff3cc-1d07-4a22-9ddc-4d7fdbc07f54.gif",
+            "readtime": "26"
+        },
+    
+        {
+            "title": "(StyleCLIP, StyleGAN-NADA) CLIP based image manipulation에 대하여",
+            "tags": "Multimodal, VL, StyleGAN, Image manipulation, Text(prompt) guidance",
+            "url": "http://localhost:4000/blog/styleclip+styleganada",
+            "date": "January 29, 2023",
+            "description": "Image manipulation, VL contrastive",
+            "image": "https://user-images.githubusercontent.com/79881119/215319341-b7c913a7-26c9-4bc4-bab9-a19281714eeb.gif",
+            "readtime": "22"
+        },
+    
+        {
+            "title": "MaskCLIP 논문 리뷰",
+            "tags": "Multimodal, Zero shot, SSL, AI, Deep learning",
+            "url": "http://localhost:4000/blog/maskclip",
+            "date": "January 24, 2023",
+            "description": "Zero-shot, Multimodal learning",
+            "image": "https://user-images.githubusercontent.com/79881119/214473940-413c366a-cf7d-4431-883e-64ae6097be86.png",
+            "readtime": "10"
+        },
+    
+        {
+            "title": "CLIP(Learning transferable visual models from natural language supervision)에 대하여",
+            "tags": "Multimodal, Zero shot, AI, Deep learning",
+            "url": "http://localhost:4000/blog/clip",
+            "date": "January 22, 2023",
+            "description": "Zero-shot, Multimodal learning",
+            "image": "https://user-images.githubusercontent.com/79881119/213900254-5da22304-43ab-457c-9533-0927b0d859df.png",
+            "readtime": "20"
+        },
+    
+        {
+            "title": "About GAN supervsed alignment(GAN-gealing)",
+            "tags": "Generative model, AI, Deep learning, GAN, GAN gealing",
+            "url": "http://localhost:4000/blog/gangeal",
+            "date": "January 01, 2023",
+            "description": "GAN gealing",
+            "image": "https://user-images.githubusercontent.com/79881119/210159076-23125484-b1a0-40a4-a676-23518861a952.gif",
+            "readtime": "14"
+        },
+    
+        {
+            "title": "Transformer와 Multimodal에 대하여",
+            "tags": "Transformer, Attention, AI, Deep learning",
+            "url": "http://localhost:4000/blog/trnmultimodal",
+            "date": "December 21, 2022",
+            "description": "Attention mechanism",
+            "image": "https://github.com/user-attachments/assets/b2ca7db9-e9cd-4ccd-92a4-bf7c33f36094",
+            "readtime": "39"
+        },
+    
+        {
+            "title": "Low shot learning에 대하여",
+            "tags": "Meta learning, Low shot, Few shot, Zero shot, AI, Deep learning",
+            "url": "http://localhost:4000/blog/lowshot",
+            "date": "December 20, 2022",
+            "description": "Few shot, Zero shot learning",
+            "image": "https://user-images.githubusercontent.com/79881119/235353456-8461d395-cb9d-4471-8208-d72754519f4c.jpg",
+            "readtime": "14"
+        },
+    
+        {
+            "title": "다양한 Deep learning 학습법",
+            "tags": "AI, deep learning, training method, transfer learning, knowledge distillation, multitask, contrastive learning",
+            "url": "http://localhost:4000/blog/transfer",
+            "date": "December 18, 2022",
+            "description": "Training strategies",
+            "image": "https://github.com/user-attachments/assets/102ccb32-36a3-4034-94fc-74ef6856b1b4",
+            "readtime": "24"
+        },
+    
+        {
+            "title": "그래프를 활용한 neural network",
+            "tags": "AI, deep learning, graph neural networks",
+            "url": "http://localhost:4000/blog/graphnn",
+            "date": "December 17, 2022",
+            "description": "Graph Neural Network, Convolutional GNN",
+            "image": "https://user-images.githubusercontent.com/79881119/235353385-c4e8a00d-85dc-461b-9f50-c0a543d53e38.gif",
+            "readtime": "18"
+        },
+    
+        {
+            "title": "GAN을 활용한 이미지 조작(image to image 그리고 GAN inversion까지)",
+            "tags": "AI, deep learning, generative model, adversarial training",
+            "url": "http://localhost:4000/blog/imagemanipulate",
+            "date": "December 12, 2022",
+            "description": "Image translation/manipulation",
+            "image": "https://user-images.githubusercontent.com/79881119/235353241-4dfff373-a961-4d00-966a-46f8356692dc.png",
+            "readtime": "14"
+        },
+    
+        {
+            "title": "GAN variations(DCGAN, CGAN, PGGAN and StyleGAN)에 대하여",
+            "tags": "AI, deep learning, generative model, adversarial training",
+            "url": "http://localhost:4000/blog/gan2",
+            "date": "December 11, 2022",
+            "description": "Various framework for adversarial learning",
+            "image": "https://user-images.githubusercontent.com/79881119/235353087-1d8c492f-1caf-45c9-b160-d1fd96e656ee.png",
+            "readtime": "14"
+        },
+    
+        {
+            "title": "Generative adversarial networks(GAN)에 대하여",
+            "tags": "AI, deep learning, generative model, adversarial training",
+            "url": "http://localhost:4000/blog/gan",
+            "date": "December 09, 2022",
+            "description": "Adversarial approach on generation task",
+            "image": "https://user-images.githubusercontent.com/79881119/235353010-a64c9794-7dd9-4656-a691-fa99127f6e0c.gif",
+            "readtime": "11"
+        },
+    
+        {
+            "title": "About light weight CNNs(MobileNet 시리즈들)",
+            "tags": "AI, deep learning, CNN, light weight",
+            "url": "http://localhost:4000/blog/light",
+            "date": "December 08, 2022",
+            "description": "Light weight convolutional neural networks",
+            "image": "https://user-images.githubusercontent.com/79881119/235352966-2120920e-4d5f-4f2a-830b-97ebeddca9bc.jpg",
+            "readtime": "7"
+        },
+    
+        {
+            "title": "Efficient deep neural networks에 대하여",
+            "tags": "AI, deep learning, CNN, efficient",
+            "url": "http://localhost:4000/blog/efficient",
+            "date": "December 08, 2022",
+            "description": "EfficientNet",
+            "image": "https://user-images.githubusercontent.com/79881119/235352897-15e29b3f-ad6b-4063-898e-0a6bb468347a.png",
+            "readtime": "8"
+        },
+    
+        {
+            "title": "MixMatch-A holistic approach to semi-supervised learning에 대하여",
+            "tags": "SSL, AI, Deep learning",
+            "url": "http://localhost:4000/blog/mixmatchpaper",
+            "date": "December 07, 2022",
+            "description": "paper review",
+            "image": "https://user-images.githubusercontent.com/79881119/235352836-99c2a2ef-1197-4bb2-a730-1e48fcf60ded.jpg",
+            "readtime": "11"
+        },
+    
+        {
+            "title": "NSVF-Neural Sparse Voxel Fields에 대해서",
+            "tags": "View synthesis, 3D, 3D voxel, AI, Deep learning",
+            "url": "http://localhost:4000/blog/nsvf",
+            "date": "December 06, 2022",
+            "description": "paper review",
+            "image": "https://github.com/user-attachments/assets/f50937a6-49c9-4d87-a12d-d1daae5e5334",
+            "readtime": "8"
+        },
+    
+        {
+            "title": "NeRF-Representing Scene as Neural Radiance Fields for View Synthesis에 대해서",
+            "tags": "View synthesis, 3D, AI, Deep learning",
+            "url": "http://localhost:4000/blog/nerf",
+            "date": "December 05, 2022",
+            "description": "paper review",
+            "image": "https://user-images.githubusercontent.com/79881119/235352726-336ebcfe-adc7-4592-a247-a84b439b9432.jpg",
+            "readtime": "18"
+        },
+    
+        {
+            "title": "Simple explanation of NCE(Noise Contrastive Estimation) and InfoNCE",
+            "tags": "Contrastive learning, AI, Deep learning",
+            "url": "http://localhost:4000/blog/InfoNCEpaper",
+            "date": "December 02, 2022",
+            "description": "paper review",
+            "image": "https://github.com/user-attachments/assets/57050021-90e8-4b3b-9775-63cb4abba123",
+            "readtime": "18"
+        },
+    
+        {
+            "title": "Denoising diffusion probabilistic model에 대해서",
+            "tags": "DDPM, Generative model, AI, Deep learning",
+            "url": "http://localhost:4000/blog/DDPM",
+            "date": "November 28, 2022",
+            "description": "paper review",
+            "image": "https://github.com/user-attachments/assets/d46f946e-b5e8-4de6-9bc2-1eca7f173a29",
+            "readtime": "13"
+        },
+    
+        {
+            "title": "Variational autoencoder에 대해서",
+            "tags": "VAE, Generative model, AI, Deep learning",
+            "url": "http://localhost:4000/blog/VAE",
+            "date": "November 24, 2022",
+            "description": "paper review",
+            "image": "https://github.com/user-attachments/assets/f4c66870-57b3-4a36-b0d6-03bb45ed39b4",
+            "readtime": "12"
+        }
+    
+]

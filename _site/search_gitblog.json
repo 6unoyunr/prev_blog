@@ -1,0 +1,154 @@
+[
+    
+    
+        {
+            "title": "깃허브 블로그를 구글 검색 엔진에 등록했지만 검색이 안된다면?",
+            "tags": "web designer, blog, github",
+            "url": "http://localhost:4000/blog/searcherror",
+            "date": "February 20, 2023",
+            "description": "블로그 검색, 구글 검색 오류",
+            "image": "https://user-images.githubusercontent.com/79881119/219984439-657bf38a-7dc9-4e16-94de-c06dee0fae9e.gif",
+            "readtime": "2"
+        },
+    
+        {
+            "title": "스크롤 내릴 때 페이지 상단에 가로축으로 내려온 정도(퍼센트) 표시하기",
+            "tags": "web designer, blog, github",
+            "url": "http://localhost:4000/blog/scrollpercent",
+            "date": "February 20, 2023",
+            "description": "블로그 스크롤 퍼센트 표시",
+            "image": "https://user-images.githubusercontent.com/79881119/220035111-68ae1a27-80c3-41d5-bfb5-bce659d97284.gif",
+            "readtime": "3"
+        },
+    
+        {
+            "title": "마크다운 파일을 notion으로 업로드하기",
+            "tags": "blog, notion, markdown",
+            "url": "http://localhost:4000/blog/md2notion",
+            "date": "January 30, 2023",
+            "description": "markdown file to notion",
+            "image": "https://user-images.githubusercontent.com/79881119/215400336-ec2ad96f-4520-4c0a-bf70-84ba49112f2c.png",
+            "readtime": "2"
+        },
+    
+        {
+            "title": "Github blog 코드 블럭 하이라이트 적용해보기",
+            "tags": "web designer, blog, github, Code highlighting",
+            "url": "http://localhost:4000/blog/codeblock",
+            "date": "January 06, 2023",
+            "description": "Code theme, CSS",
+            "image": "https://user-images.githubusercontent.com/79881119/210911206-a918bb17-9774-41f2-80c2-c371706de58d.png",
+            "readtime": "3"
+        },
+    
+        {
+            "title": "Mathjax 수식 입력 시 렌더링이 안될 경우",
+            "tags": "blog, mathjax, error, rendering",
+            "url": "http://localhost:4000/blog/mathjaxerror",
+            "date": "December 19, 2022",
+            "description": "Error, Github blog",
+            "image": "https://user-images.githubusercontent.com/79881119/235353418-c053793a-554e-41b8-a147-7310650173cb.png",
+            "readtime": "1"
+        },
+    
+        {
+            "title": "카테고리별 다른 게시물 추천하기(이전글, 다음글)",
+            "tags": "web designer, blog, github, recommendation",
+            "url": "http://localhost:4000/blog/nextprev",
+            "date": "December 16, 2022",
+            "description": "Blog theme, 서버 관리, 웹 디자인",
+            "image": "https://user-images.githubusercontent.com/79881119/235353371-74b4d556-5aae-4db7-827b-fb269eeed93a.gif",
+            "readtime": "9"
+        },
+    
+        {
+            "title": "홈페이지 로딩창 구현하기",
+            "tags": "web designer, blog, github, loading page",
+            "url": "http://localhost:4000/blog/loading",
+            "date": "December 16, 2022",
+            "description": "Blog theme, 서버 관리, 웹 디자인",
+            "image": "https://user-images.githubusercontent.com/79881119/235353313-7b912024-c1bf-4e7b-92a0-5d938027b4ad.gif",
+            "readtime": "2"
+        },
+    
+        {
+            "title": "프로필에 텍스트 애니메이션 적용한 소개 단락 만들기",
+            "tags": "web designer, blog, github",
+            "url": "http://localhost:4000/blog/intro",
+            "date": "December 14, 2022",
+            "description": "Blog theme, 서버 관리, 웹 디자인",
+            "image": "https://user-images.githubusercontent.com/79881119/209129925-73f51002-7815-4517-9a3f-d772e82b4ff7.gif",
+            "readtime": "7"
+        },
+    
+        {
+            "title": "스크롤 내릴 때 컨텐츠 fade out(페이드 아웃) 구현하기",
+            "tags": "web designer, blog, github",
+            "url": "http://localhost:4000/blog/fadeoutcard",
+            "date": "December 13, 2022",
+            "description": "Blog theme, 서버 관리",
+            "image": "https://user-images.githubusercontent.com/79881119/235353288-c8a73883-e9c3-48a7-bfe2-c2e265a5b574.gif",
+            "readtime": "4"
+        },
+    
+        {
+            "title": "github.io 검색 엔진(구글/네이버/다음)에 노출시키기",
+            "tags": "web designer, blog, github",
+            "url": "http://localhost:4000/blog/search",
+            "date": "December 12, 2022",
+            "description": "Blog theme, 서버 관리, 블로그 검색",
+            "image": "https://user-images.githubusercontent.com/79881119/235353278-c18e05ee-d769-43d4-9d59-83caa2eed28d.gif",
+            "readtime": "3"
+        },
+    
+        {
+            "title": "github.io 댓글 다크모드 적용 방법",
+            "tags": "web designer, blog, github, comment",
+            "url": "http://localhost:4000/blog/commentdark",
+            "date": "December 12, 2022",
+            "description": "Blog theme, 서버 관리",
+            "image": "https://user-images.githubusercontent.com/79881119/235353112-5b9bfd8a-5ce2-4bb8-a287-66698da67dda.png",
+            "readtime": "1"
+        },
+    
+        {
+            "title": "github.io 다크모드/라이트모드 (테마 밝기 조절) 만들기",
+            "tags": "web designer, blog, github",
+            "url": "http://localhost:4000/blog/darkmode",
+            "date": "December 10, 2022",
+            "description": "Blog theme, 서버 관리",
+            "image": "https://user-images.githubusercontent.com/79881119/235353060-6a90a139-cdb3-4a87-a504-8c319aee9334.gif",
+            "readtime": "6"
+        },
+    
+        {
+            "title": "github.io에 카테고리 기능 추가해보기",
+            "tags": "web designer, blog, github",
+            "url": "http://localhost:4000/blog/category",
+            "date": "December 08, 2022",
+            "description": "CATEGORY LISTUP!",
+            "image": "https://github.com/user-attachments/assets/face1b3f-372d-43cd-abf1-817577eb8388",
+            "readtime": "3"
+        },
+    
+        {
+            "title": "github.io에 마크다운 작성 및 수식 입력하기",
+            "tags": "blog, markdown, mathjax, manual",
+            "url": "http://localhost:4000/blog/markdown",
+            "date": "December 07, 2022",
+            "description": "github blog manual",
+            "image": "https://user-images.githubusercontent.com/79881119/235352946-e3918fc1-aad0-4eeb-94df-f43c68fdfd0e.png",
+            "readtime": "7"
+        },
+    
+        {
+            "title": "LaTex 자주 쓰는 수식 및 심볼 정리",
+            "tags": "LeTex, Markdown, github blog",
+            "url": "http://localhost:4000/blog/latex_symbols",
+            "date": "November 16, 2022",
+            "description": "LaTex 문법 정리노트",
+            "image": "https://user-images.githubusercontent.com/79881119/228403706-3045f7c3-a935-4a96-b3ad-1936b137daf4.png",
+            "readtime": "12"
+        }
+    
+]
