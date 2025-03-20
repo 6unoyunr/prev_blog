@@ -1038,9 +1038,7 @@ A pony doll with big green eyes is submerged in water in a small tub.
 
 답변(think 제외) : `오답`  
 답변요약 : 적분 구간에 대한 조건화 실패  
-
-**Final Answer**  
-Thus, the final value is $\boxed{23}.$
+**Final Answer** : $\boxed{23}.$
 
 ### Grok3
 
@@ -1050,8 +1048,7 @@ Thus, the final value is $\boxed{23}.$
 
 답변(think 제외) : `오답`  
 답변요약 : 적분 구간에 대한 조건화 실패  
-**Final Answer**  
-$\boxed{23}.$
+**Final Answer** : $\boxed{23}.$
 
 ### EXAONE-32B
 
@@ -1061,9 +1058,7 @@ $\boxed{23}.$
 
 답변(think 제외) : `오답`  
 답변요약 : 적분 구간에 대한 조건화 실패  
-
-**Final Answer**  
-$\boxed{23}.$
+**Final Answer** : $\boxed{23}.$
 
 ### Deepseek-R1-32B
 
@@ -1073,8 +1068,7 @@ $\boxed{23}.$
 
 답변(think 제외) : `오답`  
 답변요약 : 걍 틀림  
-**Final Answer**  
-$\boxed{50}.$
+**Final Answer** : $\boxed{50}.$
 
 ## 네번째 문제 (리트코드)
 
