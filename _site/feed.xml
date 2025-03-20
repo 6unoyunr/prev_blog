@@ -6,9 +6,1829 @@
     <description>Personal Tech Blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000https://6unoyunr.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 18 Mar 2025 16:11:09 +0900</pubDate>
-    <lastBuildDate>Tue, 18 Mar 2025 16:11:09 +0900</lastBuildDate>
+    <pubDate>Thu, 20 Mar 2025 16:50:14 +0900</pubDate>
+    <lastBuildDate>Thu, 20 Mar 2025 16:50:14 +0900</lastBuildDate>
     <generator>Jekyll v4.3.1</generator>
+    
+      <item>
+        <title>추론 모델은 정말로 뛰어난가?? 오픈소스 엑사원 딥(EXAONE-Deep), QWQ, 딥시크(Deepseek-R1) 비교 실험해보기</title>
+        <description>&lt;h1 id=&quot;글이-길어질-예정이다&quot;&gt;글이 길어질 예정이다&lt;/h1&gt;
+
+&lt;p&gt;이 글은 추론 모델들에 대해 개인적으로 실험한 내용들을 아무런 요약이나 정리 없이 쭉 아카이빙할 목적으로 작성한다. 따라서 글이 지나치게 길어질 것으로 예상된다. 모델별 비교 결과표는 맨 아래에 첨부할 예정이니 시간이 없다면 그냥 쭉 드래그해서 맨 아래로 내리면 된다. 인터넷에 많은 사람들이 이것저것 비교해놓은 글들을 봤지만, 엑사원 딥이 새로 나온 김에 테스트해보고자 글을 작성한다.&lt;/p&gt;
+
+&lt;p&gt;비교 모델은 아래와 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;OpenAI: o3-mini-high&lt;/li&gt;
+  &lt;li&gt;xAI: Grok3&lt;/li&gt;
+  &lt;li&gt;EXAONE-Deep:32B&lt;/li&gt;
+  &lt;li&gt;QWQ:32B&lt;/li&gt;
+  &lt;li&gt;Deepseek-R1:32B(Distillation 버전)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;수많은-deep-시리즈들&quot;&gt;수많은 Deep 시리즈들&lt;/h2&gt;
+
+&lt;p&gt;딥시크 추론 모델 등장 이후 너도나도 여러 가지 방법으로 학습시킨 오픈 소스 추론 모델을 내뱉기 시작한 듯하다. 엑사원 딥 모델은 LG AI Research에서 나왔는데, 문득 실제 지표처럼 잘 동작하는지 궁금해졌다. 사실 개인적으로 추론 모델이 정말 잘할 수 있는지에 대해 의문을 품고 있기 때문에, 그 호기심을 충족시키기 위해 직접 돌려보기로 했다. 일단 이것만 봐서는 EXAONE이 가장 좋긴한데, 까보기 전까지는 모르니까.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;https://github.com/user-attachments/assets/afd199cc-adc4-49a5-b1e5-b34def601976&quot; width=&quot;800&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;(사진 출처는 &lt;a href=&quot;https://www.lgresearch.ai/blog/view?seq=543&quot;&gt;exaone deep 소개 페이지&lt;/a&gt;) 기존에는 논문 리뷰 위주로 올렸는데 테크니컬 리포트 읽는건 솔직히 노잼이라서 걍 실험해보는게 훨씬 재밌을 것 같다.&lt;/p&gt;
+
+&lt;h2 id=&quot;라이센스-비교&quot;&gt;라이센스 비교&lt;/h2&gt;
+
+&lt;p&gt;오픈 소스라 해서 마구잡이로 쓸 수 있는 것은 아니고 상황에 따라 다르다.&lt;/p&gt;
+
+&lt;h3 id=&quot;qwq-라이센스-요약-apache&quot;&gt;QWQ 라이센스 요약 (Apache)&lt;/h3&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Apache License 2.0:
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 누구나 소프트웨어를 무료로 사용, 수정, 복사, 배포, 판매, 재배포할 수 있습니다.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 수정된 소프트웨어를 배포할 때, 원본 소스코드에 있던 저작권, 특허, 상표, 저자 표시를 그대로 유지해야 하며, 변경 사항을 명확히 표시해야 합니다.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 이 소프트웨어에 특허가 관련된 경우, 기여자는 사용자에게 특허를 무상으로 사용할 수 있는 권리를 제공합니다. 단, 사용자가 이 소프트웨어에 대해 특허 소송을 제기하면 라이선스는 즉시 종료됩니다.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 제공자는 소프트웨어에 대해 어떠한 보증도 하지 않으며, 사용으로 인한 손해에 대해 책임지지 않습니다(무보증 원칙).
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 배포할 때 이 라이선스를 반드시 첨부하거나 명시해야 합니다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;엑사원-딥-모델-라이센스-요약&quot;&gt;엑사원-딥 모델 라이센스 요약&lt;/h3&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;허용된 용도
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 비상업적 연구 목적(학술 연구, 평가, 실험 등)으로만 사용 가능
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 모델을 수정하거나 파생물을 만들 수 있으나 이름에 반드시 ‘EXAONE’을 포함해야 함
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 연구 결과는 공개 가능하며, 모델 및 파생물을 배포할 때는 반드시 이 계약서를 포함해야 함
+
+금지된 사항
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 상업적 목적 사용(수익 창출 제품 및 서비스 개발 금지)
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 역설계, 소스코드 분석, 알고리즘 추출 금지
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 불법적, 비윤리적(허위정보 유포, 차별적 콘텐츠 제작 등) 용도 사용 금지
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 다른 AI 모델 개발 또는 개선 목적으로의 사용 금지
+
+소유권 및 출력물
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 모델, 파생물 및 모델의 출력물(Output)에 대한 모든 권리는 Licensor(LG경영개발원)에 있음
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 출력물도 연구 목적 이외의 용도로 상업적 활용이 불가함
+
+보증 책임 제한
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 모델은 “있는 그대로” 제공되며, Licensor는 사용 과정에서 발생하는 어떠한 손해에 대해서도 책임을 지지 않음
+
+계약 종료
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 계약 위반 시 Licensor가 즉시 계약 종료 가능
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 계약 종료 시 즉시 모델 및 모든 복사본을 삭제해야 함
+
+분쟁 해결
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 대한민국 법률을 따르며, 분쟁은 서울의 대한상사중재원에서 중재를 통해 해결
+이 모델을 다운로드, 설치 또는 사용할 경우 위 조건에 동의하는 것으로 간주됩니다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;deepseek-r1-라이센스-요약-mit&quot;&gt;Deepseek-R1 라이센스 요약 (MIT)&lt;/h3&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MIT License:
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 누구나 이 소프트웨어를 무료로 자유롭게 사용, 복사, 수정, 병합, 배포, 판매할 수 있고, 다른 사람에게도 사용 권한을 줄 수 있습니다.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 다만, 소프트웨어를 사용할 때 반드시 저작권 표시와 라이선스 원본을 포함해야 합니다.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; 소프트웨어는 어떤 형태의 보증도 없이 “있는 그대로(AS IS)” 제공되며, 개발자는 사용 과정에서 발생하는 문제나 피해에 대해 책임을 지지 않습니다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;일단 오픈 소스이긴 한데, 딥시크와 QWQ와는 다르게 엑사원은 상대적으로 사용에 제약이 꽤나 많다.&lt;/p&gt;
+
+&lt;h2 id=&quot;테스트한-문제들과-프롬프트-구성&quot;&gt;테스트한 문제들과 프롬프트 구성&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;“&lt;strong&gt;How many golf balls can fit in a school bus?&lt;/strong&gt;” 근데 이건 따로 정답이 있는진 모르겠고 &lt;strong&gt;추론 시간 비교해보려고 넣었다&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;비디오 캡션 20개를 뭉텅이&lt;/strong&gt;로 주고, 이를 &lt;strong&gt;서로 다른 3개의 paraphrased sentence로 리턴&lt;/strong&gt;하게함. Paraphrased 문장은 &lt;strong&gt;서로 다르게 구성되어야하고 겹치는게 없어야함&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;어려운 수능 수학 문제&lt;/strong&gt;를 하나 풀도록 해봄.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;어려운 코딩 문제&lt;/strong&gt;를 하나 풀도록 해봄.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;비디오 캡션의 경우에는 MSRVTT(jsfusion 샘플 중 첫번째 샘플)에서 구했다. 해당 데이터셋을 보게 되면 비디오 데이터셋 하나당 20개의 캡션으로 구성되어있는데, 각각을 겹치지 않게 총 20(원본) + 60(phraphrased)개의 문장을  구하는 것을 목적으로 하였다.&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Paraphrase the text in [Input] according to these guidelines:
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Retain every detail from the original sentences.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; For each sentence in [Input] (each on its own line), create three unique paraphrased versions.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; In [Output], list the paraphrased sentences in the same order as the input.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Do not include any numbering—simply output each paraphrased sentence on a new line.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Make sure that all paraphrased sentences are different from the original sentence and from each other.
+
+For example:
+[Input]
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Original&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;sentence&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Original&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;sentence&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+... and so on.
+
+[Output]
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Paraphrase&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;sentence&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Paraphrase&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;sentence&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Paraphrase&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;sentence&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Paraphrase&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;sentence&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Paraphrase&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;sentence&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Paraphrase&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;sentence&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+... and so on.
+
+[Input]
+a toy cat is bathing in soapy water in a toy bathtub
+small plastic cat being washed and rubbed in a plastic tub
+there is a someone playing with a deer toy
+a person pretends to bathe a small plastic cat using a bathroom play set of equally small size
+the head of doll is being washed by someone in soapy water
+there is a hand with pink nails cleaning a kitty toy in a miniature bathtub
+a person bathing a toy cat in a little bath tub
+a toy cat in a toy bubble bath is being washed and groomed
+a toy kitten getting a bath in a white bath tub
+a person cleans a plastic toy cat in a very small bathtub
+a person puts toy cat in a tub and washes it with a brush
+someone cleaning a toy cat in a water tub
+a  toy cat is in small toy bathtub with water and bubble and girl washes with scrubber
+little pet shop cat getting a bath and washed with little brush
+girl giving her adorable toy kitty a nice bubble bath
+the small toys are being showered in the small bathroom
+woman is cleaning the head of the orange cat
+woman is putting the orange doll to have shower
+woman is putting the small cat into the water and cleaning it
+pony doll with big green eyes taking a bath in tiny bathtub
+
+[Output]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위와 같은 프롬프트를 통해 나온 문장을 다음 코드로 분해했을때,&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sentences&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 개행 분리
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sentences&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sentences&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 소문자화
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sentences&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endswith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sentences&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# . 제거
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sentences&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sentences&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sentences&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;caption_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sentences&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;caption_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;정확하게 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;60, 60, 80, 80&lt;/code&gt;이 나오면 성공(정답)한 것으로 간주한다.&lt;/p&gt;
+
+&lt;p&gt;어려운 수능 수학 문제의 경우에는 2018년도 수학능력검정시험 30번 문제를 영어로 바꿔서 프롬프트화했으며, 문제를 프롬프트한 결과는 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;문제를 자세히 보니 삼각 펄스파$f(x)$와 주기 신호인 $\cos(\pi x)$와의 부분 콘볼루션인 듯하다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;https://github.com/user-attachments/assets/ff15e7f8-8d14-40c5-b99a-f0768a934483&quot; width=&quot;400&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;이걸 그대로 이미지로 넣을 순 없으니 markdown 문제 형태로 바꿔주었다.&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Question : For a real number &lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt; t &lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt;, the function &lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt; f(x) &lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt; is defined as
+&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;
+f(x) =
+&lt;span class=&quot;se&quot;&gt;\b&lt;/span&gt;egin{cases} 
+1 - |x - t|, &amp;amp; &lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;ext{if } |x - t| &lt;span class=&quot;se&quot;&gt;\l&lt;/span&gt;eq 1 &lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt; 
+0, &amp;amp; &lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;ext{if } |x - t| &amp;gt; 1
+&lt;span class=&quot;se&quot;&gt;\e&lt;/span&gt;nd{cases}
+&lt;span class=&quot;se&quot;&gt;\]&lt;/span&gt;
+Define the function
+&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;
+g(t) = &lt;span class=&quot;se&quot;&gt;\i&lt;/span&gt;nt_{k}^{k+8} f(x) &lt;span class=&quot;se&quot;&gt;\c&lt;/span&gt;os (&lt;span class=&quot;se&quot;&gt;\p&lt;/span&gt;i x) &lt;span class=&quot;se&quot;&gt;\,&lt;/span&gt;dx.
+&lt;span class=&quot;se&quot;&gt;\]&lt;/span&gt;
+For some odd integer &lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt; k &lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt;, the function &lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt; g(t) &lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt; satisfies the following condition:
+
+The function &lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt; g(t) &lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt; has a local extremum at &lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt; t = &lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;lpha &lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt;, and for all &lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;lpha &lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt; where &lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt; g(&lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;lpha) &amp;lt; 0 &lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt;, we arrange them in ascending order as &lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;lpha_1, &lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;lpha_2, &lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;ots, &lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;lpha_m &lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt; (where &lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt; m &lt;span class=&quot;se&quot;&gt;\)&lt;/span&gt; is a natural number), and it is given that
+&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;
+&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;um_{i=1}^{m} &lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;lpha_i = 45.
+&lt;span class=&quot;se&quot;&gt;\]&lt;/span&gt;
+
+Find the value of 
+&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;
+k - &lt;span class=&quot;se&quot;&gt;\p&lt;/span&gt;i^2 &lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;um_{i=1}^{m} g(&lt;span class=&quot;se&quot;&gt;\a&lt;/span&gt;lpha_i).
+&lt;span class=&quot;se&quot;&gt;\]&lt;/span&gt;
+
+Please reason step by step, and put your final answer within &lt;span class=&quot;se&quot;&gt;\b&lt;/span&gt;oxed{}.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;참고로 정답은 21이다. 풀이는 의외로 구간 잘 나누고 주기 함수의 특성만 잘 파악하면 쉽게 풀 수 있는 문제라서 가져왔다.&lt;/p&gt;
+
+&lt;p&gt;어려운 코딩 문제의 경우 주로 쓰이는 코딩 인터뷰 플랫폼인 리트 코드의 문제를 하나 가져오기로 했다. &lt;a href=&quot;https://leetcode.com/problems/strong-password-checker/description/&quot;&gt;420번 문제인 “strong password checker”&lt;/a&gt;로 정했다. 구현 형태의 문제이지만 나름 난이도가 높은 축에 속한다. 코테 문제에서는 이런 식으로 구현 문제가 많이 나오는 편이기 때문에 적절한(?) 예시이다 싶었다.&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Implement a python function &lt;span class=&quot;sb&quot;&gt;`strongPasswordChecker(password: str) -&amp;gt; int`&lt;/span&gt; that returns the minimum number of steps required to make the given password strong according to the following conditions:
+Code format is:
+
+class Solution:
+    def strongPasswordChecker(self, password: str) -&amp;gt; int:
+        # Complete this function
+&lt;span class=&quot;p&quot;&gt;
+-&lt;/span&gt; The password must have at least 6 characters and at most 20 characters.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; It must contain at least one lowercase letter, at least one uppercase letter, and at least one digit.
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; It must not contain three repeating characters in a row (e.g., &quot;aaa&quot; or &quot;111&quot;).
+
+In one step, you may:
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Insert one character into the password,
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Delete one character from the password, or
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; Replace one character of the password with another character.
+
+If the password is already strong, return &lt;span class=&quot;sb&quot;&gt;`0`&lt;/span&gt;.
+
+&lt;span class=&quot;gu&quot;&gt;### Examples:&lt;/span&gt;
+
+strong_password_steps(&quot;a&quot;)
+&lt;span class=&quot;gh&quot;&gt;# Output: 5&lt;/span&gt;
+
+strong_password_steps(&quot;aA1&quot;)
+&lt;span class=&quot;gh&quot;&gt;# Output: 3&lt;/span&gt;
+
+strong_password_steps(&quot;1337C0d3&quot;)
+&lt;span class=&quot;gh&quot;&gt;# Output: 0&lt;/span&gt;
+
+&lt;span class=&quot;gu&quot;&gt;### Constraints:&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`1 &amp;lt;= len(password) &amp;lt;= 50`&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; The password consists only of letters, digits, dots '.', or exclamation marks '!'.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;비교할-모델들&quot;&gt;비교할 모델들&lt;/h2&gt;
+
+&lt;p&gt;모델을 비교할 때는 동일 파라미터 수를 기준으로 비교하는 것이 좋기 때문에 다음과 같은 모델들로 비교해보았다.&lt;/p&gt;
+
+&lt;p&gt;QWQ-32B, EXAONE-32B, Deepseek-R1-32B&lt;/p&gt;
+
+&lt;p&gt;그런데 여기에 추가로 내돈내산하고 있는 &lt;strong&gt;openai의 o3-mini-high&lt;/strong&gt;도 사용해보았다. 추론 속도 차이에 비해 오픈 소스들 성능이 어떤지 정말 궁금해서.&lt;/p&gt;
+
+&lt;p&gt;그리고 최근에 나온 &lt;strong&gt;Grok3&lt;/strong&gt;도 한번 사용해보았다. 비교 시에 따로 신경쓴 부분은 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;우선 각 모델은 모두 추론 모델이다. 추론 모델의 장점은 시간이 오래 걸려도 정밀한 정답을 내놓는 것인데,&lt;/p&gt;
+
+&lt;p&gt;사실 생각보다 &lt;strong&gt;단순한 문제를 해결&lt;/strong&gt;할 때는 &lt;strong&gt;생각을 깊게 할 필요가 없어야 하지 않을까&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;즉, 단순히 &lt;strong&gt;추론 양만 늘려서 성능을 높인 케이스&lt;/strong&gt;라면 실제로 그닥 &lt;strong&gt;효용성이 없을 수 있다는 생각&lt;/strong&gt;을 하게 되었다.&lt;/p&gt;
+
+&lt;p&gt;그러나 시간 차이가 많이 나지 않는 선에서는 추론 모델은, 어려운 문제에 대해서는 충분히 긴 시간을 생각하고 답변을 내놓는게 좋긴 할 것이다.&lt;/p&gt;
+
+&lt;p&gt;그래서 &lt;strong&gt;개인적으로 테스트한 문제들과 이를 구성한 목적&lt;/strong&gt;은 다음과 같다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;정답이 따로 정해져있지는 않지만 추론 과정이 중요한 문제. 과연 추론이 합리적인가?&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;정답이 정해져있지는 않지만 다소 간단한 문제이며, LLM이 추론 과정을 거치더라도 사용자가 원하는 output을 제대로 내어줄 수 있는가?&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;정답이 정해져있는 어려운 문제이며, 추론 시간에 비해 어느 정도로 정교한 답변을 내놓는가 (수학)?&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;정답이 정해져있는 어려운 문제이며, 추론 시간에 비해 어느 정도로 정교한 답변을 내놓는가 (코딩)?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;간단한 실험을 통해 모델의 우위를 단번에 정할 수는 없지만 &lt;strong&gt;어느 정도 합리적 비교가 가능한 선에서의 문제를 select&lt;/strong&gt;했다. 지극히 개인적인 의견이므로 실험 결과로만 참고.&lt;/p&gt;
+
+&lt;p&gt;특히 수학 문제의 경우 단순히 생각하면 오답을 내놓기 쉽고 예외처리를 해야 정답이 나오는 문제를 통해 추론 모델의 파워를 가늠해보고자 하였고,&lt;/p&gt;
+
+&lt;p&gt;코딩 문제의 경우에도 단순히 작성하면 예외 테스트 케이스에 걸리기 쉬운 문제를 통해 추론 모델의 파워를 가늠해보고자 했다.&lt;/p&gt;
+
+&lt;h2 id=&quot;새로운-벤치마크의-필요성이-좀-느껴짐&quot;&gt;새로운 벤치마크의 필요성이 좀 느껴짐&lt;/h2&gt;
+
+&lt;p&gt;갑자기 쓰면서 생각난 이슈인데, 추론 모델이 많이 등장할수록 스코어별로 측정하는 결과물을 복합적으로 비교해야 좀 더 fair한 비교가 되지 않을까 생각된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;gpu&quot;&gt;GPU&lt;/h2&gt;
+
+&lt;p&gt;32B 모델을 GPU에 올리기 위해서는 넉넉하게 72~75G의 메모리가 필요하다. 대용량의 서버가 있다면 한 개로도 충분한 정도이지만, 적당한 사이즈의 GPU로 돌리다보면 메모리 에러가 날 때가 많았다. GPU가 여러대인 상황에서 (코드는 huggingface 기준),&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;transformers&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AutoModelForCausalLM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AutoTokenizer&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torch&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 사용하고 싶은 모델 이름을 지정해주면 됨
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Qwen/QwQ-32B&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#QWQ
+# model_name = &quot;LGAI-EXAONE/EXAONE-Deep-32B&quot; #EXAONE
+# model_name = &quot;deepseek-ai/DeepSeek-R1-Distill-Qwen-32B&quot; #Deepseek
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AutoModelForCausalLM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;model_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;torch_dtype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bfloat16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;trust_remote_code&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;device_map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;auto&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cache_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;모델&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;웨이트를&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;저장하고픈&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;위치&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;디폴트는&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;캐시에&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;저장됨&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AutoTokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위와 같이 model device를 자동으로 매핑하게 해주면 model의 safetensor가 적당히 공간이 남는 gpu에 할당이 되는 형태가 되고, Input을 넣어줄 때는&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;input_ids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;eos_token_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eos_token_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;max_new_tokens&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32768&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;do_sample&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;temperature&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;top_p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.95&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위와 같이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;model.device&lt;/code&gt;로 옮겨주면 된다.&lt;/p&gt;
+
+&lt;p&gt;CUDA에서 인식되는 gpu 중에서 &lt;strong&gt;일부 gpu만 사용하고 싶을 때&lt;/strong&gt;는 그냥 심플하게 파이썬 스크립트를 돌릴 때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CUDA_VISIBLE_DEVICES=&lt;/code&gt; 옵션을 넣어주었다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제-풀이-결과들&quot;&gt;문제 풀이 결과들&lt;/h1&gt;
+
+&lt;p&gt;아래는 실제로 문제를 풀이한 결과를 쭉 정리할 것인데, 너무 방대하므로 보기 귀찮은 사람들은 맨 아래쪽에 정리해둘 것이기 때문에 쭉 내리면 된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;첫번째-문제-스쿨버스-안-골프공-갯수&quot;&gt;첫번째 문제 (스쿨버스 안 골프공 갯수)&lt;/h2&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;https://github.com/user-attachments/assets/b8b0a264-213d-4416-897d-d3a202bad281&quot; width=&quot;500&quot; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&quot;o3-mini-high&quot;&gt;o3-mini-high&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 27 seconds&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 889&lt;/p&gt;
+
+&lt;p&gt;답변(think 제외) :&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Estimating the Volume of the Bus&lt;/strong&gt;
+Assume the interior dimensions of a typical school bus are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Length:&lt;/strong&gt; 35 ft&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Width:&lt;/strong&gt; 7.5 ft&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Height:&lt;/strong&gt; 6 ft&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Thus, the interior volume is: $V_{\text{bus}} = 35 \times 7.5 \times 6 \approx 1575 \text{ cubic feet}.$&lt;/p&gt;
+
+&lt;p&gt;Converting cubic feet to cubic inches (since $1 \text{ ft}^3 = 1728 \text{ in}^3$): $V_{\text{bus}} \approx 1575 \times 1728 \approx 2,721,600 \text{ cubic inches}.$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Estimating the Volume of a Golf Ball&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A standard golf ball has a diameter of approximately 1.68 inches, so its radius is: $r \approx \frac{1.68}{2} = 0.84 \text{ inches}.$
+The volume V of a sphere is given by: $V_{\text{ball}} = \frac{4}{3}\pi r^3 \approx \frac{4}{3}\pi (0.84)^3 \approx 2.48 \text{ cubic inches}.$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Accounting for Packing Efficiency&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Since golf balls are spherical, they do not pack perfectly in a container. A typical packing efficiency for spheres is about 64%: 
+$\text{Effective volume} \approx 0.64 \times 2,721,600 \approx 1,741,824 \text{ cubic inches}.$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Calculating the Number of Golf Balls&lt;/strong&gt;
+Dividing the effective volume of the bus by the volume of one golf ball: $\text{Number of golf balls} \approx \frac{1,741,824}{2.48} \approx 703,000.$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Final Answer&lt;/strong&gt;
+Under these approximations, roughly 700,000 golf balls could fit in a school bus.
+$\boxed{700,000}$&lt;/p&gt;
+
+&lt;h3 id=&quot;grok3&quot;&gt;Grok3&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 98 seconds&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 27325&lt;/p&gt;
+
+&lt;p&gt;답변(think 제외) :&lt;/p&gt;
+
+&lt;p&gt;To determine how many golf balls can fit in a school bus, we need to estimate the volume of a typical school bus, calculate the volume of a single golf ball, and account for the fact that spherical objects like golf balls don’t fill space perfectly due to packing efficiency. Let’s break this down step by step.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 1: Estimate the School Bus Volume&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A standard full-size school bus has approximate interior dimensions that we can use for this calculation. Based on typical designs, let’s assume the interior is &lt;strong&gt;40 feet long&lt;/strong&gt;, &lt;strong&gt;8 feet wide&lt;/strong&gt;, and &lt;strong&gt;6.5 feet high&lt;/strong&gt;. These dimensions account for the usable space inside, considering that the overall height of a bus might be around 10 feet, but the interior height is reduced due to the floor, ceiling, and fixtures. For simplicity, we’ll treat the bus as an empty rectangular prism, ignoring seats and other internal structures, as is common in such estimation problems.&lt;/p&gt;
+
+&lt;p&gt;The volume of the school bus in cubic feet is:&lt;/p&gt;
+
+&lt;p&gt;$V_{\text{bus}} = \text{length} \times \text{width} \times \text{height} = 40 \, \text{ft} \times 8 \, \text{ft} \times 6.5 \, \text{ft}$&lt;/p&gt;
+
+&lt;p&gt;Calculate:&lt;/p&gt;
+
+&lt;p&gt;$40 \times 8 = 320$&lt;/p&gt;
+
+&lt;p&gt;$320 \times 6.5 = 320 \times (6 + 0.5) = (320 \times 6) + (320 \times 0.5) = 1920 + 160 = 2080 \, \text{cubic feet}$&lt;/p&gt;
+
+&lt;p&gt;To work with smaller units later, convert this to cubic inches (since 1 cubic foot = 12 × 12 × 12 = 1728 cubic inches):&lt;/p&gt;
+
+&lt;p&gt;$V_{\text{bus}} = 2080 \times 1728$&lt;/p&gt;
+
+&lt;p&gt;$2000 \times 1728 = 3,456,000$&lt;/p&gt;
+
+&lt;p&gt;$80 \times 1728 = 138,240$&lt;/p&gt;
+
+&lt;p&gt;$3,456,000 + 138,240 = 3,594,240 \, \text{cubic inches}$&lt;/p&gt;
+
+&lt;p&gt;So, the bus has a volume of &lt;strong&gt;3,594,240 cubic inches&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 2: Calculate the Golf Ball Volume&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A standard golf ball has a diameter of &lt;strong&gt;1.68 inches&lt;/strong&gt;, so its radius is:&lt;/p&gt;
+
+&lt;p&gt;$r = \frac{1.68}{2} = 0.84 \, \text{inches}$&lt;/p&gt;
+
+&lt;p&gt;The volume of a sphere is given by:&lt;/p&gt;
+
+&lt;p&gt;$V_{\text{ball}} = \frac{4}{3} \pi r^3$&lt;/p&gt;
+
+&lt;p&gt;First, compute $r^3$:&lt;/p&gt;
+
+&lt;p&gt;$r = 0.84$&lt;/p&gt;
+
+&lt;p&gt;$0.84 \times 0.84 = 0.7056$&lt;/p&gt;
+
+&lt;p&gt;$0.7056 \times 0.84 \approx 0.592704$&lt;/p&gt;
+
+&lt;p&gt;Now calculate:&lt;/p&gt;
+
+&lt;p&gt;$V_{\text{ball}} = \frac{4}{3} \pi \times 0.592704$&lt;/p&gt;
+
+&lt;p&gt;Using $\pi \approx 3.1416$:&lt;/p&gt;
+
+&lt;p&gt;$\frac{4}{3} \approx 1.3333$&lt;/p&gt;
+
+&lt;p&gt;$1.3333 \times 3.1416 \approx 4.1888$&lt;/p&gt;
+
+&lt;p&gt;$4.1888 \times 0.592704 \approx 2.4827$ $\, \text{cubic inches}$&lt;/p&gt;
+
+&lt;p&gt;So, one golf ball occupies approximately &lt;strong&gt;2.4827 cubic inches&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 3: Account for Packing Efficiency&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Golf balls are spherical, so they can’t fill the entire volume of the bus due to the gaps between them. In an ideal scenario, spheres can be arranged in a hexagonal close-packed or face-centered cubic structure, achieving a maximum packing density of:&lt;/p&gt;
+
+&lt;p&gt;$\rho = \frac{\pi}{3\sqrt{2}} \approx 0.7405$&lt;/p&gt;
+
+&lt;p&gt;This means that about 74% of the total volume can be occupied by the golf balls, with the rest being empty space. For this problem, we’ll use a packing density of &lt;strong&gt;0.74&lt;/strong&gt;, which is a common approximation for such estimations, assuming an ordered arrangement is possible.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 4: Compute the Number of Golf Balls&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The number of golf balls N N N that can fit is the bus’s volume multiplied by the packing density, divided by the volume of one golf ball:&lt;/p&gt;
+
+&lt;p&gt;$N = \frac{V_{\text{bus}} \times \rho}{V_{\text{ball}}}$&lt;/p&gt;
+
+&lt;p&gt;Substitute the values:&lt;/p&gt;
+
+&lt;p&gt;$N = \frac{3,594,240 \times 0.74}{2.4827}$&lt;/p&gt;
+
+&lt;p&gt;First, calculate the effective volume occupied by the golf balls:&lt;/p&gt;
+
+&lt;p&gt;$3,594,240 \times 0.74$&lt;/p&gt;
+
+&lt;p&gt;$3,594,240 \times 0.7 = 2,515,968$&lt;/p&gt;
+
+&lt;p&gt;$3,594,240 \times 0.04 = 143,769.6$&lt;/p&gt;
+
+&lt;p&gt;$2,515,968 + 143,769.6 = 2,659,737.6 \, \text{cubic inches}$&lt;/p&gt;
+
+&lt;p&gt;Now divide by the volume of one golf ball:&lt;/p&gt;
+
+&lt;p&gt;$N = \frac{2,659,737.6}{2.4827}$&lt;/p&gt;
+
+&lt;p&gt;Perform the division:&lt;/p&gt;
+
+&lt;p&gt;$2,659,737.6 \div 2.4827$&lt;/p&gt;
+
+&lt;p&gt;To estimate:&lt;/p&gt;
+
+&lt;p&gt;$2.4827 \times 1,071,000 \approx 2,482,700 + (2.4827 \times 71,000)$&lt;/p&gt;
+
+&lt;p&gt;$2.4827 \times 70,000 \approx 173,789$&lt;/p&gt;
+
+&lt;p&gt;$2.4827 \times 1,000 \approx 2,482.7$&lt;/p&gt;
+
+&lt;p&gt;$2,482,700 + 173,789 + 2,482.7 \approx 2,658,971.7$&lt;/p&gt;
+
+&lt;p&gt;$2,659,737.6 - 2,658,971.7 \approx 765.9$&lt;/p&gt;
+
+&lt;p&gt;Adjust with a small increment:&lt;/p&gt;
+
+&lt;p&gt;$2.4827 \times 308 \approx 764.67$&lt;/p&gt;
+
+&lt;p&gt;$1,071,000 + 308 = 1,071,308$&lt;/p&gt;
+
+&lt;p&gt;$2,658,971.7 + 764.67 \approx 2,659,736.37$&lt;/p&gt;
+
+&lt;p&gt;This is very close to $2,659,737.6$, confirming the calculation. Thus:&lt;/p&gt;
+
+&lt;p&gt;$N \approx 1,071,308$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 5: Finalize the Answer&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Considering the approximations in bus dimensions and packing density, we round to a reasonable figure. The result of &lt;strong&gt;1,071,308&lt;/strong&gt; is consistent across methods (e.g., using cubic feet yielded a similar result of 1,071,865). For simplicity and to reflect the estimation nature of the problem, we round to the nearest 10,000:&lt;/p&gt;
+
+&lt;p&gt;$N \approx 1,070,000$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Approximately &lt;strong&gt;1,070,000 golf balls&lt;/strong&gt; can fit in a school bus with interior dimensions of 40 feet by 8 feet by 6.5 feet, accounting for a packing efficiency of 74%. This estimate assumes an empty bus and ideal packing, which aligns with the typical approach to such Fermi-style questions.&lt;/p&gt;
+
+&lt;p&gt;$\boxed{1,070,000}$&lt;/p&gt;
+
+&lt;h3 id=&quot;qwq-32b&quot;&gt;QWQ-32B&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 1075.41 seconds $(\times 39.8)$&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 28947 $(\times 32.6)$&lt;/p&gt;
+
+&lt;p&gt;답변(think 제외) :&lt;/p&gt;
+
+&lt;p&gt;To estimate how many golf balls can fit in a school bus, we start by calculating the volume of the school bus and the volume of a golf ball.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;School Bus Dimensions&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Length: 40 feet&lt;/li&gt;
+  &lt;li&gt;Width: 8 feet&lt;/li&gt;
+  &lt;li&gt;Height: 8 feet&lt;/li&gt;
+  &lt;li&gt;Total volume: $(40 \times 8 \times 8 = 2560)$ cubic feet
+&lt;strong&gt;Convert Bus Volume to Cubic Inches&lt;/strong&gt;:&lt;/li&gt;
+  &lt;li&gt;1 cubic foot = 1728 cubic inches&lt;/li&gt;
+  &lt;li&gt;Total volume in cubic inches: $(2560 \times 1728 = 4,423,680)$ cubic inches
+&lt;strong&gt;Golf Ball Dimensions&lt;/strong&gt;:&lt;/li&gt;
+  &lt;li&gt;Diameter: 1.68 inches (radius: 0.84 inches)&lt;/li&gt;
+  &lt;li&gt;Volume of a golf ball: $(\frac{4}{3} \pi r^3 = \frac{4}{3} \pi (0.84)^3 \approx 2.48)$ cubic inches
+&lt;strong&gt;Calculate Number of Golf Balls&lt;/strong&gt;:&lt;/li&gt;
+  &lt;li&gt;Total volume divided by golf ball volume: $(\frac{4,423,680}{2.48} \approx 1,783,742)$
+&lt;strong&gt;Consider Packing Efficiency&lt;/strong&gt;:&lt;/li&gt;
+  &lt;li&gt;Spheres can be packed with a maximum density of about 74% (hexagonal close packing)&lt;/li&gt;
+  &lt;li&gt;Adjusted number: $(1,783,742 \times 0.74 \approx 1,320,000)$
+&lt;strong&gt;Consider Usable Space&lt;/strong&gt;:&lt;/li&gt;
+  &lt;li&gt;Subtract volume occupied by seats and other structures. Assuming seats take up about 630 cubic feet (1,088,640 cubic inches):&lt;/li&gt;
+  &lt;li&gt;Usable volume: $(4,423,680 - 1,088,640 = 3,335,040)$ cubic inches&lt;/li&gt;
+  &lt;li&gt;Adjusted number: $(\frac{3,335,040}{2.48} \times 0.74 \approx 1,000,000)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After considering the packing efficiency and the usable space within the school bus, the final estimate is approximately one million golf balls.&lt;/p&gt;
+
+&lt;p&gt;$\boxed{1,000,000}$&lt;/p&gt;
+
+&lt;h3 id=&quot;exaone-32b&quot;&gt;EXAONE-32B&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 881.52 seconds $(\times32.6)$&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 23396 $(\times 26.3)$&lt;/p&gt;
+
+&lt;p&gt;답변(think 제외) :&lt;/p&gt;
+
+&lt;p&gt;To determine how many golf balls can fit in a school bus, we start by estimating the dimensions of a typical school bus and the volume of a golf ball.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Assumptions and Calculations:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;School Bus Dimensions:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Length: 35 feet (420 inches)&lt;/li&gt;
+  &lt;li&gt;Width: 8 feet (96 inches)&lt;/li&gt;
+  &lt;li&gt;Height: 9.5 feet (114 inches)&lt;/li&gt;
+  &lt;li&gt;Volume: $420 \, \text{in} \times 96 \, \text{in} \times 114 \, \text{in} = 4,596,480 \, \text{cubic inches}$
+&lt;strong&gt;Golf Ball Dimensions:&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Diameter: 1.68 inches (radius = 0.84 inches)&lt;/li&gt;
+  &lt;li&gt;Volume of one golf ball: $\frac{4}{3} \pi (0.84)^3 \approx 2.483 \, \text{cubic inches}$
+&lt;strong&gt;Packing Efficiency:&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;For random packing of spheres, the efficiency is approximately 64% (0.64).
+&lt;strong&gt;Total Number of Golf Balls:&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Calculate the effective volume occupied by golf balls considering packing efficiency:
+$\text{Total Volume} \times \text{Packing Efficiency} = 4,596,480 \, \text{in}^3 \times 0.64 = 2,941,755.2 \, \text{in}^3$&lt;/li&gt;
+  &lt;li&gt;Divide by the volume of one golf ball:
+$\frac{2,941,755.2 \, \text{in}^3}{2.483 \, \text{in}^3/\text{golf ball}} \approx 1,184,758$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Rounding to a reasonable significant figure, the approximate number of golf balls that can fit in a school bus is:&lt;/p&gt;
+
+&lt;p&gt;$\boxed{1,200,000}$&lt;/p&gt;
+
+&lt;h3 id=&quot;deepseek-r1-32b&quot;&gt;Deepseek-R1-32B&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 317.70 seconds ($\times 11.8$)&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 8487&lt;/p&gt;
+
+&lt;p&gt;답변(think 제외) :&lt;/p&gt;
+
+&lt;p&gt;Approximately 500,000 to 1,000,000 golf balls can fit in a school bus, with a more precise estimate around 700,000 when accounting for packing density.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step-by-Step Explanation:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Determine the dimensions of a school bus:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Length: 30 feet (360 inches)&lt;/li&gt;
+  &lt;li&gt;Width: 8 feet (96 inches)&lt;/li&gt;
+  &lt;li&gt;Height: 6 feet (72 inches)
+&lt;strong&gt;Calculate the volume of the school bus in cubic feet:&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Volume = 30 ft × 8 ft × 6 ft = 1,440 cubic feet
+&lt;strong&gt;Convert the bus volume to cubic inches:&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;1 cubic foot = 1,728 cubic inches&lt;/li&gt;
+  &lt;li&gt;Bus volume = 1,440 × 1,728 = 2,488,320 cubic inches
+&lt;strong&gt;Calculate the volume of a golf ball:&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Diameter = 1.68 inches → Radius = 0.84 inches&lt;/li&gt;
+  &lt;li&gt;Volume = (4/3)πr³ ≈ 2.48 cubic inches
+&lt;strong&gt;Determine the number of golf balls without considering packing efficiency:&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Number = 2,488,320 ÷ 2.48 ≈ 1,003,355 golf balls
+&lt;strong&gt;Adjust for packing efficiency (approximately 74% for spheres):&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Number ≈ 1,003,355 × 0.74 ≈ 742,488 golf balls
+&lt;strong&gt;Consider practical limitations (e.g., seats, structure):&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;The estimate is adjusted to a range of 500,000 to 1,000,000 golf balls, with a more precise figure around 700,000.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; Approximately 500,000 to 1,000,000 golf balls can fit in a school bus, with a more precise estimate around 700,000 considering packing density and practical limitations.&lt;/p&gt;
+
+&lt;p&gt;$\boxed{700,000}$&lt;/p&gt;
+
+&lt;h2 id=&quot;두번째-문제-caption-paraphrasing&quot;&gt;두번째 문제 (Caption paraphrasing)&lt;/h2&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;https://github.com/user-attachments/assets/1402206e-c47a-45ff-b83a-a96212d1444a&quot; width=&quot;500&quot; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&quot;o3-mini-high-1&quot;&gt;o3-mini-high&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 21 seconds&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 0 (N/A)&lt;/p&gt;
+
+&lt;p&gt;답변 : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;60(list), 60(set), 80(list), 80(set)&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;A toy cat is immersed in a soapy bath inside a miniature bathtub.
+Inside a small tub filled with soapy water, a toy cat is taking a bath.
+A miniature bathtub holds soapy water while a toy cat enjoys a bath.
+
+A small plastic cat is getting washed and scrubbed in a plastic tub.
+In a plastic tub, a tiny plastic cat is being cleaned and rubbed.
+A diminutive plastic cat undergoes washing and rubbing in a plastic container.
+
+Someone is playing with a toy deer.
+A person is engaging in play with a deer toy.
+There is an individual interacting with a deer toy.
+
+A person feigns bathing a tiny plastic cat with a miniature bathroom playset.
+Using a small-scale bathroom play set, an individual pretends to wash a small plastic cat.
+An individual simulates giving a bath to a diminutive plastic cat with an equally small bathroom play set.
+
+Someone is washing the doll’s head in a basin of soapy water.
+The doll’s head is being cleaned with soapy water by an individual.
+An individual cleans the head of the doll using water mixed with soap.
+
+A hand with pink nails is cleaning a kitty toy inside a miniature bathtub.
+Inside a tiny bathtub, a hand sporting pink nails is washing a toy kitty.
+A pink-nail adorned hand is seen cleaning a kitty toy in a small bathtub.
+
+A person is bathing a toy cat in a small bathtub.
+In a little tub, an individual is washing a toy cat.
+An individual gives a bath to a toy cat in a petite bathtub.
+
+A toy cat enjoying a bubble bath is being washed and groomed.
+In a playful bubble bath, a toy cat is receiving washing and grooming.
+A toy cat, immersed in a bubble bath, is undergoing both cleaning and grooming.
+
+A toy kitten is taking a bath in a white bathtub.
+In a white tub, a toy kitten is being bathed.
+A toy kitten is having its bath in a pristine white bathtub.
+
+An individual cleans a plastic toy cat in an extremely small bathtub.
+In a very tiny bathtub, a person washes a plastic toy cat.
+A plastic toy cat is being cleaned by someone in a very diminutive tub.
+
+A person places a toy cat into a tub and washes it with a brush.
+An individual sets the toy cat in a tub and cleans it using a brush.
+The toy cat is put into a tub and scrubbed with a brush by a person.
+
+Someone is washing a toy cat in a water-filled tub.
+An individual is cleaning a toy cat inside a tub of water.
+A toy cat is being scrubbed in a tub filled with water by someone.
+
+A toy cat sits in a small toy bathtub filled with water and bubbles while a girl cleans it with a scrubber.
+In a little bathtub with water and bubbles, a toy cat is being washed by a girl using a scrubber.
+A girl is scrubbing a toy cat placed in a small bathtub containing water and bubbles.
+
+A small pet shop cat is receiving a bath and being washed with a tiny brush.
+A little pet shop cat is being bathed and cleaned using a small brush.
+An adorable pet shop cat is undergoing a bath, washed with a little brush.
+
+A girl is providing her charming toy kitty with a pleasant bubble bath.
+The girl treats her adorable toy kitty to a refreshing bubble bath.
+Her delightful toy kitty is receiving a lovely bubble bath from a girl.
+
+In a compact bathroom, the small toys are getting showered.
+The tiny toys are receiving a shower in a modest bathroom.
+In a little bathroom, small toys are being bathed with a shower.
+
+A woman is washing the head of an orange cat.
+The head of the orange cat is being cleaned by a woman.
+A woman is tidying up the head of the orange-colored cat.
+
+A woman is placing the orange doll in a shower.
+The orange doll is being set up for a shower by a woman.
+A woman is preparing the orange doll for a bath in the shower.
+
+A woman is placing the small cat into water and washing it.
+The small cat is being immersed in water and cleaned by a woman.
+A woman puts the tiny cat into water and gives it a thorough cleaning.
+
+A pony doll featuring large green eyes is bathing in a tiny bathtub.
+The pony doll with big green eyes is taking a bath in a small tub.
+A doll in the shape of a pony with prominent green eyes is having a bath in a diminutive bathtub.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;grok3-1&quot;&gt;Grok3&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 93 seconds&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 36220&lt;/p&gt;
+
+&lt;p&gt;답변 : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;60(list), 60(set), 80(list), 80(set)&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;A toy cat is taking a bath in a toy bathtub filled with soapy water.  
+Soapy water fills a toy bathtub where a toy cat is bathing.  
+Bathing in soapy water, a toy cat is in a toy bathtub.  
+
+A small cat made of plastic is being washed and rubbed in a tub also made of plastic.  
+In a plastic tub, someone is washing and rubbing a small plastic cat.  
+Washing and rubbing are being applied to a small plastic cat inside a plastic tub.  
+
+A person is engaging in play with a toy deer.  
+There is an individual interacting playfully with a deer figurine.  
+Someone is having fun with a toy that resembles a deer.  
+
+Using a miniature bathroom play set, a person is simulating the bathing of a small plastic cat.  
+A small plastic cat is being pretend-bathed by a person with the help of an equally tiny bathroom play set.  
+In a make-believe scenario, a person uses a small bathroom play set to bathe a plastic cat of similar size.  
+
+Someone is cleaning the head of a doll using soapy water.  
+In soapy water, the head of a doll is being washed by a person.  
+A person is washing the doll’s head with soapy water.  
+
+A hand, notable for its pink nails, is washing a toy kitten in a small bathtub.  
+In a tiny bathtub, a kitty toy is being cleaned by a hand that has pink nails.  
+Cleaning a kitty toy in a miniature bathtub is a hand that has pink nails.  
+
+An individual is giving a bath to a toy cat in a small bathtub.  
+In a tiny bathtub, a person is bathing a toy cat.  
+A toy cat is being bathed by a person using a little bathtub.  
+
+A toy cat is getting washed and groomed while in a bubble bath designed for toys.  
+In a toy-sized bubble bath, a toy cat is being cleaned and cared for.  
+Washing and grooming are being performed on a toy cat that is in a toy bubble bath.  
+
+A toy kitten is being bathed in a bathtub that is white.  
+In a white-colored bathtub, a toy kitten is receiving a bath.  
+A bath is being given to a toy kitten inside a white bathtub.  
+
+Using a tiny bathtub, a person is cleaning a toy cat made of plastic.  
+A plastic toy cat is being cleaned by a person in a bathtub of very small size.  
+In a minuscule bathtub, a person is washing a plastic cat toy.  
+
+A person places a toy cat into a tub and proceeds to wash it using a brush.  
+Using a brush, a person washes a toy cat after putting it in a tub.  
+A toy cat is placed in a tub by a person who then washes it with a brush.  
+
+A person is washing a toy cat inside a tub filled with water.  
+In a tub containing water, someone is cleaning a toy cat.  
+A toy cat is being cleaned by someone using a water-filled tub.  
+
+A girl is using a scrubber to wash a toy cat that is in a small toy bathtub filled with water and bubbles.  
+In a tiny toy bathtub containing water and bubbles, a toy cat is being washed by a girl with a scrubber.  
+A toy cat, placed in a small bathtub with bubbly water, is being cleaned by a girl using a scrubber.  
+
+A toy cat from the Little Pet Shop is being given a bath and cleaned with a small brush.  
+Using a tiny brush, someone is washing a Little Pet Shop cat toy during its bath.  
+A bath is being given to a Little Pet Shop cat toy, and it is being washed with a little brush.  
+
+A girl is providing a pleasant bubble bath to her cute toy kitten.  
+Her charming toy kitty is receiving a lovely bubble bath from a girl.  
+A nice bubble bath is being given by a girl to her adorable toy cat.  
+
+In a miniature bathroom setting, small toys are being washed as if in a shower.  
+The small toys are getting a shower in a tiny bathroom designed for them.  
+A shower is being simulated for the small toys within a small-scale bathroom.  
+
+A woman is washing the head of a cat that is orange.  
+The head of an orange cat is being cleaned by a woman.  
+An orange cat’s head is getting cleaned by a woman.  
+
+A woman is positioning the orange doll so that it can take a shower.  
+The orange doll is being placed by a woman to receive a shower.  
+To give it a shower, a woman is setting the orange doll in place.  
+
+A woman is placing the small cat into water and proceeding to clean it.  
+Into the water, a woman is putting the small cat and then cleaning it.  
+The small cat is being put into water by a woman who is also cleaning it.  
+
+A pony doll that has large green eyes is bathing in a small bathtub.  
+In a miniature bathtub, a pony doll with big green eyes is taking a bath.  
+Taking a bath in a tiny bathtub is a pony doll characterized by its big green eyes.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;qwq-32b-1&quot;&gt;QWQ-32B&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 180.73 seconds$(\times 8.6)$&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 6498&lt;/p&gt;
+
+&lt;p&gt;답변 : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;60(list), 60(set), 80(list), 80(set)&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a plastic feline toy is submerged in sudsy water within a miniature bathtub
+The cat-shaped plaything is immersed in bubbly liquid inside a small-scale bath basin.
+A miniature cat toy is being cleansed with soapy solution in a scaled-down bathroom set.
+
+A diminutive plastic feline is cleansed and massaged in a tiny plastic container.
+The little plastic cat toy is scrubbed and stroked while submerged in a small plastic basin.
+A small plastic cat figure is undergoing cleaning and gentle rubbing inside a miniature plastic tub.
+
+An individual is interacting with a deer-shaped play object.
+A person is engaging with a toy deer during playtime.
+Someone is manipulating a deer-themed toy in a playful manner.
+
+An individual acts out washing a tiny plastic cat with a miniature bathroom playset.
+Someone simulates bathing a small plastic feline using a scaled-down bathroom toy set.
+A person role-plays cleaning a diminutive plastic cat with a toy bathroom ensemble of matching size.
+
+The doll's head is being cleansed with soapy solution by an individual.
+Someone is washing the head portion of a doll using sudsy water.
+A person is scrubbing the upper part of a doll's body in soapy liquid.
+
+A hand adorned with pink nails is scrubbing a kitten toy in a tiny bathtub.
+The fingers with pink nail polish are cleaning a small cat figurine in a miniature bath.
+A manicured hand with pink-colored nails tends to a kitty toy in a diminutive tub.
+
+An individual is rinsing a feline toy in a diminutive bathtub setup.
+A person is submerging a toy cat in a small bath tub for cleaning.
+Someone bathes a cat-shaped plaything using a little plastic tub.
+
+A plastic cat toy is in a bubble-filled bath and is being cleaned thoroughly.
+The toy cat is being washed and groomed while surrounded by suds in a tiny tub.
+A miniature cat figurine is undergoing a sudsy cleansing in a bubble-filled basin.
+
+A toy kitten is receiving a bath in a white-colored bathtub.
+The small cat toy is immersed in soapy water within a white tub.
+A kitten-shaped plaything is getting cleansed in a pristine white bathtub.
+
+A woman is scrubbing a plastic cat toy in an extremely small bathtub.
+An individual cleans a tiny plastic feline in a bath tub of minimal size.
+A person is washing a miniature plastic cat in a very petite bathtub.
+
+A person places a toy cat into a tub and scrubs it with a brush.
+Someone positions a cat-shaped toy in a bath tub and cleans it using a brush.
+An individual is using a brush to wash a feline toy submerged in a small tub.
+
+Someone is cleaning a cat toy in a water-filled tub.
+A person is scrubbing a toy cat in a tub containing water.
+An individual is washing a feline plaything in a water-filled basin.
+
+A miniature cat toy sits in a small tub filled with water and bubbles, being scrubbed by a girl.
+The toy cat is in a tiny bathtub with water and foam, being washed with a scrubber by a child.
+A girl is using a scrubber to clean a cat toy in a miniature tub with bubbles and water.
+
+A petite Pet Shop cat toy is being bathed with a small brush.
+The little cat from Pet Shop is getting washed using a tiny brush.
+A miniature Pet Shop feline toy is scrubbed with a diminutive brush during bath time.
+
+A young girl is giving her fluffy toy cat a sudsy bath.
+The child is providing her soft toy kitten with a bubbly cleansing.
+A girl is bathing her adorable kitten toy in foamy water.
+
+Small toys are being rinsed under a stream of water in a tiny bathroom.
+Miniature playthings are being hosed down in a scaled-down bathroom area.
+The little toys are undergoing a shower in a diminutive bathroom setup.
+
+A woman is washing the head of an orange-colored cat toy.
+The lady is scrubbing the head section of an orange-hued doll.
+A woman cleans the upper part of an orange cat figure with water.
+
+A woman is assisting an orange doll take a shower.
+The female is positioning the orange doll under a showerhead for cleansing.
+A woman helps the orange-colored doll get a shower.
+
+A woman submerges a small cat toy into water and cleans it meticulously.
+The lady is immersing the tiny cat figure in water and scrubbing it thoroughly.
+A woman places a miniature cat into water and scrubs it clean.
+
+A doll resembling a pony with large green eyes is in a tiny bathtub.
+The pony-shaped doll, featuring big green eyes, is taking a bath in a small tub.
+A pony doll with oversized green eyes is submerged in a miniature bathtub.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;exaone-32b-1&quot;&gt;EXAONE-32B&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 211.85 seconds $(\times10.1)$&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 9243&lt;/p&gt;
+
+&lt;p&gt;답변 : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;33(list), 33(set), 53(list), 53(set)&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a miniature tub holds a plastic cat soaking in bubbly liquid
+someone's scrubbing a small feline toy in a child-sized bathroom setup
+in a toy sink, a feline figurine is being washed with soapy water
+
+a plastic feline is being scrubbed and massaged in a tub
+in a small tub, a toy cat's surface is being cleaned with soapy water
+someone is bathing a tiny cat model in a bathtub using a sponge
+
+a person interacts with a deer-shaped toy while laughing
+a deer figurine is being amused by a child
+a youngster is entertaining a stuffed deer
+
+a child uses a miniature bathroom set to simulate washing a tiny cat figurine
+someone is role-playing a cat bath scenario with a scaled-down bathroom accessory
+in a play scenario, an adult imitates cleaning a small cat model with a tiny sink setup
+
+a soapy solution is used to clean a doll's scalp by a caregiver
+someone is rinsing the top part of a plastic doll in bubbly liquid
+a person applies soap to a toy doll's forehead and rinses it off
+
+a hand with pink nails wiping a kitty toy in a mini tub
+the feline toy's fur is being lathered in a plastic basin by a child
+an individual dries a small cat model after soaking in a compact tub
+
+a person massages a toy feline in a compact bathroom playmat
+a kiddie tub holds a plastic cat being squirted with soapy water
+someone is pretending to groom a small cat in a scaled-down bathroom
+
+a toddler giggles as they &quot;wash&quot; a plush cat in a toy sink
+a caretaker suds up a miniature cat in a tiny tub using dish soap
+in a dollhouse bathroom, a figurine cat is being scrubbed with a toothbrush
+
+a girl uses bubble bath to cleanse a kitty figurine in a palm-sized tub
+a child's play set includes a cat getting hosed in a miniature shower
+a tiny tub's occupant, a plastic cat, is being patted dry with a cloth
+
+a parent demonstrates washing a toy cat in a child-sized tub for their kid
+the orange doll's fur is soaked in a small basin by a woman
+a woman simulates bathing an orange-colored toy cat in a mini tub
+
+a woman squeezes soap onto a pony figurine's coat in a teeny tub
+a pony toy with large green eyes is half-submerged in a shallow tub
+someone is dunking a horse-themed plaything in a tiny basin for cleaning
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;deepseek-r1-32b-1&quot;&gt;Deepseek-R1-32B&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 152.59 seconds ($\times 7.3$)&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 5874&lt;/p&gt;
+
+&lt;p&gt;답변 : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;60(list), 60(set), 80(list), 79(set)&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;A toy cat is taking a bath in soapy water inside a toy bathtub.
+In a toy bathtub, a toy cat is being washed with soap.
+A toy cat is submerged in soapy water within a toy bathtub.
+
+A small plastic cat is being cleaned and scrubbed in a plastic tub.
+In a plastic tub, a tiny plastic cat is being washed and rubbed.
+A plastic cat is being scrubbed and rinsed in a plastic container.
+
+Someone is playing with a deer-shaped toy.
+A person is interacting with a deer toy.
+There is an individual engaging with a toy deer.
+
+A person is pretending to bathe a small plastic cat using a miniature bathroom set.
+Using a small bathroom playset, a person is bathing a tiny plastic cat.
+A person is acting out a bathing scenario with a small plastic cat and a tiny bathroom set.
+
+The head of a doll is being cleaned in soapy water by someone.
+Someone is washing the doll's head with soap and water.
+A person is scrubbing the doll's head in soapy water.
+
+A hand with pink nails is cleaning a kitty toy in a tiny bathtub.
+In a miniature bathtub, a hand with pink nails is washing a cat toy.
+A hand adorned with pink nails is scrubbing a toy kitten in a small tub.
+
+A person is bathing a toy cat in a little bathtub.
+In a small bathtub, a person is washing a toy cat.
+A person is giving a toy cat a bath in a tiny tub.
+
+A toy cat in a toy bubble bath is being washed and groomed.
+In a toy bubble bath, a toy cat is being cleaned and brushed.
+A toy cat is being bathed and groomed in a bubble-filled toy tub.
+
+A toy kitten is getting a bath in a white bathtub.
+In a white bathtub, a toy kitten is being washed.
+A toy kitten is submerged in water in a white tub.
+
+A person is cleaning a plastic toy cat in a very small bathtub.
+In a tiny bathtub, a person is scrubbing a plastic toy cat.
+A plastic toy cat is being washed in a very small bathtub by someone.
+
+A person is placing a toy cat in a tub and washing it with a brush.
+In a tub, a person is washing a toy cat with a brush.
+A person is scrubbing a toy cat in a tub using a brush.
+
+Someone is cleaning a toy cat in a water-filled tub.
+In a water tub, someone is washing a toy cat.
+A person is bathing a toy cat in a tub filled with water.
+
+A toy cat is in a small toy bathtub with water, bubbles, and a girl washing it with a scrubber.
+In a small toy bathtub, a toy cat is being washed by a girl with a scrubber.
+A girl is scrubbing a toy cat in a small tub filled with water and bubbles.
+
+A little pet shop cat is getting a bath and being washed with a small brush.
+In a small tub, a pet shop cat is being bathed with a tiny brush.
+A little cat from a pet shop is being washed and groomed with a small brush.
+
+A girl is giving her adorable toy kitty a nice bubble bath.
+In a bubble bath, a girl is washing her cute toy kitten.
+A girl is providing her adorable toy cat with a luxurious bubble bath.
+
+Small toys are being showered in a small bathroom.
+In a tiny bathroom, small toys are being cleaned under water.
+Small toys are being rinsed in a miniature bathroom setting.
+
+A woman is cleaning the head of an orange cat.
+An orange cat's head is being washed by a woman.
+A woman is scrubbing the head of an orange cat.
+
+A woman is putting an orange doll in the shower.
+An orange doll is being placed in the shower by a woman.
+A woman is giving an orange doll a shower.
+
+A woman is putting a small cat into the water and cleaning it.
+A small cat is being placed in water and washed by a woman.
+A woman is submerging a small cat in water and cleaning it.
+
+A pony doll with big green eyes is taking a bath in a tiny bathtub.
+In a tiny bathtub, a pony doll with large green eyes is being bathed.
+A pony doll with big green eyes is submerged in water in a small tub.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;세번째-문제-2018년도-수능-수학-문제-30번&quot;&gt;세번째 문제 (2018년도 수능 수학 문제 30번)&lt;/h2&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;https://github.com/user-attachments/assets/1f3a726d-5f2a-4f6c-8c69-f1bb9952b61d&quot; width=&quot;500&quot; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&quot;o3-mini-high-2&quot;&gt;o3-mini-high&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 55 seconds&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 1413&lt;/p&gt;
+
+&lt;p&gt;답변(think 제외) : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;오답&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;답변요약 : 적분 구간에 대한 조건화 실패&lt;br /&gt;
+&lt;strong&gt;Final Answer&lt;/strong&gt;&lt;br /&gt;
+Thus, the final value is $\boxed{23}.$&lt;/p&gt;
+
+&lt;h3 id=&quot;grok3-2&quot;&gt;Grok3&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 97 seconds&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 30894&lt;/p&gt;
+
+&lt;p&gt;답변(think 제외) : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;오답&lt;/code&gt;
+답변요약 : 적분 구간에 대한 조건화 실패&lt;br /&gt;
+&lt;strong&gt;Final Answer&lt;/strong&gt;&lt;br /&gt;
+$\boxed{23}.$&lt;/p&gt;
+
+&lt;h3 id=&quot;exaone-32b-2&quot;&gt;EXAONE-32B&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 1265.00 seconds $(\times23.0)$&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 30510 $(\times 21.6)$&lt;/p&gt;
+
+&lt;p&gt;답변(think 제외) : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;오답&lt;/code&gt;
+답변요약 : 적분 구간에 대한 조건화 실패&lt;br /&gt;
+&lt;strong&gt;Final Answer&lt;/strong&gt;&lt;br /&gt;
+$\boxed{23}.$&lt;/p&gt;
+
+&lt;h3 id=&quot;deepseek-r1-32b-2&quot;&gt;Deepseek-R1-32B&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 2109.8 seconds ($\times 38.4$)&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 46070 ($\times 32.6$)&lt;/p&gt;
+
+&lt;p&gt;답변(think 제외) : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;오답&lt;/code&gt;
+답변요약 : 걍 틀림&lt;br /&gt;
+&lt;strong&gt;Final Answer&lt;/strong&gt;&lt;br /&gt;
+$\boxed{50}.$&lt;/p&gt;
+
+&lt;h2 id=&quot;네번째-문제-리트코드&quot;&gt;네번째 문제 (리트코드)&lt;/h2&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+    &lt;img src=&quot;https://github.com/user-attachments/assets/9b202087-46b2-421c-b610-b0140768834d&quot; width=&quot;500&quot; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&quot;o3-mini-high-3&quot;&gt;o3-mini-high&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 57 seconds&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 1625&lt;/p&gt;
+
+&lt;p&gt;답변(코드만) : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;정답&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;strongPasswordChecker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Check for missing types: lowercase, uppercase, digit
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;islower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; \
+                        &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; \
+                        &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isdigit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Find repeating sequences of 3 or more characters
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;repeats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;run_len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;repeats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Case 1: Password too short: insertions needed.
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Case 2: Password length is acceptable.
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# Each repeating sequence of length L needs L//3 replacements.
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_len&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repeats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Case 3: Password too long: need deletions.
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Optimize deletions by targeting repeating sequences:
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# First, we try to reduce replacements by deleting in groups with (L % 3 == 0)
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repeats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:]&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# copy the list so we can modify lengths
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;c1&quot;&gt;# Remove one character from this group to reduce one replacement.
+&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Then, for groups with L % 3 == 1, deleting 2 characters reduces a replacement.
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# How many deletions can we perform? We delete in chunks of 2.
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;needed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;needed&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;needed&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Finally, for any remaining groups, remove as many as possible.
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# Remove as many characters as possible; each 3 deleted reduces one replacement.
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;needed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;remove&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;needed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;remove&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;remove&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# After deletions, calculate how many replacements are needed for the repeats.
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_len&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rep_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Total steps = deletions performed + maximum of missing types and replacements.
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;grok3-3&quot;&gt;Grok3&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 380 seconds&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 118329&lt;/p&gt;
+
+&lt;p&gt;답변(코드만) : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;오답(36/54)&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;strongPasswordChecker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# Get the length of the password
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Calculate missing character types
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;has_lower&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;islower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;has_upper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;has_digit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isdigit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;missing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;has_lower&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has_upper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has_digit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Calculate operations needed for repeating sequences
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;repeat_ops&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# Count length of current sequence
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;repeat_ops&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Integer division for floor(k / 3)
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Determine minimum steps based on length
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;missing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repeat_ops&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;missing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repeat_ops&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# n &amp;gt; 20
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;missing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repeat_ops&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;qwq-32b-2&quot;&gt;QWQ-32B&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 :  2053.40 seconds$(\times 36.0)$&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 65257 $(\times 40.2)$&lt;/p&gt;
+
+&lt;p&gt;답변(코드만) : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;오답(28/54)&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;strongPasswordChecker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Need at least 6 characters with required types
+&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# Check for missing character types
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;has_lower&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has_upper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has_digit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;islower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;has_lower&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;has_upper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isdigit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;has_digit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has_lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has_upper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has_digit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Compute runs of repeating characters
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;current_char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;current_length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;current_length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;current_char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;current_length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;total_repeats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total_repeats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total_repeats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;surplus&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calculate_reduction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;mod0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;mod1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;mod2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;mod0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;mod1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;mod2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+                &lt;span class=&quot;n&quot;&gt;reduction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
+
+                &lt;span class=&quot;c1&quot;&gt;# Process mod0 runs first
+&lt;/span&gt;                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mod0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;possible&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;possible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;reduction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reduction&lt;/span&gt;
+
+                &lt;span class=&quot;c1&quot;&gt;# Process mod1 runs next
+&lt;/span&gt;                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mod1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;possible&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;possible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;reduction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;c1&quot;&gt;# Adjust for overstepping
+&lt;/span&gt;                        &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;reduction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+                        &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reduction&lt;/span&gt;
+
+                &lt;span class=&quot;c1&quot;&gt;# Process mod2 runs last
+&lt;/span&gt;                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mod2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;possible&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;possible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;reduction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;reduction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+                        &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reduction&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;reduction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;calculate_reduction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surplus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;adjusted_repeats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total_repeats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reduction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;surplus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adjusted_repeats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;exaone-32b-3&quot;&gt;EXAONE-32B&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 1952.09 seconds $(\times34.2)$&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 57913 $(\times 35.6)$&lt;/p&gt;
+
+&lt;p&gt;답변(코드만) : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;오답(51/54)&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;strongPasswordChecker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# Check for missing character types
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;has_lower&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;islower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;has_upper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;has_digit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isdigit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;has_lower&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has_upper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has_digit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Calculate runs of repeating characters
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;current_char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;current_char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;required_repeats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;L&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;L&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;insert_needed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert_needed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;required_repeats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;required_repeats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# Case when length exceeds 20
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;delete_needed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;mod0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mod1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mod2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;L&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;mod&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;L&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mod&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;mod0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;L&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mod&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;mod1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;L&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;mod2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;L&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;adjusted_repeats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;required_repeats&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;del_remaining&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delete_needed&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;# Process mod0 first (each can take 1 deletion to reduce repeats by 1)
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;use_mod0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mod0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;del_remaining&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;adjusted_repeats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;use_mod0&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;del_remaining&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;use_mod0&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;# Process mod1 (each 2 deletions reduce repeats by 1 per run)
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;del_remaining&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;possible_pairs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;del_remaining&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;use_pairs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;possible_pairs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mod1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;adjusted_repeats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;use_pairs&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;del_remaining&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;use_pairs&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;# Process mod2 (each 3 deletions reduce repeats by 1)
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;del_remaining&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;possible_triple&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;del_remaining&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;adjusted_repeats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;possible_triple&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;del_remaining&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;possible_triple&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;# Total steps is deletions plus max of adjusted_repeats and missing_types
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delete_needed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;adjusted_repeats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;missing_types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;deepseek-r1-32b-3&quot;&gt;Deepseek-R1-32B&lt;/h3&gt;
+
+&lt;p&gt;추론 시간 : 1152.13 seconds ($\times 20.2$)&lt;/p&gt;
+
+&lt;p&gt;추론 길이 : 41756 ($\times 25.7$)&lt;/p&gt;
+
+&lt;p&gt;답변(코드만) : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;오답(24/54)&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;strongPasswordChecker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# Compute missing types
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;has_lower&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;islower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;has_upper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;has_digit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isdigit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;missing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has_lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;missing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has_upper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;missing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;has_digit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;missing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Compute runs of 3 or more identical characters
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Though constraints say len &amp;gt;=1
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Calculate the steps needed for repeating sequences
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;sum_repeats_steps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;missing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum_repeats_steps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;missing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum_repeats_steps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;del_num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;del_num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum_repeats_steps&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;결과-정리&quot;&gt;결과 정리&lt;/h1&gt;
+
+&lt;h2 id=&quot;1번-문제-스쿨버스-안-골프공-갯수&quot;&gt;1번 문제 (스쿨버스 안 골프공 갯수)&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;정답 여부(정답 없음)&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;처리 시간&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;추론 길이&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;단위 시간당 추론(char/sec)&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Rank&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Score&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;o3-mini-high&lt;/td&gt;
+      &lt;td&gt;700000개&lt;/td&gt;
+      &lt;td&gt;27초&lt;/td&gt;
+      &lt;td&gt;880&lt;/td&gt;
+      &lt;td&gt;32.6&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Grok3&lt;/td&gt;
+      &lt;td&gt;1070000개&lt;/td&gt;
+      &lt;td&gt;98초&lt;/td&gt;
+      &lt;td&gt;27325&lt;/td&gt;
+      &lt;td&gt;278.8&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;QWQ:32B&lt;/td&gt;
+      &lt;td&gt;1000000개&lt;/td&gt;
+      &lt;td&gt;1075.41초&lt;/td&gt;
+      &lt;td&gt;28947&lt;/td&gt;
+      &lt;td&gt;26.9&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;EXAONE-Deep:32B&lt;/td&gt;
+      &lt;td&gt;1200000개&lt;/td&gt;
+      &lt;td&gt;881.52초&lt;/td&gt;
+      &lt;td&gt;23396&lt;/td&gt;
+      &lt;td&gt;26.5&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Deepseek-R1:32B&lt;/td&gt;
+      &lt;td&gt;700000개&lt;/td&gt;
+      &lt;td&gt;317.70초&lt;/td&gt;
+      &lt;td&gt;8487&lt;/td&gt;
+      &lt;td&gt;26.7&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;2번-문제-caption-paraphrasing&quot;&gt;2번 문제 (Caption Paraphrasing)&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;정답 여부(60/60/80/80)&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;처리 시간&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;추론 길이&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;단위 시간당 추론(char/sec)&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Rank&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Score&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;o3-mini-high&lt;/td&gt;
+      &lt;td&gt;60/60/80/80 (맞춤)&lt;/td&gt;
+      &lt;td&gt;21초&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;N.A&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Grok3&lt;/td&gt;
+      &lt;td&gt;60/60/80/80 (맞춤)&lt;/td&gt;
+      &lt;td&gt;93초&lt;/td&gt;
+      &lt;td&gt;36220&lt;/td&gt;
+      &lt;td&gt;389.5&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;QWQ:32B&lt;/td&gt;
+      &lt;td&gt;60/60/80/80 (맞춤)&lt;/td&gt;
+      &lt;td&gt;180.73초&lt;/td&gt;
+      &lt;td&gt;6498&lt;/td&gt;
+      &lt;td&gt;36.0&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;EXAONE-Deep:32B&lt;/td&gt;
+      &lt;td&gt;33/33/53/53 (아예 틀림)&lt;/td&gt;
+      &lt;td&gt;211.85초&lt;/td&gt;
+      &lt;td&gt;9243&lt;/td&gt;
+      &lt;td&gt;43.6&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Deepseek-R1:32B&lt;/td&gt;
+      &lt;td&gt;60/60/80/79 (거의 맞춤)&lt;/td&gt;
+      &lt;td&gt;152.59초&lt;/td&gt;
+      &lt;td&gt;5874&lt;/td&gt;
+      &lt;td&gt;38.5&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;3번-문제-수능-수학-문제&quot;&gt;3번 문제 (수능 수학 문제)&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;정답 여부(21)&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;처리 시간&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;추론 길이&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;단위 시간당 추론(char/sec)&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Rank&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Score&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;o3-mini-high&lt;/td&gt;
+      &lt;td&gt;23 (절반 맞춤)&lt;/td&gt;
+      &lt;td&gt;55&lt;/td&gt;
+      &lt;td&gt;1413&lt;/td&gt;
+      &lt;td&gt;25.7&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Grok3&lt;/td&gt;
+      &lt;td&gt;23 (절반 맞춤)&lt;/td&gt;
+      &lt;td&gt;97&lt;/td&gt;
+      &lt;td&gt;30894&lt;/td&gt;
+      &lt;td&gt;318.5&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;QWQ:32B&lt;/td&gt;
+      &lt;td&gt;23 (절반 맞춤)&lt;/td&gt;
+      &lt;td&gt;1081.25&lt;/td&gt;
+      &lt;td&gt;29156&lt;/td&gt;
+      &lt;td&gt;27.0&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;EXAONE-Deep:32B&lt;/td&gt;
+      &lt;td&gt;23 (절반 맞춤)&lt;/td&gt;
+      &lt;td&gt;1265.00&lt;/td&gt;
+      &lt;td&gt;30510&lt;/td&gt;
+      &lt;td&gt;24.1&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Deepseek-R1:32B&lt;/td&gt;
+      &lt;td&gt;50 (아예 틀림)&lt;/td&gt;
+      &lt;td&gt;2109.8&lt;/td&gt;
+      &lt;td&gt;46070&lt;/td&gt;
+      &lt;td&gt;21.8&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;4번-문제-코딩-문제&quot;&gt;4번 문제 (코딩 문제)&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;정답 여부 (54)&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;처리 시간&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;추론 길이&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;단위 시간당 추론(char/sec)&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Rank&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Score&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;o3-mini-high&lt;/td&gt;
+      &lt;td&gt;54/54&lt;/td&gt;
+      &lt;td&gt;57&lt;/td&gt;
+      &lt;td&gt;1625&lt;/td&gt;
+      &lt;td&gt;28.5&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Grok3&lt;/td&gt;
+      &lt;td&gt;36/54&lt;/td&gt;
+      &lt;td&gt;380&lt;/td&gt;
+      &lt;td&gt;118320&lt;/td&gt;
+      &lt;td&gt;311.4&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;QWQ:32B&lt;/td&gt;
+      &lt;td&gt;28/54&lt;/td&gt;
+      &lt;td&gt;2053.40&lt;/td&gt;
+      &lt;td&gt;65257&lt;/td&gt;
+      &lt;td&gt;31.8&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;EXAONE-Deep:32B&lt;/td&gt;
+      &lt;td&gt;51/54&lt;/td&gt;
+      &lt;td&gt;1952.09&lt;/td&gt;
+      &lt;td&gt;57913&lt;/td&gt;
+      &lt;td&gt;29.7&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Deepseek-R1:32B&lt;/td&gt;
+      &lt;td&gt;24/54&lt;/td&gt;
+      &lt;td&gt;1152.13&lt;/td&gt;
+      &lt;td&gt;41756&lt;/td&gt;
+      &lt;td&gt;36.2&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;오픈 소스가 아닌 모델은 서버에서 처리되는데, 이때 GPU 사양에 따라 처리 속도가 다를 수 있기 때문에 단위 시간당 추론(char/sec)를 통해 어느 정도 동일 선상에 두고 비교하고자 하였다. 추론 속도는 Grok3가 나머지의 거의 10배 정도의 속도를 내는 것을 볼 수 있고, 추론 길이는 압도적으로 o3-mini가 효과적인 것을 볼 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;결론&quot;&gt;결론&lt;/h2&gt;
+
+&lt;p&gt;각각 task에서의 랭킹은 다음을 각각 우선순위로 하여 매겼다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;정답을 맞췄는가(혹은 얼마나 근접하였는가)&lt;/li&gt;
+  &lt;li&gt;추론 길이가 얼마나 짧았는가&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;솔직히 상대적으로 오픈 소스와 o3-mini-high, Grok3와 같이 서버를 매개로 하는 서비스의 처리 시간과 추론 길이에 대해 엄밀하게 비교하기는 힘들 것 같아서 그랬다.&lt;/p&gt;
+
+&lt;p&gt;점수는 그냥 간단하게 1등 10점부터 3점 간격으로 부여했고, 4등과 5등은 각각 1점이랑 0점을 줬다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;Total Score&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;o3-mini-high&lt;/td&gt;
+      &lt;td&gt;40&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Grok3&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;QWQ:32B&lt;/td&gt;
+      &lt;td&gt;15&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;EXAONE-Deep:32B&lt;/td&gt;
+      &lt;td&gt;15&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Deepseek-R1:32B&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;솔직히 실제로 사용해본 결과 체감상 아직 o3-mini-high가 전반적으로 모든 task를 잘 해낸다는 느낌이 있었다. 그리고 의외로 EXAONE과 QWQ는 실제 사용감이 비슷했고, Grok3는 많이 써보지는 않았지만 처리 속도는 확실히 빠른게 느껴졌다. 딥시크의 경우 원본 모델 대신 32B 모델을 사용하여 실험해보았는데, 코딩이나 수학 문제에 대해 생각보다 너무 낮은 정확도를 보이는 것을 확인하였다.&lt;/p&gt;
+
+&lt;h2 id=&quot;공정한-비교가-맞는가&quot;&gt;공정한 비교가 맞는가?&lt;/h2&gt;
+
+&lt;p&gt;당연히 공정한 비교는 아니다. 무지성으로 작성한 점수표도 그렇고, 개인적으로 선정한 문제들도 그렇고,&lt;br /&gt;
+이런저런 보다 많은 문제들에 적용해서 직접 사용해봐야 조금 더 공정한 비교가 가능하겠다. 겨우 4문제 가지고 모델별 순위를 결정하는것 자체가 의미가 없는 일이지만 직접 사용해보면서 느낀 점은 openai의 서비스가 아직까지는 다른 모델에 비해 좋다는 것이다.&lt;br /&gt;
+그리고 무엇보다 오픈 소스 모델을 개인적으로 테스트해보기에는 문제에 따라서 추론 시간이 30분에 육박하는 경우도 있어 쉽지가 않았다.&lt;/p&gt;
+
+&lt;h2 id=&quot;추론-모델이-짱짱맨&quot;&gt;추론 모델이 짱짱맨?&lt;/h2&gt;
+
+&lt;p&gt;과연 추론 모델을 사용하는 것이 문제에 대해 잘 대응할 수 있는 최적의 방식인가? gpt-4.5를 사용해서 동일하게 4개의 문제를 풀려보았고, 각각 결과는 다음과 같다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;Model&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;Q1 (골프공 갯수)&lt;/th&gt;
+      &lt;th&gt;Q2 (Paraphrasing)&lt;/th&gt;
+      &lt;th&gt;Q3 (수학 문제)&lt;/th&gt;
+      &lt;th&gt;Q4 (코딩 문제)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;gpt-4.5&lt;/td&gt;
+      &lt;td&gt;1.4million&lt;/td&gt;
+      &lt;td&gt;60/60/80/80&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+      &lt;td&gt;54/54&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;추론 모델이 아닌 &lt;strong&gt;gpt-4.5&lt;/strong&gt;는 골프공 갯수, paraphrasing과 같은 문제에 대해 &lt;strong&gt;추론 모델과 다를바 없는 성능을 보여주었고&lt;/strong&gt;, 수학 문제를 완전히 틀리기는 했지만 &lt;strong&gt;코딩 문제의 모든 테스트 케이스를 통과하는 결과를 내놓았다&lt;/strong&gt;. 심지어 추론 모델에 비해 생성되는 속도도 훨씬 빠른 것이 장점이다.&lt;/p&gt;
+
+&lt;p&gt;결국 앞으로 추론 모델을 통해 찾아야할 문제는 ‘추론 모델’이 기존의 기본 LLM을 뛰어넘는다는 것이 아니고, 추론 모델만의 특성을 활용할 수 있는 task가 무엇인지 진지하게 생각해봐야할 것이다.&lt;/p&gt;
+
+&lt;p&gt;30분 기다렸는데 내뱉은 코드에 오히려 오류가 발생하고, 30초 기다렸는데 내뱉은 코드에는 오류가 없는 현상이 내가 실험한 문제들만 아니라 실생활에 적용될 다양한 문제들에도 동일하게 문제가 될 부분이다. 물론 단순한 알고리즘 문제가 아니라 구현의 단계에서는 추론 모델이 훨씬 효과적으로 작동한다(실제로 본인 경험상).&lt;/p&gt;
+
+&lt;h2 id=&quot;오픈-소스-모델의-발전&quot;&gt;오픈 소스 모델의 발전&lt;/h2&gt;
+
+&lt;p&gt;LG가 굉장히 멋진 일을 해냈다고 생각이 든다. 솔직히 말하자면 국내에서 추론 모델이 얼마나 빨리 출시될 수 있을지 궁금했는데, 이렇게 빠르게 성능 높은 모델을 출시해서 뉴스를 보고 놀랐었다. 앞으로도 오픈 소스는 본인을 포함한 수많은 엔지니어들의 피드백을 받을 것이고, 더욱 발전해 나갈 것이라 믿어 의심치 않는다. 모두들 화이팅하기를..&lt;/p&gt;
+</description>
+        <pubDate>Tue, 18 Mar 2025 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/blog/reasoning</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/reasoning</guid>
+        
+        <category>Reasoning Models</category>
+        
+        <category>Deepseek-R1</category>
+        
+        <category>EXAONE</category>
+        
+        <category>QWQ</category>
+        
+        <category>o1, o3</category>
+        
+        <category>LLM</category>
+        
+        
+        <category>deep learning</category>
+        
+      </item>
     
       <item>
         <title>딥시크(Deepseek)-R1에 대한 고찰. Thinking about Deepseek-R1 with Reinforcement Learning(RL).</title>
@@ -2782,343 +4602,6 @@ f(x) \cdot g(c)
         <category>Diffusion model</category>
         
         <category>Text to Image</category>
-        
-        <category>AI</category>
-        
-        <category>Deep learning</category>
-        
-        
-        <category>paper review</category>
-        
-      </item>
-    
-      <item>
-        <title>ControlNet 논문 이해하기 및 사용해보기</title>
-        <description>&lt;h1 id=&quot;들어가며&quot;&gt;들어가며&lt;/h1&gt;
-&lt;p&gt;ControlNet의 논문 제목 풀네임은 ‘Adding conditional control to text-to-image diffusion models’이다. 이른바 &lt;u&gt;ControlNet&lt;/u&gt;이라고 불리는 이번 연구는 사전 학습된 large diffusion model을 어떻게 하면 &lt;strong&gt;input condition&lt;/strong&gt;에 맞게 &lt;u&gt;효율적인 knowledge transfer&lt;/u&gt;이 가능할지에 대해 논의한 페이퍼이다.  Diffusion model이라는 말이 들어갔지만 기존에 리뷰했던 디퓨전 베이스 페이퍼와는 완전히 다른 방향의 연구에 해당된다. 오히려 최근 LLM(Large Language Model)을 파라미터 효율적으로 학습하는 연구 방향인 Parameter efficient fine tuning과 연결짓는 편이 더 합리적이다. 실제로 코드를 받아서 실험해보았을 때 저자들이 제시한 ControlNet 구조를 학습시키는 과정은 서버용 GPU가 아닌 &lt;u&gt;개인 GPU로도 충분히 학습 가능&lt;/u&gt;하며, 가장 눈에 띄는 장점은 ControlNet은 어떠한 input condition에 대해서도 학습이 가능하다는 점이다. 방법론으로 들어가게 되면 ControlNet의 가장 메인 포인트라고 할 수 있는 ‘zero convolution’이 등장하는데, 과연 어떠한 방식으로 input condition을 자유롭게 조정할 수 있게 되었는지 차근차근 살펴보도록 하자.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;input-condition-in-diffusion-models&quot;&gt;Input condition in diffusion models&lt;/h1&gt;
-
-&lt;p&gt;Input condition을 diffusion model에 주는 방식은 사실 이미 존재했었다. 아직 본인 블로그에서는 요즘 가장 핫한 stable diffusion의 근간이 되는 연구인 &lt;a href=&quot;https://arxiv.org/abs/2112.10752&quot;&gt;latent diffusion 논문&lt;/a&gt;을 따로 다루지는 않았지만 간단하게 소개하자면,&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462245-c6711e21-c0b8-435f-80e9-09fea31ea502.png&quot; width=&quot;700&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;예컨데 이미지를 &lt;u&gt;유의미한 semantic 정보만 유지&lt;/u&gt;하고 이미지 생성에 크게 필요하지 않은 high frequency feature를 거르는 vector quantized encoder/decoder를 학습한 상태로 생각하자(즉, 이미지 $x$를 작은 크기의 resolution을 가지는 latent image로 축소한다고 생각하면 된다). 이렇게 축소된 latent를 diffusion process를 통해 복구하는 과정을 학습하는 것이 우리가 일반적으로 이해하고 있는 &lt;strong&gt;DDPM&lt;/strong&gt; 혹은 &lt;strong&gt;DDIM&lt;/strong&gt;의 학습 및 샘플링 프로세스이다.&lt;/p&gt;
-
-&lt;p&gt;우리가 기존에 살펴본 내용 중에서 attention pooling에 시간 정보와 class label 정보를 projection embedding으로 넣어주는 방법론이 있었다(&lt;a href=&quot;https://6unoyunr.github.io/blog/diffusionpapers&quot;&gt;diffusion process conditioning 논문 리뷰글&lt;/a&gt;). 이를 확장시켜 생각하면, 만약 특정 목적을 가지고 condition을 임베딩으로 사영시킬 수 있는 task specific encoder $\tau_\theta$만 있다면, 각 디퓨전 모델 학습 시에 $\tau_\theta$를 통해 추출된 condition vector를 attention layer를 통해 조건화해줄 수 있다. 예컨데 만약 다음과 같은 이미지와 텍스트 description 쌍이 있다고 생각하면(출처 : BLIP 논문),&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Description : The car is driving past a small old building&lt;/p&gt;
-
-&lt;/blockquote&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462200-a917f64d-6bd3-4c05-9f05-29ef14451152.png&quot; width=&quot;400&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;CLIP의 text encoder와 같은 &lt;u&gt;임의의 텍스트 인코더&lt;/u&gt;를 통해 추출한 embedding을 이미지 생성 시(reverse process)에 조건부로 넣어주게 되면 해당 디퓨전 모델은 샘플링 과정에서 prior에 prompt 조건만 추가해주게 되면 text to image task를 수행할 수 있게 되는 것이다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462194-52d7d549-92c8-4f76-a8eb-a31384addbbd.png&quot; width=&quot;800&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;단순히 prompt를 통해 위와 같은 고퀄리티의 이미지를 만들 뿐만 아니라, &lt;u&gt;다양한 모달리티에 대한 학습된 encoder&lt;/u&gt;만 있다면 attention pooling 조건화를 통해 diffusion process를 학습시킬 수 있다.&lt;/p&gt;
-
-&lt;h1 id=&quot;naive-conditioning의-단점&quot;&gt;Naive conditioning의 단점&lt;/h1&gt;
-
-&lt;p&gt;이러한 방법들이 가지는 문제점은 상당히 명확하다.&lt;/p&gt;
-
-&lt;p&gt;첫번째로는 diffusion model이 특정 condition에 맞게 학습되려면 그만큼 score network가 &lt;u&gt;해당 condition을 이미지 생성에 잘 반영&lt;/u&gt;해야하는데, 이를 달성하기 위한 &lt;strong&gt;학습 데이터&lt;/strong&gt;가 상당히 &lt;u&gt;많이 필요하다는 것&lt;/u&gt;이다. 예컨데 Vision-Language(VL) task는 멀티모달에서 활발히 연구가 되었기 때문에 CLIP, ALIGN과 같은 대량의 데이터셋이 구축되었지만 다른 모달리티(pose to image, semantic to image 등등)은 그렇지가 않다는 것이다. 실제로 LAION-5B와 같이 stable diffusion의 학습 base가 된 데이터셋에 비해서 object shape나 pose 같이 특정 목적성을 가진 데이터셋은 여러 가지 한계점 때문에 대량으로 구축하기 힘들기 때문이다. 대략 &lt;u&gt;수만배 정도 차이&lt;/u&gt;가 난다.&lt;/p&gt;
-
-&lt;p&gt;두번째로, 이미지 생성이나 manipulation 같은 processing 과정이 대량의 데이터를 통해 솔루션을 획득하는 과정은 굉장히 리소스가 많이 든다는 점이다. 첫번째 문제였던 데이터 갯수의 차이를 극복하더라도 &lt;u&gt;사전 학습된 네트워크를 학습하는 것은 장벽&lt;/u&gt;으로 작용하게 된다.&lt;/p&gt;
-
-&lt;p&gt;마지막으로 processing 과정은 problem 정의에 있어 그 형태의 boundary를 예측할 수 없을 정도로 다양하고, 더욱이 발전할 수 있다. 즉 한계가 없는 문제를 해결하는데 있어 greedy한 선택만 취하게 된다면(디퓨전 프로세스를 제한하거나 attention activation을 바꾸는 것) 이는 결국 고차원의 이해가 필요한 작업들(depth, pose 등등)에는 최적화가 힘들다는 것을 의미한다.  말이 조금 복잡하게 표현된 것 같은데 이를 latent diffusion의 방법론을 통해 다시 한 번 언급하자면, latent diffusion process는 사전 학습된 task specific encoder의 embedding output에 conditioning을 의존하게 되므로(embedding을 단순히 샘플링 부분에 넣어주는 과정을 통해 constraints를 줌) 보다 다양한 task에 대한 학습 과정에서 최적의 선택이 아닐 수 밖에 없다는 것이다. 고로 &lt;u&gt;end-to-end 학습을 할 수 있는 방법을 강구&lt;/u&gt;해야한다. 아래의 그림과 같이 기존 방식은 conditioning part와 실제 디퓨전 모델 학습이 end-to-end가 아닌 분리된 형태를 가진다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462202-abcf9761-fbf6-41cd-b966-3d012c7433e9.png&quot; width=&quot;1000&quot; /&gt;
-&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;controlnet-end-to-end-neural-network&quot;&gt;ControlNet, end-to-end neural network&lt;/h1&gt;
-
-&lt;p&gt;따라서 논문이 문제로 삼은 기존 conditioning의 한계점을 극복하기 위해 저자는 새로운 &lt;u&gt;transfer learning 구조를 제안&lt;/u&gt;하였다.  ControlNet을 간단하게 묘사하면 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;diffusion model의 parameter를 복사하여 새로운 학습 프레임워크를 원래 parameter와 병렬로 구성한다. 이를 각각 “trainable(학습 가능한)  copy”와 “locked(학습 불가능한) copy”라고 부른다.&lt;/li&gt;
-  &lt;li&gt;Locked copy는 기존 network의 성능인 이미지 생성에 필요한 representation을 유지하고 있다고 생각할 수 있다.&lt;/li&gt;
-  &lt;li&gt;Trainable copy는 conditional control을 위해 여러 task-specific dataset에 대해 학습되는 프레임워크다.&lt;/li&gt;
-  &lt;li&gt;Locked copy와 Trainable copy는 zero convolution을 통해 서로 연결된다. Zero convolution 또한 학습 가능한 레이어에 속한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;대충만 쭉 묘사했는데 사실 이 부분은 그림을 보면 이해가 쉽다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462204-48bf3f2f-bc94-423d-a3f7-a6f4a900382a.png&quot; width=&quot;700&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;$x$가 들어가서 $y$가 나오는 구조는 diffusion process에 접목시키게 되면 특정 시점의 noised latent vector $z_{t}$가 input으로 들어가서 다음 시점의 noised latent vector $z_{t-1}$를 예측하는 것과 같다. 회색으로 된 neural network는 원래의 diffusion model로 파라미터가 고정된 채 변하지 않게끔 하면 사전 학습된 디퓨전 모델의 &lt;u&gt;이미지를 만드는 성능을 해치지 않고&lt;/u&gt; 가만히 놔둘 수 있다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462207-4ecbc531-2eae-4da1-a9be-b2dcfc6cca9c.png&quot; width=&quot;500&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;좌측의 얼어있는 친구는 가만 놔두고 우측의 불타는 친구만 condition에 대해 학습한다고 생각하면 된다. Trainable copy이므로 fine-tuning 과정인데 원래의 parameter를 최대한 손상시키기 않겠다는 의도가 보이는 학습 구조가 된다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;method&quot;&gt;Method&lt;/h1&gt;
-
-&lt;p&gt;그렇다면 구체적으로 어떻게 해당 학습이 효과적으로 conditioning을 할 수 있는지 수식적으로 살펴보도록 하자. 예컨데 conditioning을 하는 neural network block은 흔히 우리가 알고있는 resnet에서의 bottleneck block이나 transformer의 multi-head attention block을 생각하면 된다.&lt;/p&gt;
-
-&lt;p&gt;2D(이미지와 같은 형태)의 feature를 예시로 들어보자. 만약 feature map $x \in \mathbb{R}^{h \times w \times c}$가 정의되어 있다면, neural network block $\mathcal{F}_\Theta(\cdot)$는 블록에 포함되는 parameter $\Theta$를 통해 input feature map $x$를 transform하게 된다.&lt;/p&gt;
-
-&lt;p&gt;[
-y = \mathcal{F}_\Theta(x)
-]&lt;/p&gt;
-
-&lt;p&gt;바로 이 과정이 앞서 그림에서 봤던 (a)에 해당된다. 이제부터 해당 parameter $\Theta$는 잠궈놓을 것이다(학습하지 않을 것). 그리고 이를 똑같이 복사한 trainable parameter $\Theta_c$는 잠궈놓은 친구와는 다르게 input condition $c$를 input으로 받아 학습에 사용될 것이다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462208-12e86232-15ef-4f0f-b15d-f4d66b69869a.png&quot; width=&quot;500&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;참고로 더해지는 부분에 대해서는 네트워크가 &lt;u&gt;activation을 저장해놓을 필요가 없기 때문에&lt;/u&gt; 학습 시에 메모리를 $2$배로 가질 필요성도 없어진다. Backpropagation을 통해 계산된 gradient는 학습 가능한 모델에 대해서만 optimization을 진행할 것이기 때문이다.&lt;/p&gt;
-
-&lt;h3 id=&quot;zero-convolution&quot;&gt;Zero convolution&lt;/h3&gt;
-
-&lt;p&gt;이때 더해질 때 바로바로 이 논문에서 가장 중요한 녀석인 zero convolution이라는 개념이 사용되는데, 각 neural block의 앞/뒤로 하나씩 붙는다고 생각하면 된다. 앞/뒤에 붙는 녀석들을 각각 $\mathcal{Z}_{\Theta_1}(\cdot), \mathcal{Z}_{\Theta_2}(\cdot)$라고 해보자. 물론 zero-convolution은 feature map의 크기를 변화시키면 안되기 때문에 $1\times 1$ 크기를 가지는 convolution이며 weight와 bias 모두 zero로 초기화된 상태로 학습이 시작된다.&lt;/p&gt;
-
-&lt;p&gt;위의 그림대로 원래의 output $y$에 conditioning 함수를 거친 output을 더하면 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;[
-y_c = \mathcal{F}_\Theta(x) + \mathcal{Z}_{\Theta_2}(\mathcal{F}_{\Theta_c}(x + \mathcal{Z}_{\Theta_1}(c)))
-]&lt;/p&gt;
-
-&lt;p&gt;여기에서 대체 왜 weight 및 bias가 $0$으로 초기화된 ‘Zero convolution’이 사용되었는지 이유가 등장한다. Zero-convolution은 weight 및 bias가 모두 $0$이므로, input에 상관없이 처음엔 모두 $0$을 output으로 내뱉는다.&lt;/p&gt;
-
-&lt;p&gt;[
-\begin{cases}
-\mathcal{Z}_{\Theta_1}(c) = 0 \newline
-\mathcal{F}_{\Theta_c}(x+\mathcal{Z}_{\Theta_1}(c)) = \mathcal{F}_{\Theta_c}(x) = \mathcal{F}_{\Theta}(x) \newline
-\mathcal{Z}_{\Theta_2}(\mathcal{F}_{\Theta_c}(x + \mathcal{Z}_{\Theta_1}(c))) = \mathcal{Z}_{\Theta_2}(\mathcal{F}_{\Theta_c}(x)) = 0
-\end{cases}
-]&lt;/p&gt;
-
-&lt;p&gt;즉 처음에는 $y_c = y$로 시작하게 된다. 해당 내용이 암시하는 것은 training이 시작되는 당시에는 ControlNet 구조에 의한 input/output 관계가 사전 학습된 diffusion의 input/output과 전혀 차이가 없다는 것이고, 이로 인해 optimization이 진행되기 전까지는 neural network 깊이가 증가함에 따라 영향을 끼치지 않는다는 것을 알 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;gradient-flow-in-zero-convolution&quot;&gt;Gradient flow in zero convolution&lt;/h3&gt;
-
-&lt;p&gt;$1 \times 1$ convolution 구조를 가지는 zero convolution에 대한 연산 과정에 local gradient를 유도할 수 있다. 예컨데 input feature map $I \in \mathbb{R}^{h \times w \times c}$가 있을때 forward pass는&lt;/p&gt;
-
-&lt;p&gt;[
-\mathcal{Z}(I,; \{W, B\})_{p, i} = B_i + \sum_{j}^c I_{p, i}W_{i, j}
-]&lt;/p&gt;
-
-&lt;p&gt;이처럼 표현되고, zero convolution은 최적화 전까지는 $W = 0, B = 0$이기 때문에 $I_{p, i}$가 $0$이 아닌 모든 point에 대해서&lt;/p&gt;
-
-&lt;p&gt;[
-\begin{cases}
-\frac{\partial \mathcal{Z}(I; \{W, B\})_{p, i}}{\partial B_i} = 1\newline
-\frac{\partial \mathcal{Z}(I; \{W, B\})_{p, i}}{\partial I_{p, i}} = \sum_{j}^cW_{i,j} = 0 \newline
-\frac{\partial \mathcal{Z}(I; \{W, B\})_{p, i}}{\partial W_{i, j}} = I_{p, i} \neq 0
-\end{cases}
-]&lt;/p&gt;
-
-&lt;p&gt;위와 같이 정리된다. Input에 대한 gradient는 $0$으로 만들지만 weight나 bias에 대한 gradient는 $0$이 아니기 때문에 학습이 가능하다. 왜냐하면 first step만 지나게 되면 Hadamard product 기호인 $\odot$에 대해&lt;/p&gt;
-
-&lt;p&gt;[
-W^\ast = W-\beta_\text{lr} \cdot \frac{\partial \mathcal{L}}{\partial \mathcal{Z}(I; \{W, B\})} \odot \frac{\partial \mathcal{Z}(I; {W, B})}{\partial W} \neq 0
-]&lt;/p&gt;
-
-&lt;p&gt;$0$이 아닌 weight를 만들기 때문에 바로 다음 step에서는&lt;/p&gt;
-
-&lt;p&gt;[
-\frac{\partial \mathcal{Z}(I; \{W^\ast, B\})_{p, i}}{\partial I_{p, i}} = \sum_{j}^cW^\ast_{i,j} \neq 0
-]&lt;/p&gt;
-
-&lt;p&gt;학습이 잘된다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;stable-diffusion--controlnet&quot;&gt;Stable diffusion + ControlNet&lt;/h1&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462212-cafb40f1-f222-4560-9491-52d370dd512f.png&quot; width=&quot;&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;위에서 설명한 구조를 기존 stable diffusion에 구현한 구조는 위와 같다. Loss는 기존 diffusion algorithm에 task specific condition $c_f$만 추가된 형태가 된다.&lt;/p&gt;
-
-&lt;p&gt;[
-\mathcal{L} = \mathbb{E}_{z_0, t, c_t, c_f, \epsilon \sim \mathcal{N}(0, 1)}\left( \parallel \epsilon - \epsilon_\theta(z_t, t, c_t, c_f) \parallel_2^2 \right)
-]&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;결과&quot;&gt;결과&lt;/h1&gt;
-
-&lt;h3 id=&quot;canny-edge&quot;&gt;Canny Edge&lt;/h3&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462216-b7291a87-32f6-4ac2-983f-b7193936fd35.png&quot; width=&quot;&quot; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&quot;hough-line&quot;&gt;Hough Line&lt;/h3&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462217-4d045efa-eddb-4450-9ec2-92a3ad0cb070.png&quot; width=&quot;&quot; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&quot;scribble&quot;&gt;Scribble&lt;/h3&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462218-4986d394-2c30-4e23-b3fd-18f65c34bcb9.png&quot; width=&quot;&quot; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&quot;hed-edge&quot;&gt;HED edge&lt;/h3&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462222-f9f9d56d-ee9f-4e1c-af07-9fb29cd10880.png&quot; width=&quot;&quot; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&quot;pose&quot;&gt;Pose&lt;/h3&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462224-f1f5b4d8-579f-473e-b033-aad1b955a387.png&quot; width=&quot;&quot; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&quot;segmentation&quot;&gt;Segmentation&lt;/h3&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462226-5209cf47-c377-400e-add5-07738a63644b.png&quot; width=&quot;&quot; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&quot;depth&quot;&gt;Depth&lt;/h3&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462230-9f60b1a4-d1d7-41c3-a5d8-a3b74f07af57.png&quot; width=&quot;&quot; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&quot;cartoon-line-drawing&quot;&gt;Cartoon line drawing&lt;/h3&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462232-8dbc6b0e-ad70-41f6-aa4b-fb2d91c40f60.png&quot; width=&quot;&quot; /&gt;
-&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;official-code로-직접-실행해보기&quot;&gt;Official Code로 직접 실행해보기&lt;/h1&gt;
-
-&lt;p&gt;현재 official code는 &lt;a href=&quot;https://github.com/lllyasviel/ControlNet.git&quot;&gt;깃허브 소스&lt;/a&gt;로 제공되고 있다. 엥간하면 로컬 서버에서 돌아가기는 하는데 안정적으로 돌릴라면 서버에서 돌리는게 좋다. 여기다가 실행법은 올리겠지만 원본 페이지에 들어가서 ⭐ 한번씩 눌러주면 좋을 것 같다. 다음 repository를 클론 후&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/lllyasviel/ControlNet.git
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Conda 가상 환경을 설치해준다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;ControlNet
-conda &lt;span class=&quot;nb&quot;&gt;env &lt;/span&gt;create &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; environment.yaml
-conda activate control
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그런 뒤 사용하고자 하는 모델과 stable diffusion을 &lt;a href=&quot;https://huggingface.co/lllyasviel/ControlNet&quot;&gt;Hugging Face Page&lt;/a&gt;로부터 다운받으면 된다. 다운받는 위치는 ControlNet/models에 stable diffusion ckpt를 넣고 detector를 ControlNet/annotator/ckpts에 넣으면 된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;detector모두-다운받는-코드controlnet-레포지에서-실행&quot;&gt;Detector(모두) 다운받는 코드(ControlNet 레포지에서 실행)&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ./annotator/ckpts
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/annotator/ckpts/body_pose_model.pth
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/annotator/ckpts/dpt_hybrid-midas-501f0c75.pt
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/annotator/ckpts/hand_pose_model.pth
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/annotator/ckpts/mlsd_large_512_fp32.pth
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/annotator/ckpts/mlsd_tiny_512_fp32.pth
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/annotator/ckpts/network-bsds500.pth
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/annotator/ckpts/upernet_global_small.pth
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;굳이 다 다운받고 싶지 않으면 원하는 파일에 대한 curl만 실행하면 된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;models모두-다운받는-코드controlnet-레포지에서-실행&quot;&gt;Models(모두) 다운받는 코드(ControlNet 레포지에서 실행)&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ./models
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_canny.pth
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_depth.pth
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_hed.pth
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_mlsd.pth
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_normal.pth
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_openpose.pth
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_scribble.pth
-curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_seg.pth
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;마찬가지로 굳이 다 다운받고 싶지 않으면 원하는 파일에 대한 curl만 실행하면 된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;데모-버전-api-실행하기&quot;&gt;데모 버전 API 실행하기&lt;/h3&gt;
-
-&lt;p&gt;원하는 모델을 실행하는 코드는 간단하게&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python gradio_어쩌구2어쩌구.py
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;를 실행하면 되는데, 만약 서버컴에서 이걸 실행하고 로컬에서 접속하고 싶다면 코드를 살짝만 바꿔주면 된다. 예컨데 모든 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gradio_어쩌구2저쩌구.py&lt;/code&gt; 파일 코드를 보게 되면 가장 마지막 줄에&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;launch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;server_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0.0.0.0'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;요 친구가 있는데 이걸 다음과 같이 바꿔주면 된다.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;launch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;server_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0.0.0.0'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;share&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;본인은 대충&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gradio_scribble2image_interactive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이걸 실행해보겠다. 제대로 실행되면 다음처럼 나온다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462235-7dd62696-6f57-4ae8-a0ee-640a2b1cf4e8.png&quot; width=&quot;&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;대강 public URL은 72시간 동안 유효하다는 뜻, 본인은 연세 vpn으로 서버컴에 접속한 상태지만 노트북으로 들어가보겠다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462236-0d8e2563-80b2-45a8-9b61-46aa33e51c64.png&quot; width=&quot;900&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;다음과 같은 화면이 뜬다. 실제로 잘 되는지 확인해보자.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462237-2678713e-f6ad-441a-aed9-0debfa373a47.png&quot; width=&quot;700&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;비루한 그림실력.. 힘내라 ControlNet&lt;/p&gt;
-
-&lt;p&gt;Run 버튼을 누르자 DDIM sampler가 동작하기 시작한다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462239-0268dd2a-2e93-45fa-aff1-f9261b635f62.png&quot; width=&quot;&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235462241-f63bdb2f-ddd6-437f-9aa0-e27094bbe81c.png&quot; width=&quot;&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;그림을 못그려도 인생 살기 큰 문제 없다는 긍정적인 희망이 생기는 논문이었다… 암튼 이렇게 하면 된다. 넉넉잡아 10기가 이상의 GPU면 다 돌아가는 듯하다.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 01 May 2023 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/controlnet</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/controlnet</guid>
-        
-        <category>Diffusion model</category>
-        
-        <category>Generative model</category>
-        
-        <category>Controllable diffusion</category>
         
         <category>AI</category>
         
