@@ -1036,9 +1036,9 @@ A pony doll with big green eyes is submerged in water in a small tub.
 
 추론 길이 : 1413
 
-답변(think 제외) : `오답`
-
+답변(think 제외) : `오답`  
 답변요약 : 적분 구간에 대한 조건화 실패  
+
 **Final Answer**  
 Thus, the final value is $\boxed{23}.$
 
@@ -1048,7 +1048,7 @@ Thus, the final value is $\boxed{23}.$
 
 추론 길이 : 30894
 
-답변(think 제외) : `오답`
+답변(think 제외) : `오답`  
 답변요약 : 적분 구간에 대한 조건화 실패  
 **Final Answer**  
 $\boxed{23}.$
@@ -1059,8 +1059,9 @@ $\boxed{23}.$
 
 추론 길이 : 30510 $(\times 21.6)$
 
-답변(think 제외) : `오답`
+답변(think 제외) : `오답`  
 답변요약 : 적분 구간에 대한 조건화 실패  
+
 **Final Answer**  
 $\boxed{23}.$
 
@@ -1070,7 +1071,7 @@ $\boxed{23}.$
 
 추론 길이 : 46070 ($\times 32.6$)
 
-답변(think 제외) : `오답`
+답변(think 제외) : `오답`  
 답변요약 : 걍 틀림  
 **Final Answer**  
 $\boxed{50}.$
