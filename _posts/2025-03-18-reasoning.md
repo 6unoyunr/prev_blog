@@ -4,7 +4,7 @@ layout: post
 description: Reasoning LLMs
 use_math: true
 post-image: https://github.com/user-attachments/assets/f85233bb-d2ff-4554-b1e0-7e0eb7966ada
-category: deep learning
+category: paper review
 tags:
 - Reasoning Models
 - Deepseek-R1

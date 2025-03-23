@@ -2,6 +2,16 @@
     
     
         {
+            "title": "추론 모델은 정말로 뛰어난가?? 오픈소스 엑사원 딥(EXAONE-Deep), QWQ, 딥시크(Deepseek-R1) 비교 실험해보기",
+            "tags": "Reasoning Models, Deepseek-R1, EXAONE, QWQ, o1, o3, LLM",
+            "url": "http://localhost:4000/blog/reasoning",
+            "date": "March 18, 2025",
+            "description": "Reasoning LLMs",
+            "image": "https://github.com/user-attachments/assets/f85233bb-d2ff-4554-b1e0-7e0eb7966ada",
+            "readtime": "64"
+        },
+    
+        {
             "title": "딥시크(Deepseek)-R1에 대한 고찰. Thinking about Deepseek-R1 with Reinforcement Learning(RL).",
             "tags": "Deepseek, Reinforcement Learning, LLM",
             "url": "http://localhost:4000/blog/deepseekr1",
@@ -162,6 +172,16 @@
         },
     
         {
+            "title": "ChatGPT(챗지피티)가 사람같이 자연스럽게 말할 수 있는 이유는!? RLHF 학습법에 대하여",
+            "tags": "AI, Deep learning, Reinforcement learning, Human forcing",
+            "url": "http://localhost:4000/blog/RLHF",
+            "date": "March 25, 2023",
+            "description": "ChatGPT, Chatbot",
+            "image": "https://user-images.githubusercontent.com/79881119/227689828-9e58a288-ae75-4736-8041-9fa89e72227c.png",
+            "readtime": "17"
+        },
+    
+        {
             "title": "Contrastive test time adaptation 논문 리뷰",
             "tags": "Deep learning, DA, Test time adaptation, Contrastive learning",
             "url": "http://localhost:4000/blog/ContrastiveTTA",
@@ -269,6 +289,16 @@
             "description": "Zero-shot, Multimodal learning",
             "image": "https://user-images.githubusercontent.com/79881119/213900254-5da22304-43ab-457c-9533-0927b0d859df.png",
             "readtime": "20"
+        },
+    
+        {
+            "title": "Pytorch 2.0에서 어떤 점이 변했을까??",
+            "tags": "AI, Deep learning, Module, Pytorch",
+            "url": "http://localhost:4000/blog/pytorch2",
+            "date": "January 05, 2023",
+            "description": "New version of pytorch",
+            "image": "https://user-images.githubusercontent.com/79881119/210711363-d6266222-45cb-4fe0-98d3-91e089f5dfc7.png",
+            "readtime": "16"
         },
     
         {
