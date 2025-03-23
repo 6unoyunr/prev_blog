@@ -12,7 +12,6 @@ baseurl:
 
 # Code highlighter
 highlighter: rouge
-
 # Title of the Site
 title: Welcome to my blog
 # Description of the Site
@@ -23,7 +22,6 @@ site-image: https://github.com/user-attachments/assets/18241365-3094-4094-9ed3-c
 site-keywords: AI, Developer, Research engineer
 # URL for the Image of custom Favicon
 favicon-url: 
-
 darkmode_switch: true
 
 # URL of the Image of Custom Hero Image (i.e., the image in the background of the very first section of the Homepage)
@@ -57,7 +55,7 @@ author-image: https://avatars.githubusercontent.com/u/201962047?v=4
 # 60 Words About the Author
 author-about: I am an AI researcher with a strong interest in machine learning and deep learning algorithms, particularly in large foundation models and their applications across various tasks.
 # URL to the Author's Profile (i.e., Github, Twitter, Stackoverflow, etc)
-author-url: https://github.com/6unoyunr
+author-url: https://6unoyunr.github.io/mycard
 
 # SASS
 sass:
