@@ -3,7 +3,7 @@ title: 추론 모델은 정말로 뛰어난가?? 오픈소스 엑사원 딥(EXAO
 layout: post
 description: Reasoning LLMs
 use_math: true
-post-image: https://github.com/user-attachments/assets/33fc3619-5b4e-44b9-b0bf-7522e60d1f73
+post-image: https://i.ibb.co/VWwPq65J/image.png
 category: paper review
 tags:
 - Reasoning Models
