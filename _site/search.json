@@ -1,6 +1,16 @@
 [
     
         {
+        "title"    : "차별화된 삶",
+        "tags"     : "Diary",
+        "url"      : "http://localhost:4000/blog/first_diary",
+        "date"     : "March 23, 2025",
+        "description" : "일기장",
+        "image" : "https://github.com/user-attachments/assets/09e01d57-a49a-4647-a8cb-4a38e05da51b",
+        "readtime" : "1"
+        } ,
+    
+        {
         "title"    : "추론 모델은 정말로 뛰어난가?? 오픈소스 엑사원 딥(EXAONE-Deep), QWQ, 딥시크(Deepseek-R1) 비교 실험해보기",
         "tags"     : "Reasoning Models, Deepseek-R1, EXAONE, QWQ, o1, o3, LLM",
         "url"      : "http://localhost:4000/blog/reasoning",

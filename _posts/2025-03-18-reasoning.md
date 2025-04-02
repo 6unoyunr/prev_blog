@@ -3,7 +3,7 @@ title: 추론 모델은 정말로 뛰어난가?? 오픈소스 엑사원 딥(EXAO
 layout: post
 description: Reasoning LLMs
 use_math: true
-post-image: https://github.com/user-attachments/assets/f85233bb-d2ff-4554-b1e0-7e0eb7966ada
+post-image: https://github.com/user-attachments/assets/33fc3619-5b4e-44b9-b0bf-7522e60d1f73
 category: paper review
 tags:
 - Reasoning Models
@@ -28,13 +28,7 @@ tags:
 
 ## 수많은 Deep 시리즈들
 
-딥시크 추론 모델 등장 이후 너도나도 여러 가지 방법으로 학습시킨 오픈 소스 추론 모델을 내뱉기 시작한 듯하다. 엑사원 딥 모델은 LG AI Research에서 나왔는데, 문득 실제 지표처럼 잘 동작하는지 궁금해졌다. 사실 개인적으로 추론 모델이 정말 잘할 수 있는지에 대해 의문을 품고 있기 때문에, 그 호기심을 충족시키기 위해 직접 돌려보기로 했다. 일단 이것만 봐서는 EXAONE이 가장 좋긴한데, 까보기 전까지는 모르니까.
-
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/afd199cc-adc4-49a5-b1e5-b34def601976" width="800">
-</p>
-
-(사진 출처는 [exaone deep 소개 페이지](https://www.lgresearch.ai/blog/view?seq=543)) 기존에는 논문 리뷰 위주로 올렸는데 테크니컬 리포트 읽는건 솔직히 노잼이라서 걍 실험해보는게 훨씬 재밌을 것 같다.
+딥시크 추론 모델 등장 이후 너도나도 여러 가지 방법으로 학습시킨 오픈 소스 추론 모델을 내뱉기 시작한 듯하다. 엑사원 딥 모델은 LG AI Research에서 나왔는데, 문득 실제 지표처럼 잘 동작하는지 궁금해졌다. 사실 개인적으로 추론 모델이 정말 잘할 수 있는지에 대해 의문을 품고 있기 때문에, 그 호기심을 충족시키기 위해 직접 돌려보기로 했다. 일단 이것만 봐서는 EXAONE이 가장 좋긴한데, 까보기 전까지는 모르니까. 기존에는 논문 리뷰 위주로 올렸는데 테크니컬 리포트 읽는건 솔직히 노잼이라서 걍 실험해보는게 훨씬 재밌을 것 같다.
 
 ## 라이센스 비교
 
@@ -166,10 +160,6 @@ print(len(set(sentences + caption_list)))
 어려운 수능 수학 문제의 경우에는 2018년도 수학능력검정시험 30번 문제를 영어로 바꿔서 프롬프트화했으며, 문제를 프롬프트한 결과는 다음과 같다.
 
 문제를 자세히 보니 삼각 펄스파$f(x)$와 주기 신호인 $\cos(\pi x)$와의 부분 콘볼루션인 듯하다.
-
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/ff15e7f8-8d14-40c5-b99a-f0768a934483" width="400">
-</p>
 
 이걸 그대로 이미지로 넣을 순 없으니 markdown 문제 형태로 바꿔주었다.
 
@@ -322,10 +312,6 @@ CUDA에서 인식되는 gpu 중에서 **일부 gpu만 사용하고 싶을 때**�
 아래는 실제로 문제를 풀이한 결과를 쭉 정리할 것인데, 너무 방대하므로 보기 귀찮은 사람들은 맨 아래쪽에 정리해둘 것이기 때문에 쭉 내리면 된다.
 
 ## 첫번째 문제 (스쿨버스 안 골프공 갯수)
-
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/b8b0a264-213d-4416-897d-d3a202bad281" width="500">
-</p>
 
 ### o3-mini-high
 
@@ -605,10 +591,6 @@ Approximately 500,000 to 1,000,000 golf balls can fit in a school bus, with a mo
 $\boxed{700,000}$
 
 ## 두번째 문제 (Caption paraphrasing)
-
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/1402206e-c47a-45ff-b83a-a96212d1444a" width="500">
-</p>
 
 ### o3-mini-high
 
@@ -1026,10 +1008,6 @@ A pony doll with big green eyes is submerged in water in a small tub.
 
 ## 세번째 문제 (2018년도 수능 수학 문제 30번)
 
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/1f3a726d-5f2a-4f6c-8c69-f1bb9952b61d" width="500">
-</p>
-
 ### o3-mini-high
 
 추론 시간 : 55 seconds
@@ -1071,10 +1049,6 @@ A pony doll with big green eyes is submerged in water in a small tub.
 **Final Answer** : $\boxed{50}.$
 
 ## 네번째 문제 (리트코드)
-
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/9b202087-46b2-421c-b610-b0140768834d" width="500">
-</p>
 
 ### o3-mini-high
 

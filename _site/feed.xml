@@ -6,9 +6,51 @@
     <description>Personal Tech Blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000https://6unoyunr.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 23 Mar 2025 12:15:21 +0900</pubDate>
-    <lastBuildDate>Sun, 23 Mar 2025 12:15:21 +0900</lastBuildDate>
+    <pubDate>Sun, 23 Mar 2025 12:39:18 +0900</pubDate>
+    <lastBuildDate>Sun, 23 Mar 2025 12:39:18 +0900</lastBuildDate>
     <generator>Jekyll v4.3.1</generator>
+    
+      <item>
+        <title>차별화된 삶</title>
+        <description>&lt;h1 id=&quot;취미를-가졌다&quot;&gt;취미를 가졌다.&lt;/h1&gt;
+&lt;p&gt;매년 나름 이런저런 취미를 늘려가는 편인데, 2025년에는 피아노를 배우기로 결정했다.&lt;br /&gt;
+의외로 나는 피아노를 제대로 치지 못하고 있었다는 점에서 놀라웠고 그와는 다르게 연습만 하면 실력이 금방 늘어날 수 있다는 것도 알게 되었다.&lt;br /&gt;
+아, 2025년에는 피아노만 배우는 건 아니고&lt;/p&gt;
+
+&lt;p&gt;주기적으로 다양한 영화 보기, 뮤지컬 보기 (그다지 주기적인 건 아닌 것 같기도)&lt;br /&gt;
+독서(아직 계획만 함)&lt;br /&gt;
+돈관리(투자)&lt;br /&gt;
+헬스(이제 3년차)&lt;br /&gt;
+테니스&lt;br /&gt;
+피아노&lt;/p&gt;
+
+&lt;p&gt;를 하는 중이다.&lt;br /&gt;
+굳이굳이 이런저런 취미를 늘린 것에는 그만한 이유가 있는데, 사실 나는 전역 이후 내가 뭘 하고싶은지 잘 모르고 닥치는대로 열심히만 살았다.&lt;br /&gt;
+누구는 이렇게 취향없이 열심히 할 수 있는 것도 재능이라고 하지만, 내가 이뤄온 것들을 빼면 나 스스로에 대해 돌아볼 시간이 없었다.&lt;br /&gt;
+그러다보니 내가 잘할 수 있다고 생각했던 인공지능에 지나친 열정을 쏟았고 기술 스택과 커리어가 늘어갈수록 삶은 단조롭고 감정보단 이성이 앞서기 시작했다.&lt;br /&gt;
+대학원을 지나 취업까지 하고보니 그제야 일에 대한 부분을 제외하고 살고 싶었던 인생이 보이기 시작했다.&lt;br /&gt;
+그렇게 난 후회없이 인생을 살기 위해 취미를 가졌다.&lt;/p&gt;
+
+&lt;h1 id=&quot;미래에-대한-확신&quot;&gt;미래에 대한 확신&lt;/h1&gt;
+&lt;p&gt;나는 철저히 이과형 인간으로 살아왔다.&lt;br /&gt;
+당연히 공대생 아니면 의대생으로 정리된 인생을 살 것이라 생각했다.&lt;br /&gt;
+문득 고등학교 2학년 때 담임 선생님이 생각났다.&lt;br /&gt;
+그 당시 나는 글을 쓰는 것을 굉장히 좋아했고, 선생님께서는 내가 글을 쓰는 일을 할 것이라 말씀하셨다.&lt;br /&gt;
+그렇네요, 저는 공대생이지만 지금도 블로그에 끊임없이 뭔가를 적고 있군요.&lt;br /&gt;
+저는 생각보다 미래가 투명한 사람일지도 모릅니다.&lt;br /&gt;
+그런데도요, 사실 지금 이 순간의 저 자신도 막상 1년 뒤에 무엇을 하고 있을 지 잘 모르겠습니다.&lt;br /&gt;
+어쩌면 저에 대한 메타 인지가 필요한 시점일수도 있고요.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 23 Mar 2025 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/blog/first_diary</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/first_diary</guid>
+        
+        <category>Diary</category>
+        
+        
+        <category>development</category>
+        
+      </item>
     
       <item>
         <title>추론 모델은 정말로 뛰어난가?? 오픈소스 엑사원 딥(EXAONE-Deep), QWQ, 딥시크(Deepseek-R1) 비교 실험해보기</title>
@@ -4197,391 +4239,6 @@ $j$번째 class까지의 모든 output space를 포함할 수도 있다. 예컨�
         <category>Multimodal</category>
         
         <category>Hyperbolic space</category>
-        
-        
-        <category>paper review</category>
-        
-      </item>
-    
-      <item>
-        <title>GLIDE(Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models) 논문 및 코드 리뷰</title>
-        <description>&lt;h1 id=&quot;들어가며&quot;&gt;들어가며&lt;/h1&gt;
-
-&lt;p&gt;최근 &lt;a href=&quot;https://6unoyunr.github.io/blog/DDPMproof&quot;&gt;DDPM 수식 조지기 게시글&lt;/a&gt;과 더불어 &lt;a href=&quot;https://6unoyunr.github.io/blog/ddim&quot;&gt;DDIM&lt;/a&gt; 등등 여러 diffusion model 관련 논문들을 리뷰했었다. 그 중 diffusion에 condition을 추가하는 논문인 &lt;a href=&quot;https://6unoyunr.github.io/blog/diffusionpapers&quot;&gt;classifier guided/free 논문&lt;/a&gt;과 최근 가장 핫한 conditioning paper인 &lt;a href=&quot;https://6unoyunr.github.io/blog/controlnet&quot;&gt;ControlNet&lt;/a&gt; 또한 다뤘었다. 이번에 소개할 논문인 &lt;a href=&quot;https://arxiv.org/abs/2112.10741&quot;&gt;GLIDE&lt;/a&gt; 또한 conditional diffusion에 관련된 논문이며, 기존에 소개했던 classifier 관련 논문들은 label이 존재하는 discretized category에만 적용될 수 있었던 방법이라면 GLIDE는 &lt;strong&gt;text description&lt;/strong&gt;을  어떻게 하면 diffusion sampling에 효과적으로 &lt;strong&gt;조건으로써 사용&lt;/strong&gt;할 수 있는지 논의한 페이퍼이다.&lt;/p&gt;
-
-&lt;p&gt;DALLE-2가 출시되고 난 후 부랴부랴 diffusion에 대해 알아보고 그제서야 GLIDE가 관련 논문으로 눈에 들어왔으나 그 때 당시 diffusion에 대한 지식이 전무하기도 했고 구글에 검색해봐도 그다지 &lt;strong&gt;도움이 되는 리뷰글&lt;/strong&gt;이 없어 고생했었다. Diffusion에 대해 공부를 시작한 지 어느덧 거의 1년이 되어가는데, GLIDE는 사실 조금은 철 지난 논문이긴 하지만 어떻게 &lt;strong&gt;디퓨전 모델&lt;/strong&gt;이 GAN과 같은 기존 generative method를 넘어설 수 있었는지 그 &lt;u&gt;흐름을 볼 수 있는 과정 중간에 있는&lt;/u&gt; 좋은 페이퍼라고 생각한다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;diffusion-model의-성장&quot;&gt;Diffusion model의 성장&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;Diffusion model&lt;/strong&gt;의 가장 기본이 되는 SMLD와 DDPM는 score based generative model로 여러 관련 연구들을 파생하며 디퓨전 모델링의 가능성을 딥러닝 생성 모델 소사이어티에 널리 알려지기 시작하였다. 그러한 연구들 중 &lt;strong&gt;GLIDE&lt;/strong&gt;는 diffusion도 GAN에서의 연구 방향처럼 언젠가는 다양한 task에 적용이 될 수 있을 것이라고 생각하고, 가장 대표적인 생성 관련 멀티모달 연구인 &lt;u&gt;T2I(Text to Image synthesis)&lt;/u&gt; 분야를 파고들기 시작했다.&lt;/p&gt;
-
-&lt;h3 id=&quot;clip-연구와-t2i&quot;&gt;CLIP 연구와 T2I&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;T2I 연구&lt;/strong&gt;는 기존 SOTA 및 우수한 성능을 가지는 generative model을 활용하여 활발히 진행되었다. 대표적으로 이를 가속화할 수 있었던 대표주자가 transformer 구조와 이를 기반으로 한 Image/Text corresponding model인 CLIP이다. CLIP에 대한 글은 포스팅한 내용을 보면 보다 이해하기 빠를 것이다(&lt;a href=&quot;https://6unoyunr.github.io/blog/clip&quot;&gt;참고 링크&lt;/a&gt;). 이를 간단하게 설명하자면,&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235698004-59d9e19f-d74a-4b51-a774-5d5616fad369.png&quot; width=&quot;700&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;이미지&lt;/strong&gt;와 해당 이미지를 잘 설명하는 &lt;strong&gt;caption&lt;/strong&gt;(text prompt)가 pair로 존재하는 대량의 데이터셋에서, 이미지와 함께 positive pair가 되는 text prompt 각각의 embedding 유사도를 높이게끔 학습하며 그와 동시에 negative pair가 되는 나머지 prompt 각각의 embedding과의 유사도는 낮아지게끔 학습한다. &lt;strong&gt;Contrastive learning&lt;/strong&gt;을 사용하여 기존 classification task에서의 discrete label(one hot encoding label)에서 벗어나, 다양한 &lt;u&gt;텍스트 형태와 이미지를 연관&lt;/u&gt;지을 수 있는 학습 구조를 소개한 것이다.&lt;/p&gt;
-
-&lt;h3 id=&quot;embedding-similarity-into-classifier&quot;&gt;Embedding similarity into classifier&lt;/h3&gt;
-
-&lt;p&gt;이러한 구조적 변경을 통한 사용 가능한 텍스트의 확장은 시사하는 바가 굉장히 컸다. 예컨데 &lt;u&gt;사용될 수 있는 텍스트가 많아진다는 것&lt;/u&gt;은 네트워크의 크기를 부담없이 크게 가져가면서 dataset domain $p(x)$를 확장할 수 있다는 뜻이 되고, semantic understanding의 이해가 여타의 연구들에 &lt;strong&gt;snowball effect&lt;/strong&gt;를 가져올 수 있는 딥러닝 연구 특성상 이전과는 비교할 수 없을 정도로 &lt;u&gt;multimodal에 대한 연구 및 성능이 급증할 것&lt;/u&gt;임을 암시하였다. GLIDE에서는 classifier를 사용한 디퓨전 모델의 조건화와 CLIP을 사용한 이미지와 텍스트 간의 유사도를 기반으로 한 understanding 두 연구를 통해 아이디어를 확립하기 시작했다.&lt;/p&gt;
-
-&lt;h3 id=&quot;guided-diffusion-models&quot;&gt;Guided diffusion models&lt;/h3&gt;
-
-&lt;p&gt;디퓨전 모델 조건화의 대표격 연구인 &lt;a href=&quot;https://arxiv.org/abs/2105.05233&quot;&gt;Diffusion beat GANs&lt;/a&gt; 그리고 &lt;a href=&quot;https://arxiv.org/abs/2207.12598&quot;&gt;Classifier free diffusion&lt;/a&gt;는 기존 GAN 및 autoregressive modeling에서만 가능했던 다양성/퀄리티 간의 trade-off(low temperature sampling)를 디퓨전 모델에 접목할 수 있게 하였고, 디퓨전 생성 모델의 controllability 및 latent manipulation을 용이하게 할 수 있었다.&lt;/p&gt;
-
-&lt;p&gt;[
-\log p_\phi(y \vert x_t) \approx \log p_\phi(y \vert x_t) \vert_{x_t = \mu}+(x_t - \mu)\nabla_{x_t} \log p_\phi (y \vert x_t) \vert_{x_t = \mu} = (x_t - \mu)g+C_1
-]&lt;/p&gt;
-
-&lt;p&gt;평균에 가까운 point에서 상대적으로 &lt;strong&gt;curvature&lt;/strong&gt;이 작다고 가정할 수 있는 classifier의 score를 &lt;u&gt;테일러 1차 근사&lt;/u&gt;를 통해 gradient guidance를 주는 방식인 classifier guidance는 디퓨전 모델로 하여금 샘플 퀄리티를 높일 수 있는 효과적인 방법으로 제시되었다.&lt;/p&gt;
-
-&lt;p&gt;[
-\tilde{\epsilon}(z_\lambda, c) = (1+w)\epsilon_\theta(z_\lambda, c) - w\epsilon_\theta(z_\lambda)
-]&lt;/p&gt;
-
-&lt;p&gt;그에 대응하여 나온 연구인 classifier free 연구는 classifier guidance를 위해 classifier에 의존하는 것은 classifier를 모든 scale의 noise에 대해 학습해야하기 때문에 &lt;u&gt;pipeline을 복잡하게&lt;/u&gt; 만들고, 무엇보다 classifier에 의한 gradient 학습은 결국 FID나 IS 메트릭 상 직접적인 목적 함수로 작용하기 때문에 실제 샘플링 성능을 높이는데 방법론 자체가 주된 역할을 수행하지 않는다는 비판 속에서 등장하였다.&lt;/p&gt;
-
-&lt;h3 id=&quot;clip-guidance-and-classifier-free-guidance&quot;&gt;CLIP guidance and classifier-free guidance&lt;/h3&gt;
-
-&lt;p&gt;저자는 이러한 두 경향(classifier를 사용하자/classifier를 사용하지 말자)에 대해 &lt;u&gt;모두 실험이 가능한 프레임워크&lt;/u&gt;를 만들고, 실제로 각 방법이 &lt;strong&gt;text to image sample quality&lt;/strong&gt;에 어떤 영향을 미치는지 관찰하였다.&lt;/p&gt;
-
-&lt;p&gt;다만 text description에 대해서는 단일 task에 대한 classifier를 사용할 수 없기 때문에 이를 보완하고자 CLIP score(유사성)을 사용하는 방법을 고안하였고, classifier-free guidance는 classifier의 의존성이 불필요하기 때문에 기존 ADM(Diffusion beat GANs)구조와 해당 논문에서 사용된 conditioning 방법을 사용하게 된다. 해당 내용은 뒤에서 오피셜 코드와 함께 자세히 리뷰할 예정이다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;diffusion-model에-대한-간략한-소개&quot;&gt;Diffusion model에 대한 간략한 소개&lt;/h1&gt;
-
-&lt;h3 id=&quot;ddpm-as-score-estimator&quot;&gt;DDPM as Score estimator&lt;/h3&gt;
-
-&lt;p&gt;GLIDE는 이해하고 싶지만 아직 diffusion에 대해서 다뤄본 적이 없는 사람들에게는 갑자기 이상한 입실론이 나오기 시작하면 골이 땡기기 시작한다. 본인 게시글 중 &lt;a href=&quot;https://6unoyunr.github.io/blog/DDPM&quot;&gt;DDPM 소개&lt;/a&gt; 및 &lt;a href=&quot;https://6unoyunr.github.io/blog/scoresde&quot;&gt;Score based generative modeling 이해하기&lt;/a&gt;를 읽고 오면 좋지만, 간단하게 소개하면 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;일반적으로 샘플링을 하기 위해 intractable solution을 풀기 위해 가정해야하는 variational inference의 기초가 바로 샘플링이 용이한 prior $p_\theta(z)$를 잘 설정하는 것이다. 기존 GAN에서는 단순 샘플링으로 해결하거나 VAE에서는 auto-encoder를 함께 학습하면서 KL divergence 정규화를 하는 방법을 쓰게 되는데, 이걸 diffusion model에서는 이름에서 알 수 있듯이 &lt;u&gt;‘diffusion process’&lt;/u&gt;로 해결한다.&lt;/p&gt;
-
-&lt;p&gt;[
-q(x_t \vert x_{t-1}) := \mathcal{N}(x_t; \sqrt{\alpha_t}x_{t-1}, (1-\alpha_t)I) 
-]&lt;/p&gt;
-
-&lt;p&gt;마치 향수가 공기 중에서 점차 확산해가는 운동을 Brownian motion으로 정의하는데, 해당 운동을 설명하는 방정식이 바로 stochastic differential equation이고, 이 SDE의 solution이 바로 위에서 보이는 diffusion process가 된다. 이렇게 작은 gaussian noise를 점차 더해가다보면, 충분한 시간 $t$가 지난 후에는 $x_T$가 가우시안 노이즈가 되어있는 것이다.&lt;/p&gt;
-
-&lt;p&gt;가우시안 노이즈를 이번에는 reverse process(역과정)를 통해 데이터를 만들고 싶다고 생각해보자. 하지만 확률 분포가 정의된 정방향과는 다르게 역방향인 $q(x_{t-1} \vert x_t)$ 는 tractable하지 않기 때문에, 이를 예측하는 parametric function $p_\theta(x_{t-1} \vert x_t)$를 딥러닝을 통해 해결하고자 하는 것이다.&lt;/p&gt;
-
-&lt;p&gt;이를 수식화하여 정리한 것이 다음과 같은 diffusion process(DDPM)의 학습 목적함수인 simplified loss이며,&lt;/p&gt;
-
-&lt;p&gt;[
-L_\text{simple} := \mathbb{E}_{x_0 \sim q(x_0), \epsilon \sim \mathcal{N}(0, I)} \left( \parallel \epsilon - \epsilon_\theta(x_t, t) \parallel_2^2 \right)
-]&lt;/p&gt;
-
-&lt;p&gt;이는 곧 score matching 수식화를 통해 DDPM network가 예측하고자 하는 epsilon은 score function의 normalized 버전임을 알 수 있다(증명 생략).&lt;/p&gt;
-
-&lt;p&gt;[
-\begin{aligned}
-&amp;amp;x_{t-1} = \frac{1}{\sqrt{\alpha_t}}\left( x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}}_t} \epsilon_\theta(x_t, t)\right)+\sigma_tz \newline
-\rightarrow~~&amp;amp;x_{t-1} = \frac{1}{\sqrt{\alpha_t}} (x_i + \beta_i s_{\theta^\ast}(x_i, i)) + \sqrt{\beta_i}z_i
-\end{aligned}
-]&lt;/p&gt;
-
-&lt;p&gt;이런 베이스라인에서 variance까지 학습하고자 한 논문이 &lt;u&gt;improved DDPM 논문&lt;/u&gt;이다. 위의 베이스 식에 이런저런 condition을 넣을 수 있는데, 이러한 조건화 중 diffusion model을 보다 고차원 이미지에 대해 성능을 높일 수 있었던 방법이 downsampled input $x$를 채널 단위로 concatenate하여 조건화를 시킨 &lt;u&gt;superresolution diffusion model&lt;/u&gt;이다. 이 내용은 뒤이어 코드 리뷰와 함께 확인해볼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;[
-p_{\theta}(y_{t-1} \vert y_t,~x) 
-]&lt;/p&gt;
-
-&lt;h3 id=&quot;guided-diffusion&quot;&gt;Guided diffusion&lt;/h3&gt;
-
-&lt;p&gt;Noise가 더해진 각 process 단계에서의 sample에 대한 classifier $p_\phi(y \vert x_t)$를 사용하여 생성 과정에서 gradient를 틀어주는 방법($s$가 guidance의 power를 결정)이다.&lt;/p&gt;
-
-&lt;p&gt;[
-\hat{\mu}_\theta(x_t \vert y) := \mu_\theta(x_t \vert y) + s \cdot \Sigma_\theta(x_t \vert y)\nabla_{x_t} \log p_\phi (y \vert x_t) 
-]&lt;/p&gt;
-
-&lt;h3 id=&quot;classifier-free-guidance&quot;&gt;Classifier-free guidance&lt;/h3&gt;
-
-&lt;p&gt;앞서 소개한 방법은 noise sample에 대해 classifier를 학습시켜야 한다는 번거로움이 있다. 만약 classification에 대한 implicit classifier $p^i(y \vert x_t)$을 가정하면, 해당 implicit classifier는 다음 비례식을 가진다(Bayes’ rule).&lt;/p&gt;
-
-&lt;p&gt;[
-p^i(y \vert x_t) \propto \frac{p(x_t \vert y)}{p(x_t)}
-]&lt;/p&gt;
-
-&lt;p&gt;log likelihood에 대한 gradient(score)를 표현하면 다음과 같이 나타낼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;[
-\nabla_{x_t} \log p^i(y \vert x_t) \propto \nabla_{x_t} \log p(x_t \vert y) - \nabla_{x_t} \log p(x_t) \propto \epsilon^\ast(x_t \vert y) - \epsilon^\ast(x_t)
-]&lt;/p&gt;
-
-&lt;p&gt;고로, 네트워크를 classifier conditioned sample 그리고 unconditional sample에 대해 모두 학습하면 다음과 같은 extrapolated direction을 구할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;[
-\hat{\epsilon}_\theta(x_t \vert y) = \epsilon_\theta(x_t \vert \emptyset) + s \cdot (\epsilon_\theta(x_t \vert y) - \epsilon_\theta(x_t \vert \emptyset))
-]&lt;/p&gt;
-
-&lt;h3 id=&quot;clip-guidance&quot;&gt;CLIP guidance&lt;/h3&gt;
-
-&lt;p&gt;앞서 설명한 내용을 사용하여 이 논문에서 사용한 CLIP guidance에 대해 살펴보면 다음과 같다. CLIP은 image encoder $f(x)$를 통해 추출한 이미지 임베딩과 text encoder $g(c)$를 통해 추출한 텍스트 임베딩 간의 similarity를 내적을 통해 계산한다. 정확히 말하자면 cosine similarity에 해당된다.&lt;/p&gt;
-
-&lt;p&gt;[
-f(x) \cdot g(c)
-]&lt;/p&gt;
-
-&lt;p&gt;만약 image와 text 사이에 유사도가 높다면 inner product 역시 큰 값을 가지게 된다. CLIP은 이러한 방식으로 캡션과 이미지 사이의 유사도를 측정할 수 있기 때문에, 해당 value를 일종의 classification probability로 바꿔 생각해볼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;[
-\hat{\mu}_\theta(x_t \vert y) := \mu_\theta(x_t \vert y) + s \cdot \Sigma_\theta(x_t \vert y)\nabla_{x_t} (f(x_t) \cdot g(c))
-]&lt;/p&gt;
-
-&lt;p&gt;기존 classifier guidance 논문에서 했던 방법처럼 CLIP 또한 noised image $x_t$에 대해 학습을 했고, 이를 통해 reverse process를 하는 과정에서 보다 정확한 gradient를 구할 수 있게 된다. 이를 페이퍼에서는 ‘Noised CLIP’이라 부른다.&lt;/p&gt;
-
-&lt;p&gt;기존에 커뮤니티에서 CLIP을 사용한 diffusion의 text 조건화에 대해 실험한 경우에는 &lt;u&gt;굳이 noised CLIP 없이도 fine tuning이 가능하다고 주장&lt;/u&gt;했었지만, 그대신 data augmentation이나 perceptual loss와 같은 &lt;strong&gt;추가적인 메트릭&lt;/strong&gt;이 필요하다. CIFAR-10C와 같은 corruption dataset이 domain shift problem과 같은 task에서 사용되는 것을 보면, noised input이 classifier로 하여금 out of distribution domain의 이미지에 해당되고, 이는 곧 제대로 된 classification에 방해가 되기 때문이다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235698044-d3810eb0-0921-4997-80c4-6a3e8a866020.png&quot; width=&quot;600&quot; /&gt;
-&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;related-works&quot;&gt;Related works&lt;/h1&gt;
-
-&lt;h3 id=&quot;text-conditional-image-generation&quot;&gt;Text conditional image generation&lt;/h3&gt;
-
-&lt;p&gt;Text를 조건부로 image를 생성하는 task는 기존에도 수없이 존재해왔다. 예컨데 기존의 가장 SOTA였던 GAN을 아키텍쳐 베이스로 잡은 수많은 방법들이 captioning dataset을 기반으로 제안되었고, 비교적 가장 해당 논문과 시기적으로 가까운 DALLE의 경우 Vector Quantized learning을 베이스라인으로 삼았다. 기존 연구들은 diffusion baseline을 사용하지 않았지만, 디퓨전 모델이 발전하기 시작하면서 text conditioning 연구를 접목하려는 시도가 점차 증가하기 시작했다. 사실상 DALLE의 아이디어를 많이 참고했다고 볼 수 있는 vector quantized diffusion 연구가 diffusion based T2I 연구의 초창기에 해당된다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235698010-5d52e1aa-0efe-4246-8660-b3abd2e76c7b.png&quot; width=&quot;600&quot; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&quot;diffusion-model-based-generation-tasks&quot;&gt;Diffusion model based generation tasks&lt;/h3&gt;
-
-&lt;p&gt;Diffusion 관련하여 text to image 이외에도 다른 형태의 task 또한 발전하기 시작했다.  &lt;a href=&quot;https://sde-image-editing.github.io/&quot;&gt;SDEdit&lt;/a&gt;과 같은 논문에서는 diffusion process인 SDE를 통해 단순히 inpainting과 같은 task 말고도 rough sketch(stroke) to image와 같은 conditioned task를 해결할 수 있음을 보였다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235698012-e5a084b7-69c8-4e16-9938-8b93cee78de5.png&quot; width=&quot;600&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;또한 &lt;a href=&quot;https://arxiv.org/pdf/2111.05826.pdf&quot;&gt;Palette&lt;/a&gt; 논문에서는 image to image translation task 각각을 목적으로 diffusion model을 학습시켰을 때 모두 성공적으로 task를 수행할 수 있음을 보였다.&lt;/p&gt;
-
-&lt;h3 id=&quot;use-clip-guidance-into-image-generationgan&quot;&gt;Use CLIP guidance into image generation(GAN)&lt;/h3&gt;
-
-&lt;p&gt;GAN 모델을 기반으로 한 CLIP guided image generation 또한 활발하게 연구되기 시작했다. 예컨데 이전에 리뷰했던 논문들을 포함하여 StyleCLIP(StyleGAN + CLIP), BigSleep(BigGAN + CLIP) 그리고 StyleGAN-NADA와 같은 내용이 바로 이에 해당된다. GAN과 CLIP guidance를 어떻게 엮어서 사용할 수 있었는지에 대한 자세한 내용은 해당 게시글에 정리되어있다(&lt;a href=&quot;https://6unoyunr.github.io/blog/styleclip+styleganada&quot;&gt;참고 링크&lt;/a&gt;). &lt;a href=&quot;https://arxiv.org/pdf/2111.13792.pdf&quot;&gt;LAFITE paper&lt;/a&gt;에서는 CLIP text embedding에 조건화를 위해 사전 정의된 노이즈로 perturb한 CLIP image embedding을 사용하여 GAN model을 학습하는 방식으로, 고퀄리티의 image/text pair dataset이 없더라도(language free) text to image 조건화가 가능하다는 연구를 진행한 바 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;use-clip-guidance-into-image-generationdiffusion&quot;&gt;Use CLIP guidance into image generation(Diffusion)&lt;/h3&gt;
-
-&lt;p&gt;그러나 물론 diffusion에도 CLIP guidance를 접목하고자 한 시도가 GLIDE 논문이 처음은 아니었다. Crowson이 커뮤니티에서 공개한 &lt;a href=&quot;https://colab.research.google.com/drive/12a_Wrfi2_gwwAuN3VvMTwVMz9TfqctNj&quot;&gt;코랩 코드&lt;/a&gt;라던지, DDIM reconstruction process 과정에서 CLIP loss를 따라가게끔 diffusion model을 fine tuning한 &lt;a href=&quot;https://arxiv.org/pdf/2110.02711.pdf&quot;&gt;DiffusionCLIP&lt;/a&gt; 연구가 진행되었다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235698017-8e20d77b-42a5-4cbb-b307-022372c776e3.png&quot; width=&quot;700&quot; /&gt;
-&lt;/p&gt;
-
-&lt;h3 id=&quot;text-based-image-editing&quot;&gt;Text based image editing&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/2103.10951.pdf&quot;&gt;Paint by Word&lt;/a&gt;나 &lt;a href=&quot;https://arxiv.org/pdf/2111.14818.pdf&quot;&gt;Diffusion based image editing&lt;/a&gt;  논문에서는 CLIP을 사용하여 GAN이나 Diffusion model로 하여금 이미지를 원하는 prompt에 맞춰 변환을 할 수 있도록 학습사는 방법을 소개하였다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;training-방법&quot;&gt;Training 방법&lt;/h1&gt;
-
-&lt;p&gt;GLIDE는 diffusion을 사용한 T2I를 다룬 논문이므로 학습법을 이해하는 것이 매우 중요하다. 가장 메인이 되는 실험에서는 일반적인 크기의 $64 \times 64$ image에 대해 대용량(3.5B)의 diffusion  model(+text condition)을 학습시키고, 이에 추가로 대용량(1.5B)의 upsampling diffusion model($64 \times 64 \rightarrow 256 \times 256$)을 학습하였다. 또한 CLIP guidance를 위해 앞서 말했던 것처럼 $64 \times 64$의 image에 대해 ViT-L CLIP 모델을 noised input과 함께 학습하였다.&lt;/p&gt;
-
-&lt;h3 id=&quot;training-text-conditional-diffusion-models&quot;&gt;Training text conditional diffusion models&lt;/h3&gt;
-
-&lt;p&gt;이 논문에서는 Diffusion beat GANs 논문에서 밝힌 ADM model을 사용하였다. 해당 구조를 서칭하는 과정은 diffusion 관련 논문들을 정리한 게시글(&lt;a href=&quot;https://6unoyunr.github.io/blog/diffusionpapers&quot;&gt;참고 링크&lt;/a&gt;)에 있지만 결론부터 가져오자면,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;각 resolution마다 2개의 residual block(BigGAN)을 가지며, width도 resolution에 맞게 조정됨&lt;/li&gt;
-  &lt;li&gt;Attention head마다 $64$의 channel 수를 가지는데, resolution $32, 16, 8$에 모두 attention layer가 있음&lt;/li&gt;
-  &lt;li&gt;BigGAN residual block을 upsampling, downsampling할 때 사용하며 AdaGN이 들어가서 timestep과 class embedding을 넣어줌&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이렇게 된다. 이때 기존 ADM에서는 학습 과정에 class embedding과 time embedding을 attention으로 넣어주는 과정을 통해 class conditioning을 진행했는데, GLIDE에서는 해당 부분을 transformer로부터 나오는 text embedding으로 대체하였다. 이 부분은 논문에서 설명이 충분치 않기 때문에 github official code와 함께 보도록 해보자.&lt;/p&gt;
-
-&lt;h3 id=&quot;transformer를-통해-text-embedding-뽑아내기&quot;&gt;Transformer를 통해 text embedding 뽑아내기&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;xf_in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token_embedding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;long&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;xf_in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xf_in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;positional_embedding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xf_padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mask&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;xf_in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[...,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xf_in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;padding_embedding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;xf_out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transformer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xf_in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;final_ln&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;xf_out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;final_ln&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xf_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;xf_proj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transformer_proj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xf_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;xf_out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xf_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;permute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# NLC -&amp;gt; NCL
-&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;outputs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xf_proj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xf_proj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xf_out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xf_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Text2ImUNet&lt;/code&gt; 클래스에 속한 메소드 중 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get_text_emb&lt;/code&gt;에 대한 내용이다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xf_in&lt;/code&gt;이 transformer에 들어가는 prompt input을 tokenize 및 임베딩화 + positional encoding으로 바꾸게 되고 모든 transformer 모듈 연산이 끝난 후 실제로 conditioning에 사용되는 것은 output의 가장 마지막 token에 대한 embedding(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xf_out[:, -1]&lt;/code&gt;)를 dimension에 맞게끔 projection한 결과가 된다. Output의 가장 마지막 token이 가지는 의미는 다음과 같다.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text_ctx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Transformer tokenizer는 인코딩 과정에서 BPE를 사용하게 되는데, 이때 시퀀스를 같은 길이로 맞춰주면서 가장 뒷부분에 시퀀스의 마지막을 의미하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;EOS&amp;gt;&lt;/code&gt;를 추가해준다. 따라서 ViT에서 가장 앞부분에 class token을 추가한 뒤 encoder를 통과시켜 해당 token의 feature map을 class에 대한 정보로 사용했던 것처럼, Text embedding 또한 transformer를 통과한 뒤 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;EOS&amp;gt;&lt;/code&gt; 토큰에 남은 나머지 시퀀스에 대한 attention 정보를 사용하면 이는 곧 전체 text를 요약한 feature로 해석할 수 있다.  즉, class embedding 대신 conditioning에 사용될 수 있게 된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;unet-module-conditioning-하기&quot;&gt;UNet module conditioning 하기&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;emb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time_embed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timestep_embedding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timesteps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model_channels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xf_width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;text_outputs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_text_emb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;xf_proj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xf_out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text_outputs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;xf_proj&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text_outputs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;xf_out&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;emb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xf_proj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;실제 모델 포워딩(UNet)에서 사용하는 과정을 보게 되면, 위와 같은 방식으로 추출한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xf_proj&lt;/code&gt;와 feature dimension과 token index의 위치는 permute한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xf_out&lt;/code&gt;를 사용한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xf_proj&lt;/code&gt;는 시간에 대한 정보인 timestep embedding과 더해지고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xf_out&lt;/code&gt;는 그대로 모듈에 들어가게 된다.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_blocks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xf_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;hs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;middle_block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xf_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output_blocks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dim&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xf_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;module이라고 되어있는 부분은 상속된 상위 클래스인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UNet&lt;/code&gt; 에서 확인할 수 있듯이 TimestepBlock 혹은 AttentionBlock으로 이어지게 된다.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TimestepEmbedSequential&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sequential&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TimestepBlock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoder_out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;layer&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isinstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TimestepBlock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;layer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isinstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AttentionBlock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;layer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoder_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;layer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;레이어의 속성에 따라 사용되는 text condition이 서로 다른 것을 볼 수 있는데, 예컨데 ResBlock과 같이 TimestepBlock을 상속 클래스로 하는 녀석들은 time+text embedding(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xf_proj&lt;/code&gt;) 정보를 받아서 group normalization할 때 사용하고(기존 ADM과 똑같다),&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;use_scale_shift_norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;out_norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out_rest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out_layers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out_layers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shift&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;emb_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dim&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out_norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shift&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out_rest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emb_out&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out_layers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;AttentionBlock을 클래스로 하는 녀석들은 모든 text token information을 key/value로 cross-attention에 사용하여 query의 주체가 되는 noised image &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;가 text 정보랑 잘 엮일 수 있게 연산된단.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoder_out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spatial&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;qkv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qkv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoder_out&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;encoder_out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encoder_kv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encoder_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attention&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qkv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoder_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attention&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qkv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;proj_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reshape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spatial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그리고 구조 설명에서 말했던 바와 같이 resolution $32, 16, 8$에 모두 attention layer가 있다고 했기 때문에 각각의 attention map에 맞게 projection되어(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;self.qkv(self.norm(x).view(b, c, -1))&lt;/code&gt;) key/value 역할을 수행한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;training-dataset-and-architecture&quot;&gt;Training dataset and architecture&lt;/h3&gt;
-
-&lt;p&gt;Dataset은 DALL-E에서 사용한 것과 동일한 데이터셋으로 학습하였다. 다만 Diffusion beat GAN 논문에서는 width를 샘플링 효율 대비 연산량 때문에 크게 증가시키지 않았지만 이 논문에서는 보다 풍부한 text 정보를 담기 위해 과감하게 $512$ 채널로 증가시켜버린다. Transformer의 경우 채널 수가 $2048$인  $24$개의 residual block을 사용하였고, 이 두 개(UNet + Transformer) 파라미터를 총 합한 것이 3.5B가 된다.&lt;/p&gt;
-
-&lt;p&gt;이에 추가로 upsampling diffusion model은 마찬가지로 같은 conditioning을 사용하는데, 이미지 생성 UNet보다는 적은 규모의 transformer($2048 \rightarrow 1024$)를 사용하게 된다. 이외의 training detail은 논문에 있기 때문에 따로 언급은 하지 않겠다.&lt;/p&gt;
-
-&lt;h3 id=&quot;classifier-free-guidance-1&quot;&gt;Classifier free guidance&lt;/h3&gt;
-
-&lt;p&gt;위의 구조는 transformer output에 대해 text conditioning만 해줄 뿐 따로 CLIP guidance나 classifier free 방법이 들어간 것은 아니다. 사전 학습이 모두 끝난 뒤에, $20\%$의 비율에 해당되는 text token sequence를 empty sequence(NULL = $\emptyset$)로 바꾸어 text에 대해 unconditional representation도 함께 학습시킨다(fine-tuning). 이러한 방법을 통해 기존 classifier free guidance 논문에서처럼 네트워크는 unconditional diffusion model $p_\theta(z)$ 그리고 conditional model $p_\theta(z, c)$ 두 확률분포를 모두 가지게 된다. 다만 여기서 $c$가 class embedding에서 text embedding으로 바뀌었다고 생각하면 된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;image-inpainting&quot;&gt;Image inpainting&lt;/h3&gt;
-
-&lt;p&gt;앞서 related에서 설명했듯이 &lt;a href=&quot;https://arxiv.org/pdf/2111.05826.pdf&quot;&gt;Palette&lt;/a&gt; 논문에서는 image to image translation task 각각을 목적으로 학습했다고 하였다. 이외의 논문들은 직접 diffusion model을 해당 task를 목적으로 학습시키지 않았는데, 이렇게 단순히 다른 목적으로 학습된 diffusion forward로 perturbed input을 넣어 noise로 만든 다음 복구하는 작업을 취하게 되면 perturbed edge 부분이 불연속적이고 artifact가 발생한다는 문제가 있다.&lt;/p&gt;
-
-&lt;p&gt;따라서 이 논문에서는 Palette 논문과 유사하게 inpainting에 대해 학습시키게 된다.  Impaint에 사용된 UNet 구조를 보면 포워딩이 다음과 같이 진행된다.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timesteps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_mask&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_image&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;inpaint_image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros_like&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_mask&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;inpaint_mask&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros_like&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_mask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_mask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dim&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;timesteps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;x(마스킹 안된 원래의 이미지)에 x를 고대로 복사한 RGB에 masking을 적용한 이미지를 concat한다. 여기에 추가로 inpaint mask를 붙인 총 $7$개의 channel input이 사용된다고 생각하면 된다. (RGB(원래 이미지) + RGB(가려진 이미지) + Mask).&lt;/p&gt;
-
-&lt;p&gt;Input의 channel의 갯수가 바뀌기 때문에 이에 따라 받아들이는 module의 channel 수도 달라지게 되는데, fine-tuning이기 때문에 원래 $3$개의 채널은 사전 학습된 녀석을 가져오고 나머지 channel은 $0$으로 초기화했다고 생각하면 된다. 이에 상응하는 upsampling model은 fine tuning 과정에서 low-resolution 이미지의 전체(원본 RGB)를 넣어주되, high resolution image는 masking된 부분을 제외하고 넣어주었다(아래 코드 참고).&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timesteps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-			      &lt;span class=&quot;n&quot;&gt;inpaint_mask&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;low_res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_image&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;inpaint_image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros_like&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_mask&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;inpaint_mask&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros_like&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;upsampled&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interpolate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;low_res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bilinear&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;align_corners&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_mask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpaint_mask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;upsampled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dim&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;timesteps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;즉, 기존 upsampling module이 $256 \times 256$  크기의 noised $x_t$와 $64 \times 64$  GT를 bicubic으로 upsampling한 녀석을 concatenate해서 프로세스를 진행했다면, inpainting의 경우 두 concatenate 사이에 inpainting된 high resolution GT를 mask와 함께 조건부로 넣어준다.&lt;/p&gt;
-
-&lt;h3 id=&quot;noised-clip-models&quot;&gt;Noised CLIP models&lt;/h3&gt;
-
-&lt;p&gt;Diffusion beat GANs 논문에서는 보다 정확한 classifier guidance를 위해 classifier를 각 noise input에 대해 학습했던 것과 같이, GLIDE에서는 CLIP guidance를 위해 CLIP model을 noised image $x_t$에 대해 학습하게 된다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;결과&quot;&gt;결과&lt;/h1&gt;
-
-&lt;h3 id=&quot;clip-guidance-vs-classifier-free-guidance&quot;&gt;CLIP guidance vs. Classifier-free guidance&lt;/h3&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235698021-b1c810ca-e900-404c-bf79-f4ae880b3c1b.png&quot; width=&quot;700&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;정성적으로 나온 결과는 위의 그림과 같다. 보다 디테일이 잘 살아있고, artifact나 부자연스러운 부분이 CF Guide가 더 적은 것을 확인할 수 있다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235698028-34cbeb76-9949-45e8-b0fe-4b39afb04e0f.png&quot; width=&quot;700&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;메트릭 평가에서도 대체로 Classifier-free guidance가 더 좋다는 결과가 나온다. Precision/Recall을 보게 되면 Precision 파트에서 CLIP guidance는 꼬랑지가 휘는 걸 볼 수 있는데, 앞서 리뷰했던 논문에서 밝힌 것과 같이 Recall을 희생하는 만큼 Precision이 오르는 것이 정상적인 trade-off 경향성이다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235698031-bf332432-d596-4cfe-99e5-5cf16734508d.png&quot; width=&quot;700&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;결국 precision이 제대로 증가하지 않았다는 것은 그만큼 $P_r$에 $P_g$가 포함되지 않는다는 소리며, 이는 곧 다양한 text prompt를 커버할 수 없는 샘플링이라고 할 수 있다. IS/FID 역시 Classifier free guidance 기준으로 더 넓은 범위를 커버하는 것을 볼 수 있으며, 가장 인상깊은 결과는 CLIP score(유사도)에 따른 FID 경향성이 CLIP으로 직접 guidance를 주는 것보다 classifier free로 가는게 더 효과적인 것을 알 수 있다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235698035-f6822431-04d9-42e2-9ebf-7a695732f510.png&quot; width=&quot;500&quot; /&gt;
-    &lt;img src=&quot;https://user-images.githubusercontent.com/79881119/235698039-b32dd194-cb2a-4f15-8cbc-d2f9cb5b5ea0.png&quot; width=&quot;500&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;사람이 평가한 Elo score 상으로도 Classifier free guidance가 상당히 높은 점수를 획득하였으며, 사실적 이미지(photorealism)와 캡션 유사도(Caption similarity) 측면에서 DALL-E 보다도 좋은 성능을 보였다. DALL-E에 reranking(CLIP 점수를 이용하여 좋은 샘플을 우선시하여 picking하는 것)을 적용하고 GLIDE는 reranking을 적용하지 않고 단순 비교를 한 결과이며 $\%$는 승률을 의미한다. 마지막 row는 GLIDE의 output에 DALL-E의 d-VAE를 적용한 구조가 된다.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 02 May 2023 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/glide</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/glide</guid>
-        
-        <category>Diffusion model</category>
-        
-        <category>Text to Image</category>
-        
-        <category>AI</category>
-        
-        <category>Deep learning</category>
         
         
         <category>paper review</category>
