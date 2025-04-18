@@ -1,15 +1,22 @@
 papers:
+  - title: "Source-Free Domain Adaptation for Remote-Sensing Object Detection Using Low-confidence Pseudo Labels"
+    authors: "Jin Kim, <u><b>Junyoung Park</b></u>, Hyunsung Jang, Namkoo Ha, Kwanghoon Sohn"
+    paper_pdf: "https://ieeexplore.ieee.org/abstract/document/10949131"
+    venue: "IEEE Geoscience and Remote Sensing Letters"
+    selected: y
+    image: "https://github.com/user-attachments/assets/d9990e4f-9b9d-4ae0-87be-f3277d2c7f85"
+    code: ""
   - title: "Enhancing Source-Free Domain Adaptive Object Detection with Low-confidence Pseudo Label Distillation"
     authors: "Ilhoon Yoon, Hyeongjun Kwon, Jin Kim, <u><b>Junyoung Park</b></u>, Kwanghoon Sohn"
     paper_pdf: "https://arxiv.org/abs/2407.13524"
-    venue: "ECCV 2024 Poster presentation"
+    venue: "European Conference on Computer Vision (ECCV) 2024"
     selected: y
-    image: "https://github.com/user-attachments/assets/2036185c-403e-408d-86e6-3aba346dc4b0"
+    image: "https://github.com/user-attachments/assets/9e97cafe-4cbd-4d91-b298-37fd3b0ffa71"
     code: ""
   - title: "Layer-wise Auto-Weighting for Non-Stationary Test-Time Adaptation"
     authors: "<u><b>Junyoung Park</b></u>, Jin Kim, Hyeongjun Kwon, Ilhoon Yoon, Kwanghoon Sohn"
     paper_pdf: "https://arxiv.org/pdf/2311.05858.pdf"
-    venue: "WACV 2024 Poster presentation"
+    venue: "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) 2024"
     selected: y
-    image: "https://github.com/user-attachments/assets/83c24bbe-8e50-4647-8f63-e5ac04ad3fb7"
+    image: "https://github.com/user-attachments/assets/b1e64585-9562-4129-8a42-1b5bf837e8ad"
     code: ""

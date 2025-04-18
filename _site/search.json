@@ -1,16 +1,6 @@
 [
     
         {
-        "title"    : "추론 모델은 정말로 뛰어난가?? 오픈소스 엑사원 딥(EXAONE-Deep), QWQ, 딥시크(Deepseek-R1) 비교 실험해보기",
-        "tags"     : "Reasoning Models, Deepseek-R1, EXAONE, QWQ, o1, o3, LLM",
-        "url"      : "http://localhost:4000/blog/reasoning",
-        "date"     : "March 18, 2025",
-        "description" : "Reasoning LLMs",
-        "image" : "https://i.ibb.co/VWwPq65J/image.png",
-        "readtime" : "64"
-        } ,
-    
-        {
         "title"    : "딥시크(Deepseek)-R1에 대한 고찰. Thinking about Deepseek-R1 with Reinforcement Learning(RL).",
         "tags"     : "Deepseek, Reinforcement Learning, LLM",
         "url"      : "http://localhost:4000/blog/deepseekr1",
