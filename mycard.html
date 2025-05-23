@@ -1,230 +1,151 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
-    <link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+  <link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+  <title>Junyoung Park – Business Card</title>
+
   <style>
-    .button,
-    button {
-      font: inherit;
-      display: inline-block;
-      height: 38px;
-      padding-left: 15px;
-      padding-right: 15px;  
-      color: #FFF;
-      text-align: center;
-      font-size: 11px;
-      font-weight: 600;
-      line-height: 38px;
-      letter-spacing: .1rem;
-      text-transform: uppercase;
-      text-decoration: none;
-      white-space: nowrap;
-      background-color: transparent;
-      border-radius: 4px;
-      border: 1px solid #bbb;
-      cursor: pointer;
-      box-sizing: border-box; }
-    .button:hover, .button:focus {
-      color: #FFF;
-      border-color: #888;
-      outline: 0; }
-    /* 공통 초기화 */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
+    /* -------------------------------------------------- */
+    /* Reset & primitives                                 */
+    /* -------------------------------------------------- */
+    *,*:before,*:after{margin:0;padding:0;box-sizing:border-box}
+    html{height:100%}
+    body{
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      background:#242424;
+      font-family:system-ui,sans-serif;
+      color:#fff;
     }
-    body {
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      height: 100vh; 
-      background-color: #242424;
-      font-family: sans-serif;
-    }
+    a{color:inherit;text-decoration:none}
 
-    /* 카드 컨테이너: 3D 공간 확보를 위해 perspective 설정 */
-    .business-card {
-      position: relative;     /* 소셜 링크 아이콘 절대 배치를 위해 필요 */
-      width: 60vw;           /* 가로가 세로보다 클 때 기본값 */
-      aspect-ratio: 5 / 3;
-      perspective: 1000px;
-      cursor: pointer;
-      margin-top : 50px;
-      margin-bottom: 50px;
-      transition: box-shadow 0.3s ease;
+    /* -------------------------------------------------- */
+    /* Buttons                                            */
+    /* -------------------------------------------------- */
+    .button,button{
+      font:inherit;
+      display:inline-block;
+      height:38px;
+      padding:0 15px;
+      color:#fff;
+      font-size:11px;
+      font-weight:600;
+      line-height:38px;
+      letter-spacing:.1rem;
+      text-transform:uppercase;
+      background:transparent;
+      border:1px solid #bbb;
+      border-radius:4px;
+      cursor:pointer;
+      transition:border-color .3s ease;
     }
+    .button:hover,.button:focus{border-color:#888;outline:0}
 
-    /* 세로가 더 긴 기기(= portrait)에서는 width를 80vw로 재설정 */
-    @media screen and (orientation: portrait) {
-      .business-card {
-        width: 80vw;
-      }
+    /* -------------------------------------------------- */
+    /* 3-D Business Card                                  */
+    /* -------------------------------------------------- */
+    .business-card{
+      position:relative;
+      width:35vw;            /* 기본: 세로가 더 긴 3:5 카드 (W:H) */
+      aspect-ratio:3/5;
+      perspective:1000px;
+      cursor:pointer;
+      margin:50px 0;
+      transition:box-shadow .3s ease;
     }
+    /* 가로 화면에서는 카드가 너무 작아지지 않도록 살짝 확대 */
+    @media screen and (orientation:landscape){.business-card{width:28vw}}
+    /* 아주 좁은 모바일 세로 화면에서는 가독성을 위해 확대 */
+    @media screen and (max-width:480px){.business-card{width:55vw}}
 
-    .business-card:hover {
-      box-shadow: 0 0 10px #0085CD, 0 0 20px #F6AB00, 0 0 30px #005192;
-    }
+    .business-card:hover{box-shadow:0 0 10px #0085CD,0 0 20px #F6AB00,0 0 30px #005192}
 
-    /* 내부 카드: flip 효과를 위해 회전될 요소 */
-    .card-inner {
-      width: 100%; height: 100%;
-      position: relative;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-    }
+    /* 내부 회전 래퍼 */
+    .card-inner{width:100%;height:100%;position:relative;transition:transform .6s;transform-style:preserve-3d}
+    .business-card.flipped .card-inner{transform:rotateY(180deg)}
 
-    /* 뒤집힘 상태 */
-    .business-card.flipped .card-inner {
-      transform: rotateY(180deg);
-    }
+    /* 앞/뒤 공통 */
+    .card-face{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;backface-visibility:hidden;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+    .card-face img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+    .card-back{transform:rotateY(180deg)}
 
-    /* 카드 앞/뒤 공통 스타일 */
-    .card-face {
-      width: 100%; height: 100%;
-      position: absolute;
-      top: 0; left: 0;
-      backface-visibility: hidden;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    /* -------------------------------------------------- */
+    /* Social icons (좌측 상단, 세로 배열)                 */
+    /* -------------------------------------------------- */
+    .social-links{
+      position:absolute;
+      top:2%;
+      right:3%;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:1.2vw;
+      z-index:10;
+      opacity:1;
+      transform:translateY(0);
+      transition:opacity .4s ease,transform .4s ease;
+      pointer-events:auto;
     }
-    .card-face img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      pointer-events: none; /* 이미지 자체 클릭 방지 */
-    }
+    .invisible{opacity:0;transform:translateY(-20px);pointer-events:none}
+    .social-links img{width:clamp(18px,5vw,42px);height:auto;transition:transform .3s ease}
+    .social-links img:hover{transform:scale(1.2)}
 
-    /* 뒤집힌 뒷면은 Y축 180도 회전 */
-    .card-back {
-      transform: rotateY(180deg);
-    }
-
-    /* 소셜 링크 아이콘 컨테이너
-       - .business-card에 절대 배치하여, 카드가 뒤집혀도 항상 같은 자리(좌측 하단)에 위치 */
-    .social-links {
-      position: absolute;
-      bottom: 2%;   /* 카드 하단에서 2% */
-      left: 3%;     /* 카드 왼쪽에서 3% */
-      display: flex;
-      gap: 1vw;
-      z-index: 10;
-
-      /* 보이는 상태에서 (기본) */
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      pointer-events: auto;
-    }
-
-    /* 페이드 아웃 + 아래로 내려간 상태 */
-    .invisible {
-      opacity: 0;
-      transform: translateY(20px); /* 살짝 아래로 이동시켜 올라오는 느낌 */
-      pointer-events: none;        /* 클릭 불가 처리 */
-    }
-
-    /* 반응형 아이콘 크기 (기본) */
-    .social-links img {
-      width: clamp(16px, 4vw, 40px);
-      height: auto;
-      transition: transform 0.3s ease;
-    }
-
-    /* 세로 모드(portrait)에서는 좀 더 크게 */
-    @media screen and (orientation: portrait) {
-      .social-links img {
-        width: clamp(20px, 6vw, 50px);
-      }
-    }
-
-    /* 아이콘 Hover */
-    .social-links img:hover {
-      transform: scale(1.2);
-    }
-
-    /* ======================================= */
-    /* 추가: 페이드 인을 위한 초기 상태와 전환 */
-    .fade-in-element {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1.5s ease, transform 1.5s ease;
-    }
-    .fade-in-element.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* ======================================= */
+    /* -------------------------------------------------- */
+    /* Fade-in on page load                               */
+    /* -------------------------------------------------- */
+    .fade-in-element{opacity:0;transform:translateY(-20px);transition:opacity 1.5s ease,transform 1.5s ease}
+    .fade-in-element.show{opacity:1;transform:translateY(0)}
   </style>
 </head>
 <body>
-  <!-- 뒤집힐 카드 -->
-  <!-- fade-in-element 클래스를 추가하여 초기에는 숨겨진 상태로 -->
+  <!-- 카드 본체 -->
   <div class="business-card fade-in-element" id="card">
-    <!-- 회전될 영역 -->
     <div class="card-inner">
-      <!-- 앞면 -->
-      <div class="card-face card-front">
-        <img src="https://github.com/user-attachments/assets/19df61b0-70e7-4ec7-a126-59dd3db79130" alt="front"/>
-      </div>
-      <!-- 뒷면 -->
-      <div class="card-face card-back">
-        <img src="https://github.com/user-attachments/assets/1099b35b-a646-448b-81b1-080f53f535e8" alt="back"/>
-      </div>
+      <div class="card-face card-front"><img src="/assets/images/bc_front.png" alt="front" /></div>
+      <div class="card-face card-back"><img src="/assets/images/bc_back.png" alt="back" /></div>
     </div>
 
-    <!-- 소셜 링크 아이콘 (카드 내부가 아니라 .business-card 바로 아래 배치) -->
+    <!-- 소셜 링크 -->
     <div class="social-links" id="socialLinks">
-      <a href="https://www.linkedin.com/in/junyoung-park-490597344" target="_blank">
-        <img src="https://github.com/user-attachments/assets/c73f9ab4-6138-45b9-b872-05c62eb2daf8" alt="LinkedIn" />
-      </a>
-      <a href="mailto:junia3@naver.com">
-        <img src="https://github.com/user-attachments/assets/00b1e8a0-6d87-41ae-a33f-d6038cac60ae" alt="Email" />
-      </a>
-      <a href="https://github.com/6unoyunr" target="_blank">
-        <img src="https://github.com/user-attachments/assets/51f153cf-f78c-4c21-afbd-1460089fb395" alt="GitHub" />
-      </a>
+      <a href="https://www.linkedin.com/in/junyoung-park-490597344" target="_blank" aria-label="LinkedIn"><img src="https://github.com/user-attachments/assets/c73f9ab4-6138-45b9-b872-05c62eb2daf8" alt="LinkedIn" /></a>
+      <a href="mailto:junia3@naver.com" aria-label="Email"><img src="https://github.com/user-attachments/assets/00b1e8a0-6d87-41ae-a33f-d6038cac60ae" alt="Email" /></a>
+      <a href="https://github.com/6unoyunr" target="_blank" aria-label="GitHub"><img src="https://github.com/user-attachments/assets/51f153cf-f78c-4c21-afbd-1460089fb395" alt="GitHub" /></a>
     </div>
   </div>
 
-  <!-- 예시용 버튼 -->
-  <!-- fade-in-element 클래스를 추가하여 초기에는 숨겨진 상태로 -->
-  <a href="/cv" class="button">More detail 🤗</a>
+  <!-- 상세 CV 버튼 -->
+  <a href="/cv" class="button fade-in-element">More detail 🤗</a>
 
-  <!-- flip 이벤트 + Fade In/Out 이벤트 -->
+  <!-- 스크립트 : flip & fade-in-out -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const card = document.getElementById("card");
-      const cardInner = card.querySelector(".card-inner");
-      const socialLinks = document.getElementById("socialLinks");
-      
-      // 페이드 인 대상들
-      const fadeElements = document.querySelectorAll('.fade-in-element');
+  document.addEventListener('DOMContentLoaded',()=>{
+    const card=document.getElementById('card');
+    const cardInner=card.querySelector('.card-inner');
+    const socialLinks=document.getElementById('socialLinks');
+    const fadeEls=document.querySelectorAll('.fade-in-element');
 
-      // 페이지가 로딩되면 .show 클래스를 추가하여 천천히 페이드 인되게 함
-      fadeElements.forEach(element => {
-        // requestAnimationFrame을 써주는 이유: 브라우저 렌더링 후 클래스를 추가함으로써 transition이 매끄럽게 적용되도록
-        requestAnimationFrame(() => {
-          element.classList.add('show');
-        });
-      });
+    // 초기 페이드 인 처리
+    fadeEls.forEach(el=>requestAnimationFrame(()=>el.classList.add('show')));
 
-      // 카드 클릭 시
-      card.addEventListener("click", function () {
-        // 1) 회전이 시작되면 아이콘을 안 보이게(invisible)
-        socialLinks.classList.add("invisible");
-
-        // 2) 카드 flip 상태 토글
-        card.classList.toggle("flipped");
-      });
-
-      // 카드의 회전(transition)이 끝났을 때 (transform이 끝난 시점)
-      cardInner.addEventListener("transitionend", function (event) {
-        if (event.propertyName === "transform") {
-          // 3) 아이콘 다시 fade-in (아래서 올라오는 효과)
-          socialLinks.classList.remove("invisible");
-        }
-      });
+    // 카드 클릭 시 flip
+    card.addEventListener('click',()=>{
+      socialLinks.classList.add('invisible');
+      card.classList.toggle('flipped');
     });
+
+    cardInner.addEventListener('transitionend',evt=>{
+      if(evt.propertyName==='transform'){
+        socialLinks.classList.remove('invisible');
+      }
+    });
+  });
   </script>
 </body>
 </html>
