@@ -33,7 +33,7 @@
       font:inherit;
       display:inline-block;
       height:38px;
-      padding:0 15px;
+      padding:0 20px;
       color:#fff;
       font-size:11px;
       font-weight:600;
@@ -53,17 +53,22 @@
     /* -------------------------------------------------- */
     .business-card{
       position:relative;
-      width:35vw;            /* 기본: 세로가 더 긴 3:5 카드 (W:H) */
+      width:35vw;             /* 기본 */
       aspect-ratio:3/5;
       perspective:1000px;
       cursor:pointer;
       margin:50px 0;
       transition:box-shadow .3s ease;
     }
-    /* 가로 화면에서는 카드가 너무 작아지지 않도록 살짝 확대 */
-    @media screen and (orientation:landscape){.business-card{width:28vw}}
-    /* 아주 좁은 모바일 세로 화면에서는 가독성을 위해 확대 */
-    @media screen and (max-width:480px){.business-card{width:55vw}}
+    /* 넓은 가로 화면 */
+    @media screen and (orientation:landscape){
+      .business-card{width:28vw}
+    }
+    /* 세로 모드 – 모바일 & 태블릿 */
+    @media screen and (orientation:portrait){
+      .business-card{width:80vw}
+      .button,button{height:48px;font-size:13px;line-height:48px}
+    }
 
     .business-card:hover{box-shadow:0 0 10px #0085CD,0 0 20px #F6AB00,0 0 30px #005192}
 
@@ -86,7 +91,7 @@
       display:flex;
       flex-direction:column;
       align-items:flex-start;
-      gap:1.2vw;
+      gap:1.5vw;             /* 기본 간격 */
       z-index:10;
       opacity:1;
       transform:translateY(0);
@@ -94,8 +99,14 @@
       pointer-events:auto;
     }
     .invisible{opacity:0;transform:translateY(-20px);pointer-events:none}
-    .social-links img{width:clamp(18px,5vw,42px);height:auto;transition:transform .3s ease}
+    .social-links img{width:clamp(22px,5vw,42px);height:auto;transition:transform .3s ease}
     .social-links img:hover{transform:scale(1.2)}
+
+    /* portrait 모드에서 아이콘/간격 조금 더 키우기 */
+    @media screen and (orientation:portrait){
+      .social-links{gap:2.5vw}
+      .social-links img{width:clamp(40px,9vw,52px)}
+    }
 
     /* -------------------------------------------------- */
     /* Fade-in on page load                               */
@@ -131,7 +142,7 @@
     const socialLinks=document.getElementById('socialLinks');
     const fadeEls=document.querySelectorAll('.fade-in-element');
 
-    // 초기 페이드 인 처리
+    // 초기 페이드-인 처리
     fadeEls.forEach(el=>requestAnimationFrame(()=>el.classList.add('show')));
 
     // 카드 클릭 시 flip
